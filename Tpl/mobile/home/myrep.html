@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="icon" href="{site}/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="{site}/favicon.ico" type="image/x-icon">
+		<link rel="bookmark" href="{site}/favicon.ico" type="image/x-icon">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+		<meta name="format-detection" content="telephone=no"/>
+		<link rel="stylesheet" type="text/css" href="{site}/Public/Css/mobile/public.css">
+		<link rel="stylesheet" type="text/css" href="{site}/Public/Css/mobile/categorylist.css">
+		<link rel="stylesheet" type="text/css" href="{site}/Public/Css/mobile/post.css">
+		<link rel="stylesheet" type="text/css" href="{site}/Public/Css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="{site}/Public/Css/mobile/custom.css">
+		<script type="text/javascript" src="{site}/Public/JScript/public.js?<?php echo time();?>"></script>
+		<title>{site_config->site_title_mobile}</title>
+		<script>
+	document.onreadystatechange = function(){           
+    if (document.readyState == "complete"){
+    	var aes=document.getElementById("pagination").getElementsByTagName("a");
+				var url=window.location.href;
+				var url_array=url.split("=");
+				var page=parseInt(url_array[1]);
+				if(typeof(page)!="number") return;
+				var uclass=document.getElementById("pagination").getElementsByTagName("a");
+				for(var n in uclass)
+				{
+					if((uclass[n].className=='fy'+page) && (uclass[n].className != undefined)){
+						uclass[n].style.background = "#1c7bc5";
+						uclass[n].style.color = "#fff";
+					}
+				}
+	}
+}
+		var xmlhttp;
+		if (window.ActiveXObject){
+		  xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}else{
+		  xmlhttp = new XMLHttpRequest();
+		}
+function send(val,tc){
+	xmlhttp.open("POST", rooturl + "/index.php/Message" + url + "send" + shtml, true);
+  xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xmlhttp.send("mto="+val+"&mcon="+tc);
+  xmlhttp.onreadystatechange = function() {
+  if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+  		alert(xmlhttp.responseText);
+  	}
+  }
+}
+		</script>
+	</head>
+	<body>
+	<!--头部开始-->
+		<header>
+			<div class="top_head white" style="font: normal 18px/1.5 helvetica, verdana, san-serif;">
+	    <div class="box1">
+	        <a href="javascript:history.go(-1);" class="back"></a>
+	    </div>
+	    <div class="box2">
+	        <a href="{site}">{site_config->site_title_mobile}</a></div>
+	    <div class="box3">
+	        <?php if(empty($_SESSION['youyax_user'])){	?>
+	            <a  href="__APP__/Login{url}loginMobile{shtml}"><span class="header_user">用户登录</span></a>
+	          <?php	}else{	?>
+	           <a href="__APP__/Index{url}self{shtml}"><span class="header_user">个人中心</span></a>
+	        <?php	}	?>
+	    </div>
+			</div>
+		</header>
+	<!--头部结束-->
+	<div style="margin:0 auto;width:96%">
+	<div style="text-align:center;border-bottom:1px solid #dcdcdc;padding-top:8px;padding-bottom:4px;margin-bottom:4px;">我的回帖</div>
+ 		<div class="page" id="pagination" align="center">{page}</div>	
+<section class="posts_list">
+<ul class="listBg">
+  <list>
+  	<li>
+      <a title="{myrepinfo.title|strip_tags}" href="__APP__/Content{url}{myrepinfo.rid}{shtml}#{myrepinfo.num2}">
+      	<p>{myrepinfo.title}</p>
+      	<aside>
+      		<span>
+      			<em class="hui">{myrepinfo.time2}</em>
+      			<em style="margin-left:10px;">发帖人: {myrepinfo.zuozhe}<?php if("{myrepinfo.zuozhe}"=='')echo '无'; ?></em>
+      		</span>
+      	</aside>
+      </a>
+    </li>
+  </list>
+</ul>
+</section>
+</div>
+	<!--版权开始-->
+	<footer>
+		<div class="copyright">
+   		<a>Powered BY YouYaX</a>
+  	</div>
+	</footer>
+	<!--版权结束-->
+	</body>
+</html>

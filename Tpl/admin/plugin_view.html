@@ -1,0 +1,51 @@
+<include file="Tpl/Public/admin_top.html">
+	<table width=98% height="auto" cellspacing=0 cellpadding=0 border=1 style="margin:auto;border:1px solid #ccc">
+		<tr>
+			<td height="40" colspan="5" style="line-height:40px;background:url('{site}/Public/images/topbg.jpg')"><span style="font-size:16px;text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);color:#333;font-weight:bold;">所有插件</span></td>
+		</tr>
+		<tr>
+			<td width="15%" height="30" style="line-height:30px;font-size:15px;color:#222;font-weight:bold;">名称</td>
+			<td width="15%" style="line-height:30px;font-size:15px;color:#222;font-weight:bold;">版本号、作者</td>
+			<td width="60%" style="line-height:30px;font-size:15px;color:#222;font-weight:bold;">描述</td>
+			<td width="10%" style="line-height:30px;font-size:15px;color:#222;font-weight:bold;">操作</td>
+		</tr>
+<?php
+ if(!empty($this->array_array['plu_arr'])){
+ 	foreach($this->array_array['plu_arr'] as $vo){
+ 		$class_name=substr($vo,0,strlen($vo)-4);
+?>
+			<tr onmouseover="addClass(this)" onmouseout="removeClass(this)">	
+				<td height="30" style="line-height:30px;font-size:12px;color:#555;">
+					<?php
+					echo $class_name;
+				?>
+				</td>
+				<td height="30" style="line-height:30px;font-size:12px;color:#555;">
+					<?php
+					echo w($class_name)->desc()->version." (".w($class_name)->desc()->author.")";
+				?>
+				</td>
+				<td height="30" style="line-height:30px;font-size:12px;color:#555;">
+					<?php
+					echo w($class_name)->desc()->description;
+				?>
+				</td>
+				<td height="30" style="line-height:30px;font-size:12px;color:#555;">
+					<?php
+					if(in_array($class_name,$this->array_array['plu_in_arr'])){
+					?>
+					<a style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold" href="__APP__/Widget{url}setUnActive{url}name{url}<?php echo $class_name ?>{shtml}?token={token}" onclick="return confirm('您确定要停用?');">停用</a>
+					<?php if($this->is_exist_widget("PluginClearWidget") && $this->is_active_widget("PluginClearWidget")){
+									echo w("PluginClearWidget")->uninstallShow($class_name);
+							}	?>
+					<?php	}else{ ?>
+					<a style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold" href="__APP__/Widget{url}setActive{url}name{url}<?php echo $class_name ?>{shtml}?token={token}" onclick="return confirm('您确定要激活?');">激活</a>
+				<?php	} ?>
+				</td>
+			</tr>
+<?php
+	}
+}
+?>
+	</table>
+<include file="Tpl/Public/admin_bottom.html">

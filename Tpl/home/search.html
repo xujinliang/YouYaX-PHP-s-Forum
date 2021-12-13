@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+	<link rel="icon" href="{site}/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="{site}/favicon.ico" type="image/x-icon">
+	<link rel="bookmark" href="{site}/favicon.ico" type="image/x-icon">
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<title>{site_config->site_title}</title>
+	<meta name="keywords" content="{site_config->site_keywords}">
+	<meta name="description" content="{site_config->site_description}">
+	<script type="text/javascript" src="{site}/Public/JScript/public.js?<?php echo time();?>"></script>
+	<script type="text/javascript" src="{site}/Public/JScript/Tip.js"></script>
+	<script type="text/javascript" src="{site}/Public/JScript/Tip2.js"></script>
+	<script type="text/javascript" src="{site}/Public/JScript/online.js"></script>
+	<script type="text/javascript" src="{site}/Public/JScript/location.js"></script>
+	<script type="text/javascript" src="{site}/Public/JScript/search.js" defer="true"></script>
+	<script type="text/javascript" src="{site}/ORG/Move/level.js"></script>
+	<script type="text/javascript" src="{site}/Public/JScript/reglog.js" defer="true"></script>
+	<style>
+		*{margin:0px;padding:0px}
+		html{-webkit-text-size-adjust:none;}
+		body{font-family: 'Microsoft YaHei','微软雅黑',Arial,Helvetica,sans-serif;}
+		a{text-decoration:none;color:#551a8b;font-size:12px;}
+		#move td{border:none;white-space:nowrap;font-size:14px;line-height:24px;color:#ff0000;}
+		#wrapper{display:table;width:1140px;position:relative;left:50%;margin-left:-570px;/*box-shadow: rgb(239, 249, 225) 0px 0px 100px; -webkit-box-shadow: rgb(239, 249, 225) 0px 0px 100px;*/}
+		#menu{width:1140px;text-align:left;height:36px;line-height:36px;border-radius:10px; -moz-border-radius: 10px;-khtml-border-radius: 10px;-webkit-border-radius:10px;font-weight:bold;background:url("{site}/Public/images/menu_back.png") repeat-x 0 0px;}
+		#menu ul{margin:0;padding:0;list-style-type:none;width:auto;height:36px;padding-left:10px;}
+		#menu ul li{display:inline-block;*display:inline;height:36px;float:left;}
+		#menu ul li a{display:block;float:left;color:#ffffff;font-size:15px;text-decoration:none;padding:0 20px 0 20px;}
+		#menu ul li a:hover{color:#21b8e4;background:url("{site}/Public/images/menu_bg.png")}
+   		a{text-decoration:none;color:#333;font-size:12px;}
+   		#tags_hot a{color: #fff;background-color: #00a0ea;float:left;*float:none;*display:inline-block;text-align:center;margin:4px 0 0 4px;padding:6px 10px;font-size: 12px;overflow: hidden;border-radius:4px; -moz-border-radius: 4px;-khtml-border-radius: 4px;-webkit-border-radius:4px;}
+		#tags_hot a:hover{color: #fff;background-color: rgba(0,160,234,0.7);}
+   		#results{list-style-type: none;}
+   		.obj_type_1{margin-bottom:10px;border-bottom:1px solid #ddd;padding-bottom:10px;}
+   		ul#results li h3 a {font-size: 14pt;text-decoration: none;font-weight: normal;color: #00C;vertical-align: middle;}
+   		ul#results li .highlight {color: #DD4B39;}
+   		ul#results li .url {margin: 2px 0 0 0;color: #40AA53;font-size: 9pt;}
+   		ul#results li .outline {margin: 3px 0 0 0;line-height: 20px;font-size: 12px;color: #555;}
+   		ul#results li .createtime {margin: 3px 0 0 0;line-height: 20px;font-size: 12px;color: #666;}
+   		#ResultStats{color:#666;padding-left:5px;text-align:left;background-color:#fafafa;height:26px;line-height:26px;font-size:12px;}
+   		.page a{font-weight:normal;display:inline-block;padding: 0 8px;height:26px;line-height:26px;border:1px solid #e6e6e6;background-color:#FFF;color:#333;overflow:hidden;text-decoration:none;}
+		.page a:hover{color:#43b7e9;border-color:#eaf9ff;text-decoration:none;}
+	</style>
+	</head>
+	<body style="font-size:12px;background:#efefef;">
+		<div id="register" style="display:none;">
+			<div id="rt" align="right" style="width:100%;height:20px;background-color:#fafafa;cursor:move;"><b style="cursor:pointer;">关闭</b>&nbsp;</div>
+			<iframe src="__APP__/Register{url}show{shtml}" width="100%" height="180" frameborder="0"></iframe>
+		</div>
+<include file="Tpl/Public/top_bar.html">
+<center>
+<include file="Tpl/Public/head.html">
+<div id="menu">
+<ul>
+<?php foreach($this->array_two['menues'] as $k => $menu){	?>
+<li prefix="<?php echo $k; ?>" onmouseout="mouseoutfun(event,this)"><a href="<?php echo $menu['url']; ?>"><?php echo $menu['title']; ?></a></li>
+<img style="float:left;" src="{site}/Public/images/border_bg.png" border=0>
+<?php	}	?>
+<span onclick="getonline()" style="color:#ffffff;font-weight:400;cursor:pointer;float:right;margin-right:8px;">当前在线人数: {count}</span>
+</ul>
+</div>
+<div id="secmenu" style="display:none;" onmouseout="mouseoutfun(event,this)" onmouseover="stopEvent(event);this.style.display='block';"></div>
+</center>
+<script>
+var lies=document.getElementById("menu").getElementsByTagName("li");
+for(var i=0;i<lies.length;i++){
+	lies[i].onmouseover=function(event){
+		var event = event || window.event;
+		stopEvent(event);
+    if(checkFather(this,relatedTarget(event,'mouseover'))){
+			getSecondMenu(this,this.getAttribute("prefix"),'<?php echo $this->getparam("l");?>');
+		}
+	}
+}
+</script>
+	<div id="wrapper">
+<center>
+<div id="move" style="font-family: 'Microsoft YaHei','微软雅黑',Tahoma,Helvetica,sans-serif;background:#fafafa;"></div>
+	<script type="text/javascript">Move_level("move",1140,26,"<pre>{ads}</pre>");</script>
+</center>
+<div id="ResultStats">
+	找到约 {search_count} 条结果 （用时约 {timecost} 秒）
+</div>
+<div style="width:1140px;">
+<div style="width:820px;float:left;min-height:122px;">
+<div style="width:810px;background:#fafafa;padding:0 5px;">
+<?php
+		if(!empty($this->array_two['search_results'])){
+?>
+	<ul id="results">
+<?php
+		 foreach($this->array_two['search_results'] as $v){
+?>
+		<li class="obj_type_1">
+	    	<div class="entity">
+				<h3><a href="__APP__/Content{url}<?php echo $v['id'];?>{shtml}" target="_blank"><?php echo $v['title'];?></a></h3>
+				<p class="url">__APP__/Content{url}<?php echo $v['id'];?>{shtml}</p>
+				<p class="outline"><?php echo mb_substr(strip_tags($v['content']),0,100,"utf-8"); ?></p>
+				<p class="createtime"><?php echo $v['zuozhe'];?>&nbsp;&nbsp;发表于&nbsp;&nbsp;<?php echo $v['time1'];?></p>
+			</div>
+    		</li>
+<?php
+		}
+?>
+	</ul>
+	<div class="page">{page}</div>
+<?php
+	}
+?>
+</div>
+<include file="Tpl/Public/footer.html">
+</div>
+<div style="float:left;width:300px;margin-left:10px;padding:0 5px;overflow-x:hidden;background:#fafafa;">
+<div style="display:inline;float:left;width:300px;text-align:left;height:42px;overflow:hidden;line-height:32px;font-size:14px;color:#666;font-weight:bold;">
+<link rel="stylesheet" type="text/css" href="{site}/Public/Css/bluesky.css">
+<form name="search" action="__APP__/Search{url}query{shtml}" class="gsc-search-box" accept-charset="utf-8" method="get">
+	<table cellspacing="0" cellpadding="0" class="gsc-search-box">
+		<tbody>
+			<tr>
+				<td class="gsc-input">
+					<input autocomplete="off" type="text" size="10" placeholder="请输入搜索内容" class=" gsc-input " name="q" title="搜索" id="gsc-i-id1" dir="ltr" spellcheck="false" style="outline: none; background-color: rgb(255, 255, 255); background-position: 0% 50%; background-repeat: no-repeat no-repeat;">
+					<input type="hidden" name="sitesearch" value="http://youyax.com">
+				</td>
+				<td class="gsc-search-button">
+					<input type="button" value="搜索" class="gsc-search-button" title="搜索" onclick="if(document.forms['search'].elements['q'].value){document.forms['search'].submit();}">
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</form>
+</div>
+<div style="display:inline;float:left;width:300px;text-align:left;background:#1c7bc5;height:32px;line-height:32px;font-size:14px;color:#ffffff;font-weight:bold;"><span style="margin-left:15px;">公告栏</span></div>
+<div id="bulletin" style="display:inline;text-align:left;width:290px;height:auto;float:left;padding:0 5px 0px 5px;margin-bottom:10px;">
+		<ul style="margin:10px 0 0 0;">
+			<?php
+				$placard=require("./Conf/placard_set.config.php");
+				$placard=array_sort($placard, 'ord', $by = SORT_ASC);
+				foreach($placard as $pl){
+					if(!empty($pl['title'])){
+						echo '
+						<li style="list-style-type:none;width:100%;height:26px;line-height:26px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;">
+							<a style="font-size:14px;color:#666;text-decoration:underline;" title="'.$pl['title'].'" href="'.$pl['url'].'">'.$pl['title'].'</a>
+						</li>
+						';
+					}
+				}
+				?>
+		</ul>
+	</div>
+<?php	if(!empty($this->array_two['talk_new'])){	?>
+<div style="display:inline;float:left;width:300px;text-align:left;background:#1c7bc5;height:32px;line-height:32px;font-size:14px;color:#ffffff;font-weight:bold;"><span style="margin-left:15px;">一周新帖</span></div>
+<div id="newtopic" style="display:inline;text-align:left;width:290px;height:auto;float:left;padding:0 5px 0px 5px;margin-bottom:10px;">
+		<ul style="margin:10px 0 0 0;">
+			<list>
+				<li style="list-style-type:none;width:100%;height:26px;line-height:26px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;">
+					<a style="font-size:14px;color:#666;text-decoration:underline;" href="__APP__/Content{url}{talk_new.id}{shtml}" title="{talk_new.title|strip_tags}">{talk_new.title}</a>
+				</li>
+			</list>
+		</ul>
+</div>
+<?php	}	?>
+<?php	if(!empty($this->array_two['reply_num_max'])){	?>
+<div style="display:inline;float:left;width:300px;text-align:left;background:#1c7bc5;height:32px;line-height:32px;font-size:14px;color:#ffffff;font-weight:bold;"><span style="margin-left:15px;">一周热帖</span></div>
+<div id="hottopic" style="display:inline;text-align:left;width:290px;height:auto;float:left;padding:0 5px 0px 5px;margin-bottom:10px;">
+		<ul style="margin:10px 0 0 0;">
+			<list>
+				<li style="list-style-type:none;width:100%;height:26px;line-height:26px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;">
+					<a style="font-size:14px;color:#666;text-decoration:underline;" href="__APP__/Content{url}{reply_num_max.rid}{shtml}" title="<?php echo CommonAction::getTitle({reply_num_max.rid}); ?>"><?php echo CommonAction::getTitle({reply_num_max.rid}); ?></a>
+				</li>
+			</list>
+		</ul>
+</div>
+<?php	}	?>
+<?php	if(!empty($this->array_array['user_hot'])){	?>
+<div style="display:inline;float:left;width:300px;text-align:left;background:#1c7bc5;height:32px;line-height:32px;font-size:14px;color:#ffffff;font-weight:bold;"><span style="margin-left:15px;">活跃会员</span></div>
+<div id="userhot" style="display:inline;text-align:left;width:290px;height:auto;float:left;padding:0 5px 0px 5px;">
+ <table width="100%" cellspacing="0" cellpadding="0">	
+	<?php
+	$this->array_array['user_hot'] = array_slice($this->array_array['user_hot'],0,5,true);
+	foreach($this->array_array['user_hot'] as $k=>$v){
+	$user_arr = $this->find($this->C('db_prefix') ."user","string", $k);
+	if($user_arr){
+?>
+	<tr>
+		<td width="50" height="70" style="border-bottom: 1px solid #ddd;">
+			 <img onclick="document.getElementById('quser').value='<?php echo $user_arr['user']; ?>';document.forms['query_username'].target='_blank';document.forms['query_username'].submit();" style="cursor:pointer;width:50px;border-radius:50%" border="0" src="{site}/Public/pic/<?php echo $user_arr['face']; ?>">
+		</td>
+		<td style="padding:5px 10px;border-bottom: 1px solid #ddd"><div style="color:#515151;font-size:16px;"><?php echo $user_arr['user']; ?></div>
+			<div style="color:#999999;font-size:14px;line-height:20px;margin-top:4px;"><?php echo $user_arr['sign']; ?></div></td>	
+	</tr>
+<?php
+	}}
+	?>
+ </table>
+ <form name="query_username" method="post" action="__APP__/Content{url}userinfo{shtml}">
+	<input type="hidden" id="quser" name="quser">
+</form>
+</div>
+<?php	}	?>
+<?php	if(!empty($this->array_array['tags_hot'])){	?>
+<div style="display:inline;float:left;width:300px;text-align:left;background:#1c7bc5;height:32px;line-height:32px;font-size:14px;color:#ffffff;font-weight:bold;"><span style="margin-left:15px;">热门标签</span></div>
+<div id="tags_hot" style="display:inline;text-align:left;width:290px;height:auto;float:left;padding:6px 5px 0px 5px;">
+<?php
+	$this->array_array['tags_hot'] = array_slice($this->array_array['tags_hot'],0,12,true);
+	foreach($this->array_array['tags_hot'] as $k=>$v){
+		?>
+	<a href="__APP__/Search{url}query{shtml}?q=<?php echo urlencode($k); ?>&action=tags"><?php echo $k; ?> (<?php echo $v; ?>)</a>
+<?php	}	?>
+</div>
+<?php	}	?>
+<div style="display:inline;float:left;width:300px;margin-top:10px;text-align:left;background:#1c7bc5;height:32px;line-height:32px;font-size:14px;color:#ffffff;font-weight:bold;"><span style="margin-left:15px;">友情链接</span></div>
+<?php
+$friend_url=require("./Conf/friend_url.config.php");
+foreach($friend_url as $fu){
+if(!empty($fu['title'])){	?>
+		<a style="display:inline;font-size:12px;float:left;margin-left:20px;margin-top:6px;color:#336699;" target="_blank" href="<?php echo $fu['url'];?>"><?php echo $fu['title'];?></a>
+<?php	}}?>
+		<div style="height:20px;clear:both;"></div>
+	</div>
+  </div>
+</div>
+</body></html>

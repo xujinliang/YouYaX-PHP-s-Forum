@@ -1,0 +1,25 @@
+<include file="Tpl/mobile/Public/admin_top.html">
+<form name="form" action="__APP__/admin{url}domphotoset{shtml}" method="post">
+<div class="panel panel-default table-responsive">
+ <div class="panel-heading">手机拍照设置</div>
+	<table class="table">
+		<tr>
+			<td>开启手机拍照上传优化?</td>
+			<td><input type="checkbox"  name="mobile_photo_allow" onchange="if(this.checked){this.value=1;}else{this.value=0;}" <?php if("{mphoto->mobile_photo_allow}"==true) echo "checked"; ?> <?php if("{mphoto->mobile_photo_allow}"==true){ ?> value="1" <?php }else{ ?> value="0" <?php } ?>></td>
+		</tr>
+		<tr>
+			<td>上传图片最小长度</td>
+			<td><input type="text" name="mobile_pic_width" style="width:20%" value="{mphoto->mobile_pic_width}"><span style="color:#ff0000"> * 当上传图片尺寸不低于设置值时，优化才会生效！</span></td>
+		</tr>
+		<tr>
+			<td>上传图片最小高度</td>
+			<td><input type="text" name="mobile_pic_height" style="width:20%" value="{mphoto->mobile_pic_height}"><span style="color:#ff0000"> * 当上传图片尺寸不低于设置值时，优化才会生效！</span></td>
+		</tr>
+   	<tr>
+   		<input type="hidden" name="token" value="{token}">
+		<td height="40" colspan="2" align="left"><input name="submit" type="submit" value="提交" class="button" /></td>
+	</tr>
+ </table>
+ </div>
+</form>
+<include file="Tpl/mobile/Public/admin_bottom.html">

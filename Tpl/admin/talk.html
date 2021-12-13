@@ -1,0 +1,178 @@
+<include file="Tpl/Public/admin_top.html">
+<script type="text/javascript">
+		function show(id){
+			var tdiv=document.createElement("div");
+			tdiv.id="mop";
+			tdiv.className="form-container";
+			createBg();
+			tdiv.style.cssText="width:300px;height:114px;position:fixed;left:50%;top:50%;margin-left:-150px;margin-top:-57px;border:1px solid #e9e9e9;z-index:999";
+			tdiv.innerHTML='<form action="__APP__/admin{url}movetalk{shtml}" method=post target="main">'+
+										 '<table  width=100%  height="110" cellspacing=0 cellpadding=2>'+
+										 	'<tr><td  align="right" style="color:#333;font-size:12px"><span style="cursor:pointer" onclick="closeBg(\'mop\');">关闭</span></td></tr>'+
+											'<tr><td style="color:#777;font-size:15px">选择移动到的版块</td></tr>'+
+											'<tr><td><select name="parentid"><option>--请选择--</option><list><option value="{data1.id}">{data1.szone}</option></list></select></td></tr>'+
+											'<input type="hidden" name="id" value="'+id+'">'+
+											'<input type="hidden" name="token" value="{token}">'+
+											'<tr><td colspan=2><input type="image" src="{site}/Public/images/edit.gif"></td></tr>'+
+										' </table>'+
+										'</form>';
+			document.body.appendChild(tdiv);
+		}
+		function one_key_move(){
+			var sign=false;
+			var arr = [];
+			var a = document.getElementsByTagName("input");
+			 for (var i=0; i<a.length; i++){
+			 	if (a[i].type == "checkbox" && a[i].checked){
+			 		sign=true;
+			 		arr.push(a[i].value);
+			 	}
+			}
+			if(!sign){
+				alert("请选中至少一个复选框！");
+				return;
+			}
+			var tdiv=document.createElement("div");
+			tdiv.id="mop";
+			tdiv.className="form-container";
+			createBg();
+			tdiv.style.cssText="width:300px;height:114px;position:fixed;left:50%;top:50%;margin-left:-150px;margin-top:-57px;border:1px solid #e9e9e9;z-index:999";
+			tdiv.innerHTML='<form action="__APP__/admin{url}movetalkAll{shtml}" method=post target="main">'+
+										 '<table  width=100%  height="110" cellspacing=0 cellpadding=2>'+
+										 	'<tr><td  align="right" style="color:#333;font-size:12px"><span style="cursor:pointer" onclick="closeBg(\'mop\');">关闭</span></td></tr>'+
+											'<tr><td style="color:#777;font-size:15px">选择移动到的版块</td></tr>'+
+											'<tr><td><select name="parentid"><option>--请选择--</option><list><option value="{data1.id}">{data1.szone}</option></list></select></td></tr>'+
+											'<input type="hidden" name="ids" value="'+arr.join(",")+'">'+
+											'<input type="hidden" name="token" value="{token}">'+
+											'<tr><td colspan=2><input type="image" src="{site}/Public/images/edit.gif"></td></tr>'+
+										' </table>'+
+										'</form>';
+			document.body.appendChild(tdiv);
+		}
+		function display(param)
+		{
+			param=param.split("=");
+			var dv=document.createElement("div");
+			dv.id="mdv";
+			dv.className="form-container";
+			createBg();
+			dv.style.cssText="position:fixed;left:50%;top:50%;margin-left:-150px;margin-top:-73px;width:300px;height:146px;z-index:20;";
+			dv.innerHTML='<table width="100%" cellspacing="0" cellpadding="2" border="0" style="color:#777;font-size:15px">'+
+			'<tr><td height="22"  align="left" style="line-height:22px;">ID—'+param[5]+'</td><td height="22"  align="right" style="line-height:22px;"><span style="font-size:12px;font-family:Tahoma;margin-right:4px;cursor:pointer" onclick="closeBg(\'mdv\');">关闭</span></td></tr>'+
+			'<tr><td>发布时间</td><td>'+param[0]+'</td></tr>'+
+			'<td>图标</td><td>'+param[1]+'</td></tr>'+
+			'<td>注册时间</td><td>'+param[2]+'</td></tr>'+
+			'<td>发帖数</td><td>'+param[3]+'</td></tr>'+
+			'<td >版块</td><td>'+param[4]+'</td></tr>'+
+			'</table>';
+			document.body.appendChild(dv);
+		}
+	var zt=false;
+	function selectcheckall(){ 		
+ 		if(zt==true)
+  		{zt=false;}
+ 		else
+ 			{zt=true;}
+   var a = document.getElementsByTagName("input");
+   for (var i=0; i<a.length; i++)  if (a[i].type == "checkbox") a[i].checked = zt;
+	}
+	function one_key_del(){
+		var sign=false;
+		var a = document.getElementsByTagName("input");
+		 for (var i=0; i<a.length; i++){
+		 	if (a[i].type == "checkbox" && a[i].checked){
+		 		sign=true;
+		 	}
+		}
+		if(!sign){
+			alert("请选中至少一个复选框！");
+		}else{
+			document.forms['select_all_form'].submit();
+		}
+	}
+	function one_key_query(){
+		if( (document.getElementById("query_parentid").value=='' || document.getElementById("query_parentid").value==null) &&
+		(document.getElementById("query_user").value=='' || document.getElementById("query_user").value==null) ){
+			alert("请选择一个查询条件");
+		}else{
+			document.forms['select_all_form'].action="__APP__/admin{url}talkQuery{shtml}";
+			document.forms['select_all_form'].submit();
+		}
+	}
+	function save_update(val){
+		document.getElementById("update_txt_hidden").value=val;
+		document.forms['select_all_form'].action="__APP__/admin{url}talkUpdate{shtml}";
+		document.forms['select_all_form'].submit();
+	}
+	</script>
+<style>
+.btn-mark-gray {border: 0;padding: 0;cursor: pointer;display: inline-block;height: 16px;line-height: 16px;font-size: 12px;color: #fff;padding: 0 5px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;background: #333;text-decoration: none;}	
+</style>
+<form name="select_all_form" method="post" action="__APP__/admin{url}talkDelAll{shtml}">
+	<input type="hidden" name="token" value="{token}">
+	<input type="hidden" id="update_txt_hidden" name="update_txt_hidden">
+	<table width=98% height="auto" cellspacing=0 cellpadding=0 border=1 style="margin:auto;border:1px solid #ccc">
+		<tr>
+			<td height="40" colspan="6" style="line-height:40px;background:url('{site}/Public/images/topbg.jpg')"><span style="font-size:16px;text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);color:#333;font-weight:bold;">发布帖查询</span></td>
+		</tr>
+		<tr>
+			<td height="30" style="line-height:30px;font-size:15px;color:#222;font-weight:bold;">
+				<input type="checkbox" id="ck" name="ck" onclick="selectcheckall()">&nbsp;ID</td>
+			<td style="line-height:30px;font-size:15px;color:#222;font-weight:bold;">发帖人</td>
+			<td style="line-height:30px;font-size:15px;color:#222;font-weight:bold;">标题 (双击修改)</td>
+			<td style="line-height:30px;font-size:15px;color:#222;font-weight:bold;">浏览次数</td>
+			<td style="line-height:30px;font-size:15px;color:#222;font-weight:bold;">最近更新</td>
+			<td align="center" style="line-height:30px;font-size:15px;color:#222;font-weight:bold;">操作</td>
+		</tr>
+		<tr>
+			<td colspan=2 align="left">版块&nbsp;<select id="query_parentid" name="parentid"><option value="">--请选择--</option><list><option value="{data1.id}">{data1.szone}</option></list><option value="">--请选择--</option><option value="invalid">无效版块帖子</option></select>
+				<?php
+echo '<script>
+for(var i=0;i<document.getElementById("query_parentid").options.length;i++)
+{
+ if(document.getElementById("query_parentid").options[i].value =="'.@$_SESSION['talk_query_parentid'].'")
+ {
+    document.getElementById("query_parentid").options[i].selected = true;
+    break;
+ }
+}
+</script>';
+?>
+				</td>
+			<td colspan=2 align="left">用户名&nbsp;<input type="text" id="query_user" name="user" value="<?php echo $_SESSION['talk_query_user']; ?>"></td>
+			<td colspan=2 align="left"><span class="btn-mark-gray" onclick="one_key_query()">查询</span></td>
+		</tr>
+		<tr>
+			<td align="left"><span class="btn-mark-gray" onclick="one_key_del()">一键删除</span></td>
+			<td align="left"><span class="btn-mark-gray" onclick="one_key_move()">一键移动</span></td>
+			<td colspan=4 align="right"><div class="page">{page}</div></td>
+		</tr>
+<?php
+ if(!empty($this->array_two['list'])){
+ 	foreach($this->array_two['list'] as $vo){
+?>
+			<tr onmouseover="addClass(this)" onmouseout="removeClass(this)">	
+				<td height="30" style="line-height:30px;font-size:12px;color:#555;">
+					<input type="checkbox" name="cb[]" value="<?php echo $vo['id']; ?>">&nbsp;<?php echo $vo['id']; ?></td>
+				<td height="30" style="line-height:30px;font-size:12px;color:#555;"><?php echo $vo['zuozhe']; ?></td>
+				<td ondblclick="
+					var val = this.getAttribute('list');
+					var input = '<input name=\'update_txt<?php echo $vo['id']; ?>\' style=\'width:80%\' type=\'text\'value=\'' + val + '\'>';
+					this.innerHTML = input+'<span style=\'margin-left:6px;\' class=\'btn-mark-gray\' onclick=\'save_update(<?php echo $vo['id']; ?>)\'>保存</span>';
+					" height="30" style="line-height:30px;font-size:12px;color:#555;" list="<?php echo strip_tags($vo['title']); ?>" title="<?php echo strip_tags($vo['title']); ?> -- [ <?php echo CommonAction::fname($vo['parentid']); ?> ]"><?php echo mb_substr(strip_tags($vo['title']),0,30,'utf-8'); ?></td>
+				<td height="30" style="line-height:30px;font-size:12px;color:#555;"><?php echo $vo['num1']; ?></td>
+				<td height="30" style="line-height:30px;font-size:12px;color:#555;"><?php echo $vo['timeup']; ?></td>
+				<td align="right" height="30" style="line-height:30px;font-size:12px;color:#555;">
+					<a style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold" href="javascript:void(0)" onclick="show(<?php echo $vo['id']; ?>)">移动</a>&nbsp;
+					<a style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold" href="javascript:void(0)" onclick="display('<?php echo $vo['time1']; ?>=<?php echo $vo['face']; ?>=<?php echo $vo['timezc1']; ?>=<?php echo $vo['fatieshu1']; ?>=<?php echo CommonAction::fname($vo['parentid']); ?>=<?php echo $vo['id']; ?>');">信息</a>&nbsp;
+					<a style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold" target="_blank" href="__APP__/Content{url}<?php echo $vo['id'];?>{shtml}">查看</a>&nbsp;					
+					<a style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold" href="__APP__/admin{url}talkDel{url}id{url}<?php echo $vo['id']; ?>{shtml}?token={token}" onclick="return confirm('您确定要删除?');">删除</a>&nbsp;&nbsp;
+				</td>
+			</tr>
+<?php
+ }
+}
+?>
+	</table>
+</form>
+<include file="Tpl/Public/admin_bottom.html">

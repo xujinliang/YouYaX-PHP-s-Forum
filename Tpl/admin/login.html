@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="renderer" content="webkit">
+	<link rel="icon" href="{site}/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="{site}/favicon.ico" type="image/x-icon">
+	<link rel="bookmark" href="{site}/favicon.ico" type="image/x-icon">
+	<title>YouYaX后台管理</title>
+	<script>
+	function jump(cal){
+    parent.document.getElementById('bg').parentNode.removeChild(parent.document.getElementById('bg'));
+    parent.document.getElementById('Tip').parentNode.removeChild(parent.document.getElementById('Tip'));
+   /* if (cal == 1) {
+        //	cal="function(){window.location.href='http://www.youyax.com'}";
+        eval("(function(){window.location.href='" + rooturl + "'})();");
+    }*/
+	}
+	</script>
+</head>
+<style type="text/css">
+body {
+margin: 0;
+color: #333;
+font: 12px/15px 'Microsoft YaHei','微软雅黑',Arial,Helvetica,sans-serif;
+background: #fff;
+min-width: 960px;
+}#wrapper {
+margin: 0 auto;
+max-width: 3000px;
+min-height: 100%;
+position: relative;
+_position:static;
+}#header {
+border-bottom: 1px solid #c3cdd8;
+padding: 0 0 10px;
+background: #284b74;
+}.header-holder {
+background: #09223e;
+background: -moz-linear-gradient(top, #09223e 0%, #09223e 44%, #103764 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#09223e), color-stop(44%,#09223e), color-stop(100%,#103764));
+background: -webkit-linear-gradient(top, #09223e 0%,#09223e 44%,#103764 100%);
+background: -o-linear-gradient(top, #09223e 0%,#09223e 44%,#103764 100%);
+background: -ms-linear-gradient(top, #09223e 0%,#09223e 44%,#103764 100%);
+background: linear-gradient(to bottom, #09223e 0%,#09223e 44%,#103764 100%);
+}.login-box {
+padding: 121px 20px 0;
+text-align: center;
+color: #fff;
+height: 178px;
+font-size: 14px;
+line-height: 16px;
+text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}.login-box h1 {
+padding: 0 0 0 5px;
+color: #b9bcc1;
+letter-spacing: 5px;
+text-align: center;
+font: 18px/20px Arial, Helvetica, sans-serif;
+text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.6);
+margin: 0 0 77px;
+}.login-container {
+margin: 18px 0 -66px;
+position: relative;
+_position:static;
+-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.08);
+box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.08);
+background: #ddd url({site}/Public/images/bg-login.png);
+border: 1px solid #ccc;
+display: inline-block;
+*display:inline;
+*width:425px;
+*height:162px;
+vertical-align: top;
+}.login-container .holder {
+overflow: hidden;
+padding: 18px 6px 10px 18px;
+background: url({site}/Public/images/bg-login-h.png) repeat-x 0 100%;
+*width:423px;
+*height:162px;
+}.login-container .registration-form {
+padding: 18px 6px 10px 19px;
+margin: -18px -6px -10px -18px;
+position: relative;
+_position:static;
+background: #eee url({site}/Public/images/bg-login-s.png) repeat-x;
+}.form-col{
+display:table;
+*width:373px;
+*height:90px;
+}.registration-form .link-row {
+padding: 0 0 0 164px;
+*width:373px;
+*height:28px;
+}.registration-form button {
+float: left;
+margin: 0 10px 0 0;
+padding: 0;
+background: none;
+border: 0;
+cursor:pointer;
+}.registration-form button .button, .login-container .button {
+text-decoration: none;
+font: 11px/14px  'Microsoft YaHei','微软雅黑',Arial,Helvetica,sans-serif;;
+text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+color: #fff;
+text-align: center;
+float: left;
+text-transform: uppercase;
+text-decoration: none;
+border: 1px solid #0f1b2c;
+background: #8caccd;
+background: -moz-linear-gradient(top, #8caccd 0%, #6883ab 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8caccd), color-stop(100%,#6883ab));
+background: -webkit-linear-gradient(top, #8caccd 0%,#6883ab 100%);
+background: -o-linear-gradient(top, #8caccd 0%,#6883ab 100%);
+background: -ms-linear-gradient(top, #8caccd 0%,#6883ab 100%);
+background: linear-gradient(to bottom, #8caccd 0%,#6883ab 100%);
+border-radius: 4px;
+padding: 1px;
+-webkit-box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05) inset, 0 0 1px rgba(0, 0, 0, 0.25);
+box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05) inset, 0 0 1px rgba(0, 0, 0, 0.25);
+}.login-container .category {
+float: left;
+padding: 0 10px 10px 0;
+}.registration-form .col {
+float: left;
+margin: 0;
+padding: 11px 16px 11px 11px;
+}.registration-form .row {
+margin: 0 0 11px;
+}.registration-form label {
+float: left;
+text-align: left;
+width: 57px;
+padding: 5px 2px 0 0;
+text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
+color: #333;
+font-size: 11px;
+line-height: 13px;
+font-weight: bold;
+}.registration-form .row .text {
+float: left;
+padding: 1px;
+border: 1px solid #fff;
+}.registration-form .text input {
+float: left;
+background: #fff;
+border: 0;
+width: 179px;
+padding: 2px 5px;
+color: #333;
+font-size: 11px;
+line-height: 15px;
+height: 15px;
+font-weight: bold;
+}.registration-form button .button span, .login-container .button span {
+border-radius: 4px 4px 3px 3px;
+display: block;
+font-weight: bold;
+min-width: 45px;
+*width: 45px;
+padding: 5px 9px 5px 8px;
+background: #6590bb;
+background: -moz-linear-gradient(top, #6590bb 0%, #6590bb 8%, #36588e 62%, #36588e 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6590bb), color-stop(8%,#6590bb), color-stop(62%,#36588e), color-stop(100%,#36588e));
+background: -webkit-linear-gradient(top, #6590bb 0%,#6590bb 8%,#36588e 62%,#36588e 100%);
+background: -o-linear-gradient(top, #6590bb 0%,#6590bb 8%,#36588e 62%,#36588e 100%);
+background: -ms-linear-gradient(top, #6590bb 0%,#6590bb 8%,#36588e 62%,#36588e 100%);
+background: linear-gradient(to bottom, #6590bb 0%,#6590bb 8%,#36588e 62%,#36588e 100%);
+}.registration-form button .button span, .login-container .button span {
+border-radius: 4px 4px 3px 3px;
+display: block;
+font-weight: bold;
+min-width: 45px;
+padding: 5px 9px 5px 8px;
+background: #6590bb;
+background: -moz-linear-gradient(top, #6590bb 0%, #6590bb 8%, #36588e 62%, #36588e 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6590bb), color-stop(8%,#6590bb), color-stop(62%,#36588e), color-stop(100%,#36588e));
+background: -webkit-linear-gradient(top, #6590bb 0%,#6590bb 8%,#36588e 62%,#36588e 100%);
+background: -o-linear-gradient(top, #6590bb 0%,#6590bb 8%,#36588e 62%,#36588e 100%);
+background: -ms-linear-gradient(top, #6590bb 0%,#6590bb 8%,#36588e 62%,#36588e 100%);
+background: linear-gradient(to bottom, #6590bb 0%,#6590bb 8%,#36588e 62%,#36588e 100%);
+}.login-container .category a, .login-container .category > span {
+text-decoration: none;
+display: block;
+background: url({site}/Public/images/sprite.png) no-repeat;
+width: 64px;
+height: 59px;
+text-align: center;
+padding: 7px 11px 7px 9px;
+color: #fff;
+font-size: 13px;
+line-height: 13px;
+text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}fieldset{border:none;*width:394px;*height:132px;}
+.registration-form .row:after, .registration-form .link-row:after {
+clear: both;
+display: block;
+content: "";
+}.login-container .category .text {
+display: table-cell;
+vertical-align: middle;
+font-weight: bold;
+text-align: center;
+height: 25px;
+width: 64px;
+}.login-container .category .picture {
+text-align: center;
+padding: 14px 0 0;
+display: block;
+}
+</style>
+<body>
+	<div id="wrapper">
+		<!-- header -->
+		<div id="header">
+			<!-- header-holder -->
+			<div class="header-holder">
+				<!-- login-box -->
+				<div class="login-box">
+					<h1>YouYaX论坛系统(后台管理)</h1>
+					<!-- login-container -->
+					<div class="login-container">
+						<div class="holder">
+							<!-- registration-form -->
+							<form action="__APP__/admin{url}validate{shtml}" class="registration-form" method="post" target="hidden_frame">
+								<fieldset>
+									<!-- form-col -->
+									<div class="form-col">
+										<!-- category -->
+										<div class="category">
+											<span>
+												<span class="text">管理员</span>
+												<span class="picture"><img src="{site}/Public/images/ico1.png" alt="image description" width="15" height="17" /></span>
+											</span>
+										</div>
+										<!-- col -->
+										<div class="col">
+											<!-- row -->
+											<div class="row">
+												<label for="email">账户</label>
+												<div class="text"><input type="text" id="user" name="user"/></div>
+											</div>
+											<!-- row -->
+											<div class="row">
+												<label for="password">密码</label>
+												<div class="text"><input type="password" id="password" name="pass"/></div>
+											</div>
+										</div>
+									</div>
+									<!-- link-row -->
+									<div class="link-row">
+										<input type="hidden" name="token" value="{token}">
+										<button type="submit"><span class="button"><span>登陆</span></span></button>
+									</div>
+								</fieldset>
+							</form>
+							<iframe name="hidden_frame" id="hidden_frame" style="display:none"></iframe> 
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

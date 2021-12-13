@@ -1,0 +1,77 @@
+<include file="Tpl/mobile/Public/admin_top.html">
+ <script type="text/javascript">
+		function display(param)
+		{
+			param=param.split("=");
+			var dv=document.createElement("div");
+			dv.id="mdv";
+			dv.className="form-container";
+			createBg();
+			dv.style.cssText="position:fixed;left:50%;top:50%;margin-left:-150px;margin-top:-73px;width:300px;height:156px;z-index:20;";
+			dv.innerHTML='<table width="100%" cellspacing="0" cellpadding="0" border="0" style="color:#777;font-size:15px">'+
+			'<tr><td height="22"  align="left" style="line-height:22px;">ID—'+param[5]+'</td><td height="22"  align="right" style="line-height:22px;"><span style="font-size:12px;font-family:Tahoma;margin-right:4px;cursor:pointer" onclick="closeBg(\'mdv\');">关闭</span></td></tr>'+
+			'<td>回复时间</td><td>'+param[0]+'</td></tr>'+
+			'<td>图标</td><td>'+param[1]+'</td></tr>'+
+			'<td>注册时间</td><td>'+param[2]+'</td></tr>'+
+			'<td>发帖数</td><td>'+param[3]+'</td></tr>'+
+			'<td >版块</td><td>'+param[4]+'</td></tr>'+
+			'</table>';
+			document.body.appendChild(dv);
+		}
+	</script>	 
+<div class="panel panel-default table-responsive">
+ <div class="panel-heading">回复贴查询</div>
+	<table class="table">
+		<tr>
+			<th>ID</td>
+			<th>回复人</th>
+			<th>内容</th>
+			<th>主题ID</th>
+			<th>楼层</th>
+			<th align="center">操作</th>
+		</tr>
+		<tr><td colspan=6 align=right><div class="page">{page}</div></td></tr>
+<?php
+ if(!empty($this->array_two['list'])){
+ 	foreach($this->array_two['list'] as $vo){
+?>
+			<tr>	
+				<td><?php echo $vo['id2']; ?></td>
+				<td><?php echo $vo['zuozhe1']; ?></td>
+				<?php
+					$sql="select title from {db_prefix}talk where id=".$vo['rid'];
+					$res = $this->db->query($sql);
+    					$arr = $res->fetch();
+				?>
+				<td title="<?php echo strip_tags($arr['title']);?> -- [ <?php echo CommonAction::fname($vo['parentid2']); ?> ]"><?php echo mb_substr(strip_tags($vo['content1']),0,30,'utf-8'); ?></td>
+				<td><?php echo $vo['rid']; ?></td>
+				<td><?php echo $vo['num2']; ?></td>
+				<td align="right">
+					<a style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold" href="javascript:void(0)" onclick="display('<?php echo $vo['time2']; ?>=<?php echo $vo['face1']; ?>=<?php echo $vo['timezc2']; ?>=<?php echo $vo['fatieshu2']; ?>=<?php echo CommonAction::fname($vo['parentid2']); ?>=<?php echo $vo['id2']; ?>');">信息</a>&nbsp;
+					<a style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold" target="_blank" href="__APP__/Content{url}<?php echo $vo['rid'];?>{shtml}
+						<?php
+						if ($_COOKIE['record'] == 'yellow2') {
+							if($vo['num2']>10){
+								echo "?page=".ceil($vo['num2']/10);	
+							}
+						}else if ($_COOKIE['record'] == 'blue') {
+							if($vo['num2']>20){
+								echo "?page=".ceil($vo['num2']/20);	
+							}
+						}else{
+							if($vo['num2']>15){
+								echo "?page=".ceil($vo['num2']/15);	
+							}
+						}
+						?>
+						#p<?php echo $vo['num2'];?>">查看</a>&nbsp;					
+					<a style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold" href="__APP__/admin{url}replyDel{url}id2{url}<?php echo $vo['id2']; ?>{shtml}?token={token}" onclick="return confirm('您确定要删除?');">删除</a>&nbsp;&nbsp;
+				</td>
+			</tr>
+<?php
+ }
+}
+?>
+	</table>
+</div>
+<include file="Tpl/mobile/Public/admin_bottom.html">

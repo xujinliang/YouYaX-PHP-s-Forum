@@ -1,0 +1,53 @@
+<include file="Tpl/mobile/Public/admin_top.html">
+<form name="form" action="__APP__/admin{url}doFriendUrl{shtml}" method="post">
+<div class="panel panel-default table-responsive">
+ <div class="panel-heading">友情链接配置</div>
+	<table class="table" id="tb">
+<?php
+ if(!empty($this->array_two['config'])){	
+ 	foreach($this->array_two['config'] as $k=>$v){	?>
+		<tr>
+			<td>链接名称</td>
+			<td><input style="width:250px" type="text" name="title[]" value="<?php echo $v['title']; ?>"></td>
+			<td>链接地址</td>
+			<td><input style="width:250px" type="text" name="url[]" value="<?php echo $v['url']; ?>">
+				<?php	//if($k==count($this->array_two['config'])-1){	?>
+					<img class="imgdel" onclick="del(this)" src="{site}/Public/images/ico_delete.gif">
+			<?php	//}	?>
+			</td>
+		</tr>
+<?php	}
+	}	?>
+	</table>
+	</div>
+	<div style="width:100%;margin:auto;background:#fafafa;padding:0 8px;">
+		<input onclick="add()" type="button" style="float:right;" class="button" value="+ 新增"/><br>
+		<input type="hidden" name="token" value="{token}">
+		<input name="submit" type="submit" value="提交" class="button" />
+	</div>
+	</form>
+	<script>
+		function del(_this){
+			_this.parentNode.parentNode.parentNode.removeChild(_this.parentNode.parentNode);
+			var tds=document.getElementById("tb").getElementsByTagName("td");
+			if(tds.length>1){
+				var img=document.createElement("img");
+				img.className="imgdel";
+				img.src="{site}/Public/images/ico_delete.gif";
+				img.setAttribute("onclick","javascript:del(this)");
+				//tds[tds.length-1].appendChild(img);
+			}
+		}
+		function add(){
+//			if(document.getElementById("imgdel")){
+//				document.getElementById("imgdel").parentNode.removeChild(document.getElementById("imgdel"));
+//			}
+			var dv=document.createElement("tr");
+			dv.innerHTML='<td height="30" width="10%" style="line-height:30px;font-size:15px;color:#222;">链接名称</td>'+
+			'<td height="30" width="20%"><input style="width:250px" type="text" name="title[]" value=""></td>'+
+			'<td height="30" width="10%" style="line-height:30px;font-size:15px;color:#222;">链接地址</td>'+
+			'<td height="30" width="60%"><input style="width:250px" type="text" name="url[]" value=""> <img class="imgdel" onclick="del(this)" src="{site}/Public/images/ico_delete.gif"></td>';
+			document.getElementById("tb").getElementsByTagName("tbody")[0].appendChild(dv);
+		}
+	</script>
+<include file="Tpl/mobile/Public/admin_bottom.html">

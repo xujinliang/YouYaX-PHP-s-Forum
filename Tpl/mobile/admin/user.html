@@ -1,0 +1,122 @@
+<include file="Tpl/mobile/Public/admin_top.html">
+	<script type="text/javascript">
+	function add(pid){
+			var tdiv=document.createElement("div");
+			tdiv.id="popadd";
+			tdiv.className="form-container";
+			createBg();
+			tdiv.style.cssText="width:300px;height:114px;position:fixed;left:50%;top:50%;margin-left:-150px;margin-top:-57px;border:1px solid #e9e9e9;z-index:999";
+			tdiv.innerHTML='<form action="__APP__/admin{url}userSetGroup{shtml}" method=post target="main">'+
+										 '<table width=100%  height="110" cellspacing=0 cellpadding=0>'+
+										 	'<tr><td  align="right" style="color:#333;font-size:12px"><span style="cursor:pointer" onclick="closeBg(\'popadd\');">关闭</span></td></tr>'+
+											'<tr><td style="color:#777;font-size:15px">设置用户组</td></tr>'+
+											'<tr><td><select style="width:150px;" name="user_group_data"><list><option value="{user_group_data.id}">{user_group_data.name}</option></list></select></td></tr>'+
+											'<input type="hidden" name="token" value="{token}">'+
+											'<tr><td><input type="hidden" name="id" value="'+pid+'"><input type="image" src="{site}/Public/images/edit.gif"></td></tr>'+
+										' </table>'+
+										'</form>';
+			document.body.appendChild(tdiv);
+		}function bid_set(pid){
+			var tdiv=document.createElement("div");
+			tdiv.id="popbid";
+			tdiv.className="form-container";
+			createBg();
+			tdiv.style.cssText="width:300px;height:172px;position:fixed;left:50%;top:50%;margin-left:-150px;margin-top:-86px;border:1px solid #e9e9e9;z-index:999";
+			tdiv.innerHTML='<form action="__APP__/admin{url}bidSet{shtml}" method=post target="main">'+
+										 '<table width=100%  height="auto" cellspacing=0 cellpadding=0>'+
+										 	'<tr><td  align="right" style="color:#333;font-size:12px"><span style="cursor:pointer" onclick="closeBg(\'popbid\');">关闭</span></td></tr>'+
+											'<tr><td style="color:#777;font-size:15px">金币操作</td></tr>'+
+											'<tr><td><select name="bid_op"><option value="1">奖励</option><option value="2">处罚</option></select>&nbsp;<input type="text" style="width:60px;" name="bid_text" placeholder="金币数目"></td></tr>'+
+											'<tr><td style="color:#777;font-size:15px">操作原因&nbsp;<br><input type="text" name="bid_reason" style="width:210px"></td></tr>'+
+											'<input type="hidden" name="token" value="{token}">'+
+											'<tr><td><input type="hidden" name="id" value="'+pid+'"><input type="image" src="{site}/Public/images/edit.gif"></td></tr>'+
+										' </table>'+
+										'</form>';
+			document.body.appendChild(tdiv);
+		}
+	</script>
+<div class="panel panel-default table-responsive">
+ <div class="panel-heading"><span style="float:left;margin-right:20px;">注册用户查询</span>
+ 	<form name="s_user_form" method="post" action="__APP__/admin{url}dosUser{shtml}">
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<td><div style="position:relative;">
+				<input type="text" name="suser" id="suser" style="height:20px;background:#dedede;line-height:20px;border:none;padding:0 4px;overflow: hidden;outline:none;width:130px;">
+				<input type="hidden" name="token" value="{token}">
+				<button type="button" name="sub" onclick="document.forms['s_user_form'].submit();" style="width: 68px;height:20px;font-size:13px;outline:none;border: none;background:#ece9d8;cursor:pointer;vertical-align:center;line-height:20px;position:absolute;top:0;left:140px;"><em>搜索</em></button></div></td>
+			</tr>
+		</table>
+	</form>
+	</div>
+	<table class="table">
+		<tr>
+			<th>用户名</th>
+			<th>用户组</th>
+			<th>状态</th>
+			<th>金币数</th>
+			<th>注册时间</th>
+			<th>发帖数</th>
+			<th align="center">操作</th>
+		</tr>
+		<tr><td colspan=7 align=right><div class="page">{page}</div></td></tr>
+<?php
+ if(!empty($this->array_two['data'])){
+ 	foreach($this->array_two['data'] as $vo){
+?>
+			<tr>	
+				<td><?php echo $vo['user']; ?></td>
+				<td><?php echo CommonAction::getUserGroup($vo['user_group']); ?></td>
+				<td>
+				<?php
+					if($vo['status']=='0'){ echo '<font color="#ffaa25">未激活</font>';}
+					if($vo['status']=='1'){ echo '<font color="green">正常</font>';}
+					if($vo['status']=='2'){ echo '<font color="red">禁止发言</font>';}
+					if($vo['status']=='3'){ echo '<font color="green">QQ用户</font>';}
+					if($vo['status']=='4'){ echo '<font color="green">微博用户</font>';}
+				?>
+				</td>
+				<td><?php echo $vo['bid'];?></td>
+				<td><?php echo $vo['time'];?></td>
+				<td><?php echo $vo['fatieshu'];?></td>
+				<td align="center">
+			<a style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold"  href="javascript:void(0)" onclick="bid_set(<?php echo $vo['id'];?>)">金币</a>&nbsp;
+			<a style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold"  href="javascript:void(0)" onclick="add(<?php echo $vo['id'];?>)">用户组</a>&nbsp;
+		<?php	
+		if(empty($vo['title']))
+		{
+		?>	
+			<a style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold"  href="__APP__/admin{url}userAppoint{url}id{url}<?php echo $vo['id'];?>{shtml}?token={token}" onclick="return confirm('您确定要将该用户设为版主?');">委任</a>&nbsp;
+		<?php
+		}else{
+		?>
+			<a style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold"  href="__APP__/admin{url}userDepose{url}id{url}<?php echo $vo['id'];?>{shtml}?token={token}" onclick="return confirm('您确定要将该版主免职?');">免职</a>&nbsp;
+		<?php
+		}
+		?>
+				<a style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold"  href="__APP__/admin{url}userEmpty{url}id{url}<?php echo $vo['id'];?>{shtml}?token={token}" onclick="return confirm('您确定要清空用户信息?');">清空</a>&nbsp;
+		<?php	
+		if($vo['status']=='1' || $vo['status']=='3' || $vo['status']=='4')
+		{
+		?>	
+				<a style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold"  href="__APP__/admin{url}userForbid{url}id{url}<?php echo $vo['id'];?>{shtml}?token={token}" onclick="return confirm('您确定要将该用户禁止发言?');">禁言</a>&nbsp;
+		<?php
+		}
+		?>
+		<?php	
+		if($vo['status']=='2')
+		{
+		?>	
+				<a style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold"  href="__APP__/admin{url}userUnfor{url}id{url}<?php echo $vo['id'];?>{shtml}?token={token}" onclick="return confirm('您确定要将该用户解禁?');">解禁</a>&nbsp;
+		<?php
+		}
+		?>		
+				<a style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold"  href="__APP__/admin{url}userDel{url}id{url}<?php echo $vo['id'];?>{shtml}?token={token}" onclick="return confirm('您确定要删除?');">删除</a>
+				</td>
+			</tr>
+<?php
+	}
+}
+?>
+	</table>
+ </div>
+<include file="Tpl/mobile/Public/admin_bottom.html">

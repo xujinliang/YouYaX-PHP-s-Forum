@@ -1,0 +1,59 @@
+<include file="Tpl/Public/admin_top.html">
+	<script type="text/javascript">
+		function pop(id){
+			var tdiv=document.createElement("div");
+			tdiv.id="popp";
+			tdiv.className="form-container";
+			createBg();
+			tdiv.style.cssText="width:300px;height:120px;position:fixed;left:50%;top:50%;margin-left:-150px;margin-top:-60px;border:1px solid #e9e9e9;z-index:999";
+			tdiv.innerHTML='<form action="__APP__/admin{url}editblock{shtml}" method=post target="main">'+
+										 '<table  width=100% cellspacing=0 cellpadding=2>'+
+										 	'<tr><td  align="right" style="color:#333;font-size:12px"><span style="cursor:pointer" onclick="closeBg(\'popp\')">关闭</span></td></tr>'+
+											'<tr><td style="color:#777;font-size:15px">输入新的大版块名称</td></tr>'+
+											'<tr><td><input type="text" name="bzone" style="width:210px"></td></tr>'+
+											'<input type="hidden" name="id" value="'+id+'">'+
+											'<input type="hidden" name="token" value="{token}">'+
+											'<tr><td><input type="image" src="{site}/Public/images/edit.gif"></td></tr>'+
+										' </table>'+
+										'</form>';
+			document.body.appendChild(tdiv);
+		}
+		function add(){
+			var tdiv=document.createElement("div");
+			tdiv.id="popadd";
+			tdiv.className="form-container";
+			createBg();
+			tdiv.style.cssText="width:300px;height:120px;position:fixed;left:50%;top:50%;margin-left:-150px;margin-top:-60px;border:1px solid #e9e9e9;z-index:999";
+			tdiv.innerHTML='<form action="__APP__/admin{url}addblock{shtml}" method=post target="main">'+
+										 '<table  width=100% cellspacing=0 cellpadding=2>'+
+										 	'<tr><td  align="right" style="color:#333;font-size:12px"><span style="cursor:pointer" onclick="closeBg(\'popadd\');">关闭</span></td></tr>'+
+											'<tr><td style="color:#777;font-size:15px">增加新的大版块名称</td></tr>'+
+											'<tr><td><input type="text" name="bzone" style="width:210px"></td></tr>'+
+											'<input type="hidden" name="token" value="{token}">'+
+											'<tr><td><input type="image" src="{site}/Public/images/add.gif"></td></tr>'+
+										' </table>'+
+										'</form>';
+			document.body.appendChild(tdiv);
+		}
+	</script>
+	<table width=98% height="auto" cellspacing=0 cellpadding=0 border=1 style="margin:auto;border:1px solid #ccc">
+		<tr>
+			<td height="40" colspan="3" style="line-height:40px;background:url('{site}/Public/images/topbg.jpg')"><span style="font-size:16px;text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);color:#333;font-weight:bold;">版块设置</span></td>
+		</tr>
+		<tr>
+			<td height="30" style="line-height:30px;font-size:15px;color:#222;font-weight:bold;">大版块ID</td>
+			<td height="30" style="line-height:30px;font-size:15px;color:#222;font-weight:bold;">大版块名称</td>
+			<td align="center"  height="30" style="line-height:30px;color:#0066cc;font-size:12px;font-family:Tahoma;"><span style="cursor:pointer" onclick="add()">增加</span></td>
+		</tr>
+		<list>
+			<tr onmouseover="addClass(this)" onmouseout="removeClass(this)">				
+				<td height="30" style="line-height:30px;font-size:12px;color:#555;">{data.id}</td>
+				<td height="30" style="line-height:30px;font-size:12px;color:#555;"><a href="__APP__/admin{url}sblock{url}id{url}{data.id}{shtml}">{data.bzone}</a></td>
+				<td align="left" height="30" style="padding-left:20px;line-height:30px;font-size:12px;color:#555;">
+				<a style="color:#0066cc;font-size:12px;font-family:Tahoma;"  href="javascript:void(0)" onclick="pop({data.id})">修改</a>&nbsp;
+				<a style="color:#0066cc;font-size:12px;font-family:Tahoma;"  href="__APP__/admin{url}delblock{url}id{url}{data.id}{shtml}?token={token}" onclick="return confirm('您确定要删除?');">删除</a>
+				</td>
+			</tr>
+		</list>
+	</table>
+<include file="Tpl/Public/admin_bottom.html">

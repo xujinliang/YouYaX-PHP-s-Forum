@@ -1,0 +1,81 @@
+<include file="Tpl/Public/admin_top.html">
+	<table width=98% height="auto" cellspacing=0 cellpadding=0 border=1 style="margin:auto;border:1px solid #ccc">
+		<tr onmouseover="addClass(this)" onmouseout="removeClass(this)">
+			<td height="40" colspan="7" style="line-height:40px;background:url('{site}/Public/images/topbg.jpg')"><span style="font-size:16px;text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);color:#333;font-weight:bold;">数据表信息</span></td>
+		</tr>
+		<tr onmouseover="addClass(this)" onmouseout="removeClass(this)">
+			<th height="30" align="left" style="padding-left:10px;">数据表名</th>
+			<th height="30">存储类型</th>
+			<th height="30">整理</th>
+			<th height="30">行数</th>
+			<th height="30">大小</th>
+			<th height="30">多余</th>
+			<th height="30">优化</th>
+		</tr>
+		<?php
+		$tb_lists=$this->db->query("SHOW TABLES FROM ".$this->C('db_name'));
+		while ($row= $tb_lists->fetch()) {
+			$query=$this->db->query("SHOW TABLE STATUS LIKE '".$row[0]."'");
+			$arr=$query->fetch(PDO::FETCH_ASSOC);
+		?>
+		<tr onmouseover="addClass(this)" onmouseout="removeClass(this)">
+			<td height="30"><?php echo $row[0]; ?></td>
+			<td height="30" align="center"><?php echo $arr['Engine']; ?></td>
+			<td height="30" align="center"><?php echo $arr['Collation']; ?></td>
+			<td height="30" align="center"><?php echo $arr['Rows']; ?></td>
+			<td height="30" align="center"><?php 
+				if(ceil($arr['Data_length']/1024)>1000){
+					echo number_format($arr['Data_length']/1024/1024,2)." MB"; 
+				}else{
+					echo number_format($arr['Data_length']/1024,2)." KB"; 
+				}	?></td>
+			<td height="30" align="center"><?php if($arr['Engine']=='MyISAM'){
+					if(ceil($arr['Data_free']/1024)>1000){
+						echo number_format($arr['Data_free']/1024/1024,2)." MB"; 
+					}else{
+						echo number_format($arr['Data_free']/1024,2)." KB"; 
+					}
+				}else{echo '无信息';}  ?></td>
+			<td height="30" align="center"><a href="__APP__/admin{url}optimizeSQL{url}name{url}<?php echo base64_encode($row[0]); ?>{shtml}?token={token}">优化</a></td>
+		</tr>
+		<?php
+		}
+		?>
+	</table>
+	<table width=98% height="auto" cellspacing=0 cellpadding=0 border=1 style="margin:auto;border:1px solid #ccc">
+		<tr onmouseover="addClass(this)" onmouseout="removeClass(this)">
+			<td height="40" colspan="2" style="line-height:40px;background:url('{site}/Public/images/topbg.jpg')"><span style="font-size:16px;text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);color:#333;font-weight:bold;">备份数据库——文件位于/ ext_public / phpmysqlautobackup / backups</span></td>
+		</tr>
+		<?php
+$dir = @ dir("./ext_public/phpmysqlautobackup/backups");
+while (($file = $dir->read()) !== false)
+{
+	if(($file!=".") && ($file!="..")){
+?>
+  <tr onmouseover="addClass(this)" onmouseout="removeClass(this)">
+	<td height="30" width="80%" style="line-height:30px;font-size:15px;color:#222;"><?php echo '数据库备份文件 —— '.$file; ?></td>
+	<td height="30" width="20%"><a style="color:#0066cc;font-size:12px;font-family:Tahoma;" href="__APP__/admin{url}downloadBackup{url}file{url}<?php echo base64_encode($file); ?>{shtml}?token={token}">下载</a>&nbsp;<a onclick="return confirm('您确定要删除?');" style="color:#0066cc;font-size:12px;font-family:Tahoma;" href="__APP__/admin{url}deleteBackup{url}file{url}<?php echo base64_encode($file); ?>{shtml}?token={token}">删除</a></td>
+  </tr>
+<?php
+	}
+}
+$dir->close();
+?>
+		<tr>
+			<td height="40" colspan="2" align="left"><a href="__APP__/admin{url}dobackupSQL{shtml}?token={token}" class="button">生成备份文件</a></td>
+		</tr>
+	</table>
+	<script>
+		var tr=document.getElementsByTagName("tr");
+		for(var n=0;n<tr.length;n++)
+		{
+			if(n%2==0&&n!=0)
+			{
+				tr[n].className="tr0";	
+			}else{
+				tr[n].className="tr1";	
+			}
+		}
+	</script>
+</body>
+</html>

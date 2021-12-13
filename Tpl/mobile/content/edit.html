@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<link rel="icon" href="{site}/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="{site}/favicon.ico" type="image/x-icon">
+<link rel="bookmark" href="{site}/favicon.ico" type="image/x-icon">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="format-detection" content="telephone=no"/>
+<link rel="stylesheet" type="text/css" href="{site}/Public/Css/mobile/public.css">
+<link rel="stylesheet" type="text/css" href="{site}/Public/Css/mobile/fatie.css">
+<script type="text/javascript" src="{site}/Public/JScript/public.js?<?php echo time();?>"></script>
+<title>{site_config->site_title_mobile}</title>
+<script> 
+      function check()
+      {
+      	if(document.getElementById('content').value=='')
+      	{
+			alert('编辑内容不能为空!');
+      		return false;
+      	}else{
+      		return true;
+      	}
+      }
+</script>
+</head>
+<body>
+	<!--头部开始-->
+		<header>
+			<div class="top_head white">
+	    <div class="box1">
+	        <a href="javascript:history.go(-1);" class="back"></a>
+	    </div>
+	    <div class="box2">
+	        <a href="{site}">{site_config->site_title_mobile}</a></div>
+	    <div class="box3">
+	        	<?php if(empty($_SESSION['youyax_user'])){	?>
+	            <a  href="__APP__/Login{url}loginMobile{shtml}"><span class="header_user">用户登录</span></a>
+	          <?php	}else{	?>
+	          <a href="__APP__/Index{url}self{shtml}"><span class="header_user">{user}</span></a>
+	        <?php	}	?>
+	    </div>
+			</div>
+		</header>
+	<!--头部结束-->	
+	<section class="txtBox" style="margin-top:10px;">
+     <form name="form" id="form" method="post" action="__APP__/List{url}editupdate{shtml}" onsubmit="return check()">
+       <input type="hidden" name=zuozhe id=zuozhe  value="{user}">
+       <textarea id="content" name="content" class="hui con" placeholder="内容：大于10个字符"></textarea><span id="conerror"  style="background:#fffbd9;color:#7d7d7d"></span>
+       <input type="hidden" name="token" value="{token}">
+       <?php if("{bz}"=="1"){ ?><input type=hidden name=id value="{result->id}">
+	  <?php }if("{bz}"=="2"){ ?><input type=hidden name=id2 value="{result->id2}">
+	  <?php } ?>
+       <a href="javascript:void(0)" class="but_1" onclick="if(check()){document.forms['form'].submit();}" style="width:100px;">编辑帖子</a>
+     </form>
+    </section>
+	<?php
+					if("{bz}"=="1"){
+						$con=trim(preg_replace('/\[quote](.*?)\[\/quote]/', '',$this->array_array['result']['ori_content']));
+					}if("{bz}"=="2"){
+						$con=trim(preg_replace('/\[quote](.*?)\[\/quote]/', '',$this->array_array['result']['ori_content1']));
+					}
+					$val=addslashes(htmlspecialchars_decode($con,ENT_QUOTES));
+					$val=str_replace(array("\r\n","\n"),"<br>",$val);
+					$sub = array("<script>" => "&lt;script&gt;", "</script>" => "&lt;/script&gt;");
+					$val=strtr($val,$sub);
+					 echo '<script>
+					    	document.getElementById("content").value="'.$val.'";
+					  </script>';
+					echo '<script>document.getElementById("content").value=document.getElementById("content").value.replace(/<br>/g,"\r\n");</script>';
+					if(strpos($val,"&lt;script&gt;")){
+				  	echo '<script>document.getElementById("content").value=document.getElementById("content").value.replace(/&lt;/g,"<");</script>';
+				  }
+				  if(strpos($val,"&lt;/script&gt;")){
+				  	echo '<script>document.getElementById("content").value=document.getElementById("content").value.replace(/&gt;/g,">");</script>';
+				  }
+					?>
+	<!--版权开始-->
+	<footer>
+		<div class="copyright">
+   		<a>Powered BY YouYaX</a>
+  	</div>
+	</footer>
+	<!--版权结束-->
+	</body>
+</html>

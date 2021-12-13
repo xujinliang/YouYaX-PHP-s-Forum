@@ -1,0 +1,21 @@
+<include file="Tpl/mobile/Public/admin_top.html">
+<form name="form" action="__APP__/admin{url}doAds{shtml}" method="post">
+<div class="panel panel-default table-responsive">
+ <div class="panel-heading">广告语配置</div>
+	<table class="table">
+		<tr>
+			<td>输入广告语</td>
+		</tr>
+		<tr>
+			<td>
+				<textarea name="ads" style="height:100px;width:99%;font-size:20px;">{ads}</textarea>	
+			</td>
+		</tr>
+   <tr>
+   		<input type="hidden" name="token" value="{token}">
+		<td height="40" align="left"><input name="submit" type="submit" value="提交" class="button" /></td>
+	</tr>
+</table>
+ </div>
+</form>
+<include file="Tpl/mobile/Public/admin_bottom.html">

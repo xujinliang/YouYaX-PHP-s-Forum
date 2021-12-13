@@ -1,0 +1,75 @@
+<include file="Tpl/mobile/Public/admin_top.html">
+<form name="form" action="__APP__/admin{url}doMix{shtml}" method="post" enctype="multipart/form-data">
+<div class="panel panel-default table-responsive">
+ <div class="panel-heading">杂项配置</div>
+	<table class="table">
+		<tr>
+			<td>列表页单页帖子数</td>
+			<td><input type="text"  name="list_per" value="{mix->list_per}" placeholder="请输入一个数字，例如：50"></td>
+		</tr>
+		<tr>
+			<td>列表页导航开启/折叠?</td>
+			<td>
+				<input type="radio" name="list_fold" value="0" <?php if("{mix->list_fold}"==false) echo "checked"; ?>>开启 &nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="list_fold" value="1" <?php if("{mix->list_fold}"==true) echo "checked"; ?>>折叠	
+			</td>
+		</tr>
+		<tr>
+			<td>列表页样式</td>
+			<td>
+				<input type="radio" name="list_style" value="1" <?php if("{mix->list_style}"==1) echo "checked"; ?>>枝干形态 &nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="list_style" value="2" <?php if("{mix->list_style}"==2) echo "checked"; ?>>平铺形态	
+			</td>
+		</tr>
+		<tr>
+			<td>开启"附加选项"可见?</td>
+			<td>
+				<input type="radio" name="talk_visible" value="1" <?php if("{mix->talk_visible}"==true) echo "checked"; ?>>开启 &nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="talk_visible" value="0" <?php if("{mix->talk_visible}"==false) echo "checked"; ?>>关闭	
+			</td>
+		</tr>
+		<tr>
+			<td>帖子标题最大值</td>
+			<td><input type="text"  name="talk_title" value="{mix->talk_title}" placeholder="请输入一个数字，例如：40"></td>
+		</tr>
+		<tr>
+			<td>帖子内容最小值</td>
+			<td><input type="text"  name="talk_content" value="{mix->talk_content}" placeholder="请输入一个数字，例如：10"></td>
+		</tr>
+		<tr>
+			<td>分页样式</td>
+			<td>
+				<input type="radio" name="fenye_style" value="1" <?php if("{mix->fenye_style}"==1) echo "checked"; ?>>样式一 &nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="fenye_style" value="2" <?php if("{mix->fenye_style}"==2) echo "checked"; ?>>样式二
+			</td>
+		</tr>
+		<tr>
+			<td>开启IP防注册</td>
+			<td>
+				<input type="checkbox" name="is_prevent_reg" onchange="if(this.checked){this.value=1;document.getElementById('prevent_reg_num').disabled=false;}else{this.value=0;document.getElementById('prevent_reg_num').disabled=true;}" <?php if("{mix->is_prevent_reg}"==true) echo "checked"; ?> <?php if("{mix->is_prevent_reg}"==true){ ?> value="1" <?php }else{ ?> value="0" <?php } ?>>开启 &nbsp;&nbsp;
+				<input type="text" style="width:160px;" id="prevent_reg_num" name="prevent_reg_num" value="{mix->prevent_reg_num}"  <?php if("{mix->is_prevent_reg}"==false) echo 'disabled';?>> 一个IP允许几次注册
+			</td>
+		</tr>
+		<tr>
+			<td>开启发帖、回帖限制</td>
+			<td>
+				<input type="checkbox" name="is_limit_time" onchange="if(this.checked){this.value=1;document.getElementById('limit_time').disabled=false;}else{this.value=0;document.getElementById('limit_time').disabled=true;}" <?php if("{mix->is_limit_time}"==true) echo "checked"; ?> <?php if("{mix->is_limit_time}"==true){ ?> value="1" <?php }else{ ?> value="0" <?php } ?>>开启 &nbsp;&nbsp;
+				<input type="text"  id="limit_time" name="limit_time" value="{mix->limit_time}"  <?php if("{mix->is_limit_time}"==false) echo 'disabled';?>> 连续多少秒内不能发帖、回帖，亦适用于举报功能
+			</td>
+		</tr>
+		<tr>
+			<td>后台首页图表最大值</td>
+			<td><input type="text" name="admin_count_num" value="{mix->admin_count_num}" placeholder="请输入一个数字，例如：100"></td>
+		</tr>
+		<tr>
+			<td>注册初始金币数</td>
+			<td><input type="text" name="bid_init" value="{mix->bid_init}" placeholder="请输入一个数字，例如：100"></td>
+		</tr>
+   <tr>
+   	<input type="hidden" name="token" value="{token}">
+	<td height="40" colspan="2" align="left"><input name="submit" type="submit" value="提交" class="button" /></td>
+ </tr>
+</table>
+</div>
+</form>
+<include file="Tpl/mobile/Public/admin_bottom.html">

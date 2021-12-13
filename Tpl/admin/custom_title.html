@@ -1,0 +1,68 @@
+<include file="Tpl/Public/admin_top.html">
+<form name="form" action="__APP__/admin{url}docustomTitle{shtml}" method="post">
+	<table id="tb" width=98% cellspacing=0 cellpadding=0 border=1 style="margin:auto;border:1px solid #ccc">
+		<tr onmouseover="addClass(this)" onmouseout="removeClass(this)">
+			<td height="40" colspan="6" style="line-height:40px;background:url('{site}/Public/images/topbg.jpg')"><span style="font-size:16px;text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);color:#333;font-weight:bold;">自定义头衔配置</span></td>
+		</tr>
+<?php
+ if(!empty($this->array_two['config'])){	
+ 	foreach($this->array_two['config'] as $k=>$v){	?>
+		<tr onmouseover="addClass(this)" onmouseout="removeClass(this)">
+			<td height="30" width="50" style="line-height:30px;font-size:15px;color:#222;">头衔名称</td>
+			<td height="30" width="50"><input type="text" name="title[]" value="<?php echo $v['title']; ?>"></td>
+			<td height="30" width="50" style="line-height:30px;font-size:15px;color:#222;">最小值</td>
+			<td height="30" width="50"><input type="text" name="min[]" value="<?php echo $v['min']; ?>"></td>
+			<td height="30" width="50" style="line-height:30px;font-size:15px;color:#222;">最大值</td>
+			<td height="30" width="50"><input type="text" name="max[]" value="<?php echo $v['max']; ?>">
+				<?php	if($k==count($this->array_two['config'])-1){	?>
+					<img id="imgdel" onclick="del(this)" src="{site}/Public/images/ico_delete.gif">
+			<?php	}	?>
+			</td>
+		</tr>
+<?php	}
+	}	?>
+	</table>
+	<div style="width:98%;margin:auto;background:#e9e9e9;">
+		<input onclick="add()" type="button" style="float:right;margin-right:10px;" class="button" value="+ 新增"/><br>
+		<input type="hidden" name="token" value="{token}">
+		<input name="submit" type="submit" value="提交" class="button" />
+	</div>
+	</form>
+	<script>
+		function del(_this){
+			_this.parentNode.parentNode.parentNode.removeChild(_this.parentNode.parentNode);
+			var tds=document.getElementById("tb").getElementsByTagName("td");
+			if(tds.length>1){
+				var img=document.createElement("img");
+				img.id="imgdel";
+				img.src="{site}/Public/images/ico_delete.gif";
+				img.setAttribute("onclick","javascript:del(this)");
+				tds[tds.length-1].appendChild(img);
+			}
+		}
+		function add(){
+			if(document.getElementById("imgdel")){
+				document.getElementById("imgdel").parentNode.removeChild(document.getElementById("imgdel"));
+			}
+			var dv=document.createElement("tr");
+			dv.innerHTML='<td height="30" width="50" style="line-height:30px;font-size:15px;color:#222;">头衔名称</td>'+
+			'<td height="30" width="50"><input type="text" name="title[]" value=""></td>'+
+			'<td height="30" width="50" style="line-height:30px;font-size:15px;color:#222;">最小值</td>'+
+			'<td height="30" width="50"><input type="text" name="min[]" value=""></td>'+
+			'<td height="30" width="50" style="line-height:30px;font-size:15px;color:#222;">最大值</td>'+
+			'<td height="30" width="50"><input type="text" name="max[]" value=""><img id="imgdel" onclick="del(this)" src="{site}/Public/images/ico_delete.gif"></td>';
+			document.getElementById("tb").appendChild(dv);
+		}
+		var tr=document.getElementsByTagName("tr");
+		for(var n=0;n<tr.length;n++)
+		{
+			if(n%2==0&&n!=0)
+			{
+				tr[n].className="tr0";	
+			}else{
+				tr[n].className="tr1";	
+			}
+		}
+	</script>
+</body>
+</html>

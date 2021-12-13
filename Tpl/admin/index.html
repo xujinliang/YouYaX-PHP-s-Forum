@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="icon" href="{site}/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="{site}/favicon.ico" type="image/x-icon">
+	<link rel="bookmark" href="{site}/favicon.ico" type="image/x-icon">
+	<title>YouYaX论坛管理</title>
+</head>
+<body  bgcolor="#f6f6f6" style="overflow:hidden;margin:0;padding:0">
+	<iframe id="ifr" src="__APP__/admin{url}secindex{shtml}" width=100% height="auto" scrolling="no" frameborder=0></iframe>
+	<script>
+		var isIE=window.ActiveXObject;
+		var isIE6=isIE&&!window.XMLHttpRequest;
+		//var isIE8=isIE&&!!document.documentMode;
+		var isIE7=isIE&&!isIE6;
+    if (isIE6 || isIE7){
+      document.getElementById("ifr").style.height=Math.max(document.body.clientHeight,document.documentElement.clientHeight)+"px";
+    }else{
+			document.getElementById("ifr").style.height=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight)+"px";
+		}
+	</script>
+	<div id="bg"></div>
+</body>
+</html>

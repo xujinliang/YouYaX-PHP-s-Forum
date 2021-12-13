@@ -1,0 +1,68 @@
+<style>
+#head .input{width: 125px;height: 20px;background:#dedede;line-height: 20px;border: none;padding: 0 4px;overflow: hidden;outline:none;}
+#head_2 td{padding:2px;font-size:0;}
+#head a{font-weight:normal;text-decoration: none;font-family: Arial;font-size: 14px;}
+label{font-size:14px;margin-left:10px;}
+#head input[type="text"]:focus,input[type="password"]:focus{
+transition:border linear .2s,box-shadow linear .5s;
+-moz-transition:border linear .2s,-moz-box-shadow linear .5s;
+-webkit-transition:border linear .2s,-webkit-box-shadow linear .5s;
+-o-transition:border linear .2s,-webkit-box-shadow linear .5s;
+outline:none;
+box-shadow:0 0 10px rgba(124,105,56,.7);
+-moz-box-shadow:0 0 10px rgba(124,105,56,.7);
+-webkit-box-shadow:0 0 10px rgba(124,105,56,.7);
+-o-box-shadow:0 0 10px rgba(124,105,56,.7);
+}
+</style>
+<script>
+ function toLogin(){
+   window.location.href="{site}/ext/qq_connect.php";
+ }function toLogin_weibo(){
+   window.location.href="{site}/ext/weibo";
+}
+</script>
+<table id="head" width="1140" height="auto" cellspacing="0" cellpadding="0" border="0">
+<tr>
+	<td align="left"><a href="{site}"><img id="imgtop" src="{site_config->site_logo}" border=0></a></td>
+	<td align="right" valign="bottom" style="padding-bottom:1px;">
+<table id="head_2" align="right" cellspacing="0" cellpadding="0" style="display:<?php echo empty($_SESSION['youyax_user']) ? 'block' : 'none'; ?>;">
+	<tr>
+		<td align="right" valign="bottom"><?php if("{wb->app_id}"!='' && "{wb->app_secret}"!='' && "{wb->callback}"!=''){ ?><a href="javascript:void(0)" onclick="toLogin_weibo()"><img style="vertical-align: bottom;" border="0" src="{site}/ext/weibo/weibo_login.png"></a>&nbsp;&nbsp;<?php	}	?></td>
+		<td align="right" valign="bottom"><?php if("{qq->app_id}"!='' && "{qq->app_secret}"!=''){ ?><a href="javascript:void(0)" onclick="toLogin()"><img style="vertical-align: bottom;" border="0" src="{site}/Public/images/Connect_logo_2.png"></a>&nbsp;&nbsp;<?php	}	?><label>用户</label></td>
+		<td align="left"><input type="text" name="user" id="user" class="input"></td>
+		<td align="left"><label id="a1" style="cursor:pointer;font-size:14px;">马上注册</label></td>
+	</tr>
+	<tr>
+		<td align="right"><?php if("{wb->app_id}"!='' && "{wb->app_secret}"!=''){ ?><span style="color:#999;font-size:12px;">无需注册，直接登录</span>&nbsp;&nbsp;<?php	}	?></td>
+		<td align="right"><?php if("{qq->app_id}"!='' && "{qq->app_secret}"!=''){ ?><span style="color:#999;font-size:12px;">无需注册，直接登录</span>&nbsp;&nbsp;<?php	}	?><label>密码</label></td>
+		<td align="left"><input type="password" name="pass" id="pass" class="input"></td>
+		<td align="left"><button type="button" name="sub" onclick="login_new(document.getElementById('user').value,document.getElementById('pass').value);" style="width: 68px;outline:none;border: none;background:#ece9d8;cursor:pointer;"><em>登录</em></button></td>
+	</tr>
+</table>
+<?php
+$sql="select * from ".$this->C('db_prefix') . "user where user='".$_SESSION['youyax_user']."'";
+$res = $this->db->query($sql);
+$num = $this->db->query("select count(*) from ".$this->C('db_prefix') . "user where user='".$_SESSION['youyax_user']."'")->fetchColumn();
+$arr = $res->fetch();
+if($num>0){
+?>
+<div style="color: #333;display:<?php echo isset($_SESSION['youyax_user']) ? 'block' : 'none'; ?>;line-height:24px;width: 100%;font-family:Arial;font-size:14px;position: relative;bottom: 2px;">
+<span style="display:inline-block;">
+{user},<a style="color: #333;" href="__APP__/Index{url}self{shtml}">个人中心</a>,<a style="color: #333;" href="__APP__/Index{url}logout{shtml}">注销</a>
+<div>用户组：<?php 
+	echo CommonAction::getUserGroup($arr['user_group']); ?></div>
+</span>
+<span style="display:inline-block;margin-left:4px;"><img style="position: relative;top: 4px;" border="0" height="44" src="{site}/Public/pic/<?php echo $arr['face']; ?>"></span>
+		</div>
+<?php	}	?>
+	</td>
+</tr>
+</table>
+<div style="position:relative;width:1140px;margin:0 auto;">
+	<div id="nav_notice" style="display:{message_status};z-index:9999;position:absolute;right:20px;top:-20px;width:100px;height:22px;background: #fbf8df;border:1px solid #d1b07c;opacity: 0.9;filter:alpha(opacity=90);">
+		<em style="position: absolute;left:10px;top:-20px;z-index: -1;border-top: 10px solid transparent;border-left: 10px solid transparent;border-right: 10px solid transparent;border-bottom: 10px solid #d1b07c;"></em>
+		<span style="position: absolute;left: 10px;top: -19px;border-top: 10px solid transparent;border-left: 10px solid transparent;border-right: 10px solid transparent;border-bottom: 10px solid #fbf8df;"></span>
+		<div style="position: absolute;left: 8px;top: 5px;z-index:2"><a style="color: #333;font-size:12px;font-family:Arial;" href="__APP__/Message{url}show{shtml}">您收到新消息了</a></div>
+	</div>
+</div>

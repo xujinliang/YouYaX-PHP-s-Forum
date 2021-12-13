@@ -1,0 +1,294 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>YouYaX论坛管理</title>
+	<style type="text/css">
+		*{margin:0px;padding:0px;}
+		html{overflow-x:hidden; }
+		body{-moz-user-select: none; -khtml-user-select: none; user-select: none;font-family: 'Microsoft YaHei','微软雅黑',Arial,Helvetica,sans-serif;}
+		a:active{color:#545ce4;}
+		a:visited{color:#545ce4;}
+		a:link{color:#545ce4;}
+		a:hover{color:#993300;}
+		a{text-decoration:none;outline:none;}
+		.libg{background:url('');}
+		.libgover{background:#ededed;}
+		#menu{margin:0px;padding:0px;float:left;width:188px;margin-left:10px;}
+		#menu>li{list-style-type:none;margin:0px;padding:0px;width:198px;}
+		#menu>li ul{display:none;}
+		#menu>li span{position:relative;left:-10px;padding-left:30px;font-size:14px;color:#fff;text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);width:189px;height:30px;display:inline-block;background:url('{site}/Public/images/bg-nav.png');line-height:30px;font-weight:bold;margin-bottom:1px;}
+		#menu>li span:after{width: 17px;height: 16px;background: url('{site}/Public/images/sprite.png') no-repeat -183px -18px;position: absolute;top: 5px;left: 5px;content: "";}
+		#menu>li span.server:after{background-position: -201px -36px;}
+		#menu>li span.plugin:after{background-position: -238px -17px;left:4px;}
+		#menu>li span.user:after{background-position: -257px -17px;top:6px;}
+		#menu>li span.document:after{background-position: -219px 0;}
+		#menu>li span.profile:after{background-position: -222px -18px;}
+		#menu>li span.contact:after{background-position: -201px -58px;}
+		.childmenu{width:198px;overflow:hidden;margin:0px;padding:0px;}
+		.childmenu li{margin:0px;padding:0px;width:198px;height:30px;list-style-type:none;border-top:1px solid #cbcbcb;line-height:30px;}
+		.childmenu  a{color:#888888;font-weight:bold;font-size:13px;margin-left:10px;}
+		#menu span{cursor:pointer;}
+		.no-user-select{
+              -moz-user-select: none; 
+              -webkit-user-select: none; 
+              -ms-user-select: none;
+            }
+	</style>
+	<script type="text/javascript">
+		function show(n)
+		{
+			parent.parent.document.getElementById("bg").style.cssText="position:absolute;left:0px;top:0px;width:100%;height:200%;z-index:9;background:#c3c3c3;filter:alpha(opacity=80);-moz-opacity:0.8;-khtml-opacity: 0.8;opacity: 0.8;display:block";
+			parent.parent.document.getElementById("bg").innerHTML="<img src='{site}/Public/images/waiting.gif' style=\"margin-left:220px;margin-top:60px;\">";
+			if(n=='1-1')
+				self.parent.frames["main"].location.href="__APP__/admin{url}block{shtml}";
+			if(n=='1-2')
+				self.parent.frames["main"].location.href="__APP__/admin{url}blockTransform{shtml}";
+			if(n=='2-1')
+				self.parent.frames["main"].location.href="__APP__/admin{url}admin{shtml}";
+			if(n=='4-1')
+				self.parent.frames["main"].location.href="__APP__/admin{url}mark1{shtml}";
+			if(n=='4-2')
+				self.parent.frames["main"].location.href="__APP__/admin{url}mark2{shtml}";
+			if(n=='3-2')
+				self.parent.frames["main"].location.href="__APP__/admin{url}reply{shtml}";
+			if(n=='3-1')
+				self.parent.frames["main"].location.href="__APP__/admin{url}talk{shtml}";
+			if(n=='2-2')
+				self.parent.frames["main"].location.href="__APP__/admin{url}user{shtml}";
+			if(n=='2-3')
+				self.parent.frames["main"].location.href="__APP__/admin{url}userGroup{shtml}";
+			if(n=='2-4')
+				self.parent.frames["main"].location.href="__APP__/admin{url}jubao{shtml}";
+			if(n=='3-3')
+				self.parent.frames["main"].location.href="__APP__/admin{url}talkVote{shtml}";
+			if(n=='3-4')
+				self.parent.frames["main"].location.href="__APP__/admin{url}voteIp{shtml}";
+			if(n=='5-1')
+				self.parent.frames["main"].location.href="__APP__/admin{url}mailset{shtml}";
+			if(n=='5-2')
+				self.parent.frames["main"].location.href="__APP__/admin{url}keyset{shtml}";
+			if(n=='5-3')
+				self.parent.frames["main"].location.href="__APP__/admin{url}qqset{shtml}";
+			if(n=='5-4')
+				self.parent.frames["main"].location.href="__APP__/admin{url}weiboset{shtml}";
+			if(n=='6-1')
+				self.parent.frames["main"].location.href="__APP__/admin{url}setting{shtml}";
+			if(n=='6-2')
+				self.parent.frames["main"].location.href="__APP__/admin{url}seoset{shtml}";
+			if(n=='6-3')
+				self.parent.frames["main"].location.href="__APP__/admin{url}customTitle{shtml}";
+			if(n=='6-4')
+				self.parent.frames["main"].location.href="__APP__/admin{url}delimite{shtml}";
+			if(n=='6-5')
+				self.parent.frames["main"].location.href="__APP__/admin{url}searchset{shtml}";
+			if(n=='6-6')
+				self.parent.frames["main"].location.href="__APP__/admin{url}waterset{shtml}";
+			if(n=='6-7')
+				self.parent.frames["main"].location.href="__APP__/admin{url}mphotoset{shtml}";
+			if(n=='7-1')
+				self.parent.frames["main"].location.href="__APP__/admin{url}menuCnSet{shtml}";
+			if(n=='7-2')
+				self.parent.frames["main"].location.href="__APP__/admin{url}menuCnSet{url}sp{url}en{shtml}";
+			if(n=='7-3')
+				self.parent.frames["main"].location.href="__APP__/admin{url}filterSet{shtml}";
+			if(n=='7-4')
+				self.parent.frames["main"].location.href="__APP__/admin{url}adsSet{shtml}";
+			if(n=='7-5')
+				self.parent.frames["main"].location.href="__APP__/admin{url}adsPollSet{shtml}";
+			if(n=='7-6')
+				self.parent.frames["main"].location.href="__APP__/admin{url}placardSet{shtml}";
+			if(n=='7-7')
+				self.parent.frames["main"].location.href="__APP__/admin{url}verticalSet{shtml}";
+			if(n=='7-8')
+				self.parent.frames["main"].location.href="__APP__/admin{url}friendUrlSet{shtml}";
+			if(n=='7-9')
+				self.parent.frames["main"].location.href="__APP__/admin{url}mixSet{shtml}";
+			if(n=='8-1')
+				self.parent.frames["main"].location.href="__APP__/admin{url}pluginView{shtml}";
+			if(n=='9-1')
+				self.parent.frames["main"].location.href="__APP__/admin{url}backupSQL{shtml}";
+		}
+	</script>
+</head>
+<body class="no-user-select" style="background:url('{site}/Public/images/bg-sidebar.png')  repeat-y;">
+<ul id="menu">
+<li><span status="close">版块管理</span>
+		<ul class="childmenu" style="margin-left:2px;padding:0px;">
+			<li><a href="javascript:void(0)" target="main" list="1-1">版块设置</a></li>
+			<li><a href="javascript:void(0)" target="main" list="1-2">版块转移</a></li>
+		</ul>
+</li>
+<li><span status="close" class="user">用户管理</span>
+		<ul class="childmenu" style="margin-left:2px;padding:0px;">
+			<li><a href="javascript:void(0)" target="main" list="2-1">管理员设置</a></li>
+			<li><a href="javascript:void(0)" target="main" list="2-2">注册用户设置</a></li>
+			<li><a href="javascript:void(0)" target="main" list="2-3">用户组设置</a></li>
+			<li><a href="javascript:void(0)" target="main" list="2-4">举报管理</a></li>
+		</ul>
+</li>
+<li><span status="close" class="plugin">插件管理</span>
+		<ul class="childmenu" style="margin-left:2px;padding:0px;">
+			<li><a href="javascript:void(0)" target="main" list="8-1">查看插件</a></li>
+		</ul>
+</li>
+<li><span status="close" class="document">论坛主题管理</span>
+		<ul class="childmenu" style="margin-left:2px;padding:0px;">
+			<li><a href="javascript:void(0)" target="main" list="3-1">发布帖子</a></li>
+			<li><a href="javascript:void(0)" target="main" list="3-2">回复帖子</a></li>
+			<li><a href="javascript:void(0)" target="main" list="3-3">主题/投票</a></li>
+			<li><a href="javascript:void(0)" target="main" list="3-4">投票/IP</a></li>
+		</ul>
+</li>
+<li><span status="close" class="document">点评管理</span>
+		<ul class="childmenu" style="margin-left:2px;padding:0px;">
+			<li><a href="javascript:void(0)" target="main" list="4-1">主题帖点评</a></li>
+			<li><a href="javascript:void(0)" target="main" list="4-2">回复帖点评</a></li>
+		</ul>
+</li>
+<li><span status="close" class="profile">注册激活管理</span>
+		<ul class="childmenu" style="margin-left:2px;padding:0px;">
+			<li><a href="javascript:void(0)" target="main" list="5-1">配置</a></li>
+			<li><a href="javascript:void(0)" target="main" list="5-2">注册密钥管理</a></li>
+			<li><a href="javascript:void(0)" target="main" list="5-3">QQ登录</a></li>
+			<li><a href="javascript:void(0)" target="main" list="5-4">新浪微博登录</a></li>
+		</ul>
+</li>
+<li><span status="close" class="profile">网站配置管理</span>
+		<ul class="childmenu" style="margin-left:2px;padding:0px;">
+			<li><a href="javascript:void(0)" target="main" list="6-1">站点信息</a></li>
+			<li><a href="javascript:void(0)" target="main" list="6-2">SEO设置</a></li>
+			<li><a href="javascript:void(0)" target="main" list="6-3">自定义头衔</a></li>
+			<li><a href="javascript:void(0)" target="main" list="6-4">分隔符 & 后缀</a></li>
+			<li><a href="javascript:void(0)" target="main" list="6-5">搜索设置</a></li>
+			<li><a href="javascript:void(0)" target="main" list="6-6">水印设置</a></li>
+			<li><a href="javascript:void(0)" target="main" list="6-7">手机拍照设置</a></li>
+		</ul>
+</li>
+<li><span status="close" class="profile">配置项管理</span>
+		<ul class="childmenu" style="margin-left:2px;padding:0px;">
+			<li><a href="javascript:void(0)" target="main" list="7-1">中文菜单配置</a></li>
+			<!--<li><a href="javascript:void(0)" target="main" list="7-2">英文菜单配置</a></li>-->
+			<li><a href="javascript:void(0)" target="main" list="7-3">敏感词配置</a></li>
+			<li><a href="javascript:void(0)" target="main" list="7-4">广告语配置</a></li>
+			<!--<li><a href="javascript:void(0)" target="main" list="7-5">广告轮询配置</a></li>-->
+			<li><a href="javascript:void(0)" target="main" list="7-6">公告栏配置</a></li>
+			<li><a href="javascript:void(0)" target="main" list="7-7">垂直滚动配置</a></li>
+			<li><a href="javascript:void(0)" target="main" list="7-8">友情链接配置</a></li>
+			<li><a href="javascript:void(0)" target="main" list="7-9">杂项配置</a></li>
+		</ul>
+</li>
+<li><span status="close" class="server">备份管理</span>
+		<ul class="childmenu" style="margin-left:2px;padding:0px;">
+			<li><a href="javascript:void(0)" target="main" list="9-1">备份数据库</a></li>
+		</ul>
+</li>
+<li><span status="close" class="contact">其他服务</span>
+		<ul class="childmenu" style="margin-left:2px;padding:0px;">
+			<li><a href="http://www.youyax.com" target="_blank" list="x1">作者网站</a></li>
+			<li><a href="mailto:xujinliang1227@qq.com" list="x2">联系作者</a></li>
+		</ul>
+</li>
+</ul>
+	<script>
+	var spans=document.getElementById("menu").getElementsByTagName("span");
+	var span_ori_h;
+	var fun=function(e){
+			e= window.event || e;
+  		var obj = e.srcElement || e.target; 
+			obj.onclick=null;
+			//if(typeof(this.getAttribute("status"))=='object'){
+			if(obj.getAttribute("status")=="open"){
+					obj.setAttribute("status","close");
+					var _this=obj;
+					var _obj =obj;
+					if(document.all){
+	 						_obj.detachEvent("onclick",fun);
+	 					}else{
+	 						_obj.removeEventListener("click",fun);
+	 					}
+						while(_this.nextSibling.nodeType!=1){
+						    _this=_this.nextSibling;
+						}
+						span_ori_h=_this.nextSibling.offsetHeight;
+						 	for(var n=span_ori_h;n>=0;n--)
+						 	{
+						 		(function(){
+						 			var i=n;
+						 			setTimeout(function(){
+						 				if(i==0){
+						 					if(document.all){
+						 						_obj.attachEvent("onclick",fun);
+						 					}else{
+						 						_obj.addEventListener("click",fun);
+						 					}
+						 				}
+										_this.nextSibling.style.height=i+"px";
+										if(document.documentMode==7){
+											_this.nextSibling.style.marginTop="-3px";
+											_this.nextSibling.style.marginBottom="-3px";
+										}else{
+											_this.nextSibling.style.marginTop="0px";
+											_this.nextSibling.style.marginBottom="0px";
+										}
+						 			},(span_ori_h-i+1)*3);
+						 		})();
+						 	}
+			}else{
+					var _this=obj;
+					var _obj =obj;
+					if(document.all){
+	 						_obj.detachEvent("onclick",fun);
+	 					}else{
+	 						_obj.removeEventListener("click",fun);
+	 					}
+						while(_this.nextSibling.nodeType!=1){
+						    _this=_this.nextSibling;
+						}
+						_this.nextSibling.style.display="block";
+						span_ori_h=_this.nextSibling.getElementsByTagName("li");
+						span_ori_h=span_ori_h.length*30+span_ori_h.length;
+							for(var n=0;n<=span_ori_h;n++)
+						 	{
+						 		(function(){
+						 			var i=n;
+						 			setTimeout(function(){
+										if(i==span_ori_h){
+												//_obj.removeAttribute("status");
+											_obj.setAttribute("status","open");
+						 					if(document.all){
+						 						_obj.attachEvent("onclick",fun);
+						 					}else{
+						 						_obj.addEventListener("click",fun);
+						 					}
+						 				}
+										_this.nextSibling.style.height=i+"px";
+										_this.nextSibling.style.marginTop="5px";
+										_this.nextSibling.style.marginBottom="5px";
+						 			},(i+1)*3);
+						 		})();
+						 	}
+			}
+	}
+	for(var i=0;i<spans.length;i++){
+		spans[i].onclick=fun;
+	}
+	
+	var menua=document.getElementById("menu").getElementsByTagName("a");
+		for(var i=0;i<menua.length;i++){
+			menua[i].onclick=function(e){
+				var event=e||window.event;
+				var target=event.srcElement||event.target;
+				var menuli=document.getElementById("menu").getElementsByTagName("li");
+				for(var k=0;k<menuli.length;k++){
+					menuli[k].className="libg";
+				}
+				if(target.getAttribute("list")!="x1"&&target.getAttribute("list")!="x2"){
+					this.parentNode.className="libgover";
+					show(target.getAttribute("list"));
+				}
+			}
+		}
+	</script>
+</body>
+</html>

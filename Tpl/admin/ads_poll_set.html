@@ -1,0 +1,41 @@
+<include file="Tpl/Public/admin_top.html">
+<form name="form" action="__APP__/admin{url}doAdsPollSet{shtml}" method="post">
+	<table id="tb" width=98% cellspacing=0 cellpadding=0 border=1 style="margin:auto;border:1px solid #ccc">
+		<tr onmouseover="addClass(this)" onmouseout="removeClass(this)">
+			<td height="40" colspan="8" style="line-height:40px;background:url('{site}/Public/images/topbg.jpg')"><span style="font-size:16px;text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);color:#333;font-weight:bold;">广告轮询配置</span></td>
+		</tr>
+<?php
+ if(!empty($this->array_two['poll'])){	
+ 	foreach($this->array_two['poll'] as $k=>$v){	?>
+		<tr onmouseover="addClass(this)" onmouseout="removeClass(this)">
+			<td height="30" style="line-height:30px;font-size:15px;color:#222;">图片地址</td>
+			<td height="30"><input type="text" name="img[]" value="<?php echo $v['img']; ?>"></td>
+			<td height="30" style="line-height:30px;font-size:15px;color:#222;">图片标题</td>
+			<td height="30"><input type="text" name="title[]" value="<?php echo $v['title']; ?>"></td>
+			<td height="30" style="line-height:30px;font-size:15px;color:#222;">图片链接</td>
+			<td height="30"><input type="text" name="url[]" value="<?php echo $v['url']; ?>"></td>
+			<td height="30" style="line-height:30px;font-size:15px;color:#222;">排序</td>
+			<td height="30"><input type="text" name="ord[]" value="<?php echo $v['ord']; ?>"></td>
+		</tr>
+<?php	}
+	}	?>
+	</table>
+	<div style="width:98%;margin:auto;background:#e9e9e9;">
+		<input type="hidden" name="token" value="{token}">
+		<input name="submit" type="submit" value="提交" class="button" />
+	</div>
+	</form>
+	<script>
+		var tr=document.getElementsByTagName("tr");
+		for(var n=0;n<tr.length;n++)
+		{
+			if(n%2==0&&n!=0)
+			{
+				tr[n].className="tr0";	
+			}else{
+				tr[n].className="tr1";	
+			}
+		}
+	</script>
+</body>
+</html>

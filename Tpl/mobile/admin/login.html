@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>YouYaX后台管理</title>
+    <!-- Bootstrap -->
+    <link href="{site}/Public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<style>
+body{background:#0e3159;}
+.container{margin-top:100px;}
+.form-control{margin-bottom:10px;}
+h3{padding: 0 0 0 5px;
+color: #b9bcc1;
+letter-spacing: 5px;
+text-align: center;
+font: 18px/20px Arial, Helvetica, sans-serif;
+text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.6);
+margin: 0 0 50px;}
+</style>
+<script>
+	function jump(cal){
+    parent.document.getElementById('bg').parentNode.removeChild(parent.document.getElementById('bg'));
+    parent.document.getElementById('Tip').parentNode.removeChild(parent.document.getElementById('Tip'));
+	}
+	</script>
+</head>
+<body>
+	<div class="container">
+      <form class="form-signin" role="form" method="post" action="__APP__/admin{url}validate{shtml}" target="hidden_frame">
+        <h3 class="form-signin-heading" style="text-align:center">YouYaX论坛系统(后台管理)</h3>
+        <input type="text" class="form-control" name="user" placeholder="管理员" required autofocus>
+        <input type="password" class="form-control" name="pass" placeholder="密码" required>
+        <input type="hidden" name="token" value="{token}">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+      </form>
+      <iframe name="hidden_frame" id="hidden_frame" style="display:none"></iframe>
+    </div> <!-- /container -->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{site}/Public/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

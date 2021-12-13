@@ -1,0 +1,7 @@
+@charset "utf-8";
+/* CSS Document */
+
+.txtBox .tit{ width:99%;border:solid 1px #eaeaea; font-size:14px;}
+.txtBox .con{ display:block; width:99%; height:140px;border:solid 1px #eaeaea;font-size:14px;}
+.txtBox .zujian{ height:37px; padding:5px 15px 0;font-size:14px; line-height:30px; background:#f9f9f9; border:solid 1px #eaeaea;}
+.camera,.photo{ margin-bottom:-4px;}

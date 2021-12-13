@@ -1,0 +1,31 @@
+<include file="Tpl/Public/admin_top.html">
+<form action="__APP__/admin{url}blockDoTransform{shtml}" method=post>
+	<table width=98% height="auto" cellspacing=0 cellpadding=0 border=1 style="margin:auto;border:1px solid #ccc">
+		<tr>
+			<td height="40" colspan="2" style="line-height:40px;background:url('{site}/Public/images/topbg.jpg')"><span style="font-size:16px;text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);color:#333;font-weight:bold;">版块内容转移</span></td>
+		</tr>
+		<tr>
+			<td height="30" width="100" style="line-height:30px;font-size:15px;color:#222;font-weight:bold;">源版块</td>
+			<td height="30" style="line-height:30px;font-size:15px;color:#222;font-weight:bold;">
+			<select name="org">
+					<list>
+						<option value="{data.id}">{data.szone}</option>
+					</list>
+			</select>	
+			</td>
+		</tr>
+		<tr>
+			<td height="30" width="100" style="line-height:30px;font-size:15px;color:#222;font-weight:bold;">目标版块</td>
+			<td height="30" style="line-height:30px;font-size:15px;color:#222;font-weight:bold;">
+			<select name="oto">
+					<list>
+						<option value="{data.id}">{data.szone}</option>	
+					</list>
+			</select>	
+			</td>
+		</tr>
+		<input type="hidden" name="token" value="{token}">
+		<tr><td colspan=2><input type="image" src="{site}/Public/images/edit.gif"></td></tr>
+	</table>
+</form>
+<include file="Tpl/Public/admin_bottom.html">

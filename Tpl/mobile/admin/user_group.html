@@ -1,0 +1,75 @@
+<include file="Tpl/mobile/Public/admin_top.html">
+	<script type="text/javascript">
+	function pop(id){
+			var tdiv=document.createElement("div");
+			tdiv.id="popp";
+			tdiv.className="form-container";
+			createBg();
+			tdiv.style.cssText="width:300px;height:120px;position:fixed;left:50%;top:50%;margin-left:-150px;margin-top:-60px;border:1px solid #e9e9e9;z-index:999";
+			tdiv.innerHTML='<form action="__APP__/admin{url}userGroupMod{shtml}" method=post target="main">'+
+										 '<table width=100%  height="110" cellspacing=0 cellpadding=0>'+
+										 	'<tr><td  align="right" style="color:#333;font-size:12px"><span style="cursor:pointer" onclick="closeBg(\'popp\');">关闭</span></td></tr>'+
+											'<tr><td style="color:#777;font-size:15px">输入新的用户组名称</td></tr>'+
+											'<tr><td><input type="text" name="name" style="width:210px"></td></tr>'+
+											'<input type="hidden" name="id" value="'+id+'">'+
+											'<input type="hidden" name="token" value="{token}">'+
+											'<tr><td><input type="image" src="{site}/Public/images/edit.gif"></td></tr>'+
+										' </table>'+
+										'</form>';
+			document.body.appendChild(tdiv);
+		}
+	function add(){
+			var tdiv=document.createElement("div");
+			tdiv.id="popadd";
+			tdiv.className="form-container";
+			createBg();
+			tdiv.style.cssText="width:300px;height:120px;position:fixed;left:50%;top:50%;margin-left:-150px;margin-top:-60px;border:1px solid #e9e9e9;z-index:999";
+			tdiv.innerHTML='<form action="__APP__/admin{url}userGroupAdd{shtml}" method=post target="main">'+
+										 '<table width=100%  height="110" cellspacing=0 cellpadding=0>'+
+										 	'<tr><td  align="right" style="color:#333;font-size:12px"><span style="cursor:pointer" onclick="closeBg(\'popadd\');">关闭</span></td></tr>'+
+											'<tr><td style="color:#777;font-size:15px">增加新的用户组</td></tr>'+
+											'<tr><td><input type="text" name="name" style="width:210px"></td></tr>'+
+											'<input type="hidden" name="token" value="{token}">'+
+											'<tr><td><input type="image" src="{site}/Public/images/add.gif"></td></tr>'+
+										' </table>'+
+										'</form>';
+			document.body.appendChild(tdiv);
+		}
+	</script>
+<div class="panel panel-default table-responsive">
+ <div class="panel-heading">用户组查询</div>
+	<table class="table">
+		<tr>
+			<th>ID</th>
+			<th>用户组名称</th>
+			<th><span style="cursor:pointer" onclick="add()">增加</span></th>
+		</tr>
+		<tr><td colspan=4 align=right><div class="page">{page}</div></td></tr>
+<?php
+ if(!empty($this->array_two['data'])){
+ 	foreach($this->array_two['data'] as $vo){
+?>
+			<tr>
+				<td>
+				<?php
+					echo $vo['id'];
+				?>
+				</td>
+				<td>
+					<?php
+					echo $vo['name'];
+				?>
+				</td>
+				<td align="center">
+					<a style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold" href="__APP__/admin{url}purview2{url}id{url}<?php echo $vo['id']?>{shtml}">权限</a>&nbsp;
+					<a style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold" href="javascript:void(0)" onclick="pop(<?php echo $vo['id']; ?>)">修改</a>&nbsp;
+					<a onclick="return confirm('您确定要删除?');" style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold" href="__APP__/admin{url}userGroupDel{url}id{url}<?php echo $vo['id']?>{shtml}?token={token}">删除</a>
+				</td>
+			</tr>
+<?php
+	}
+}
+?>
+	</table>
+ </div>
+<include file="Tpl/mobile/Public/admin_bottom.html">

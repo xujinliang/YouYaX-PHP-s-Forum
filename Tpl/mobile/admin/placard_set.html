@@ -1,0 +1,24 @@
+<include file="Tpl/mobile/Public/admin_top.html">
+<form name="form" action="__APP__/admin{url}doPlacardSet{shtml}" method="post">
+<div class="panel panel-default table-responsive">
+ <div class="panel-heading">公告栏配置</div>
+	<table class="table">
+<?php
+ if(!empty($this->array_two['placard'])){
+ 	foreach($this->array_two['placard'] as $k=>$v){	?>
+		<tr>
+			<td>公告标题</td>
+			<td><input style="width:250px" type="text" name="title[]" value="<?php echo $v['title']; ?>"></td>
+			<td>公告链接</td>
+			<td><input style="width:250px" type="text" name="url[]" value="<?php echo $v['url']; ?>"></td>
+			<td>排序</td>
+			<td><input type="text" name="ord[]" value="<?php echo $v['ord']; ?>" style="width:20px"></td>
+		</tr>
+<?php	}
+	}	?>
+	<tr><td colspan="6"><input type="hidden" name="token" value="{token}">
+		<input name="submit" type="submit" value="提交" class="button" /></td></tr>
+	</table>
+  </div>
+</form>
+<include file="Tpl/mobile/Public/admin_bottom.html">

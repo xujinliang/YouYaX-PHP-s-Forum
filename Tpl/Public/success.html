@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>页面提示</title>
+		<meta http-equiv="refresh" content="5; URL={jumpurl}">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<style type="text/css">
+			body{
+				background:#a6a6a6;
+			}
+			#success{
+  position:fixed;
+  margin:auto;
+  left:0; right:0; top:0; bottom:0;
+  width:450px; height:60px;
+   box-shadow: rgb(255, 255, 255) 0px 0px 100px;
+  -webkit-box-shadow: rgb(255, 255, 255) 0px 0px 100px;
+  *position:absolute;
+  *left:expression(eval((document.documentElement.clientWidth-450)/2));
+  *top:expression(eval((document.documentElement.clientHeight-60)/2));
+}
+#success,table{
+		overflow:hidden;
+	-moz-border-radius: 20px;
+  			-khtml-border-radius: 20px;
+  			-webkit-border-radius: 20px;
+  			border-radius: 20px;
+}
+		</style>
+	</head>
+	<body>
+		<div id="success">
+			<table width=100% border=0  cellspacing=0 cellpadding=0  style="background-color:#f4f4f4;border:3px solid #eeffbb">
+				<tr><td align="center" style="background-color:#99ff99;font-family:Tahoma;font-size:14px;">{msgtitle}</td></tr>
+				<tr><td align="center" style="font-family:Tahoma;font-size:14px;line-height:14px;">{message}</td></tr>
+				<tr><td align="center" style="font-family:Tahoma;font-size:14px;line-height:14px;">系统将在 5 秒内自动跳转,如不想等待，点<a href={jumpurl}>这里</a>跳转！</td></tr>
+			</table>
+		</div>
+	</body>
+</html>

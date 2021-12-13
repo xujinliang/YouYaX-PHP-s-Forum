@@ -1,0 +1,37 @@
+<include file="Tpl/mobile/Public/admin_top.html">
+<form name="form" action="__APP__/admin{url}dosetting{shtml}" method="post">
+<div class="panel panel-default table-responsive">
+ <div class="panel-heading">网站常规配置</div>
+	<table class="table">
+		<tr>
+			<td>网站标题</td>
+			<td><input type="text" name="title"  value="{site_config->site_title}"></td>
+		</tr>
+		<tr>
+			<td>手机网标题</td>
+			<td><input type="text" name="title_mobile"  value="{site_config->site_title_mobile}"></td>
+		</tr>
+		<tr>
+			<td>网站关键字</td>
+			<td><input type="text" name="keywords"  value="{site_config->site_keywords}"></td>
+		</tr>
+		<tr>
+			<td>网站描述</td>
+			<td><input type="text" name="description"  value="{site_config->site_description}"></td>
+		</tr>
+		<tr>
+			<td>网站Logo</td>
+			<td><input type="text" name="logo"  value="{site_config->site_logo}"></td>
+		</tr>
+		<tr>
+			<td>网站底部</td>
+			<td><input type="text" name="foot"  value="{site_config->site_foot}"></td>
+		</tr>
+   <tr>
+   	<input type="hidden" name="token" value="{token}">
+	<td height="40" colspan="2" align="left"><input name="submit" type="submit" value="提交" class="button" /></td>
+	</tr>
+ </table>
+</div>
+</form>
+<include file="Tpl/mobile/Public/admin_bottom.html">

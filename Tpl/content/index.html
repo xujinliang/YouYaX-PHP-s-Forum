@@ -1,0 +1,684 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<link rel="icon" href="{site}/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="{site}/favicon.ico" type="image/x-icon">
+<link rel="bookmark" href="{site}/favicon.ico" type="image/x-icon">
+<script type="text/javascript" src="{site}/Public/JScript/public.js?<?php echo time();?>"></script>
+<script type="text/javascript" src="{site}/ORG/UBB/ORG/UBB/edit.js"></script>
+<link rel="stylesheet" href="{site}/ORG/UBB/ORG/UBB/edit.css" type="text/css">
+<script type="text/javascript" src="{site}/Public/JScript/Tip.js"></script>
+<script type="text/javascript" src="{site}/Public/JScript/Tip2.js"></script>
+<script type="text/javascript" src="{site}/Public/JScript/Tip3.js"></script>
+<script type="text/javascript" src="{site}/Public/JScript/xiangxi.js"></script>
+<script type="text/javascript" src="{site}/Public/JScript/cookie.js" ></script>
+<script type="text/javascript" src="{site}/Public/JScript/scrolltop.js"></script>
+<script type="text/javascript" src="{site}/Public/JScript/scrollbar.js" ></script>
+<script type="text/javascript" src="{site}/Public/JScript/online.js"></script>
+<script type="text/javascript" src="{site}/Public/JScript/reglog.js" defer="true"></script>
+<script type="text/javascript" src="{site}/Public/JScript/location.js"></script>
+<script src="{site}/ext_public/audiojs/audiojs/audio.min.js"></script>
+<link rel="stylesheet" href="{site}/ext_public/SyntaxHighlighter/styles/shCoreDefault.css" type="text/css">
+<link rel="stylesheet" type="text/css" href="{site}/Public/Css/Dialog.css">
+<script>
+  audiojs.events.ready(function() {
+  audiojs.createAll();
+});function nofind(){
+var img=event.srcElement;
+img.src="{site}/Public/images/error_load.png";
+img.style.width="222px";
+img.style.height="109px";
+img.onerror=null;
+}
+</script>
+<style type="text/css">
+*{margin:0px;padding:0px;}
+body{font-family: 'Microsoft YaHei','微软雅黑',Arial,Helvetica,sans-serif;color:#333;}
+a{color:#03415d;text-decoration:none}
+a:hover{color:#21b8e4;}
+table{border-collapse:collapse;}
+.tda>a:hover{color:#993399;text-decoration:underline;}
+#con_tab td{text-align: left;border:none;}
+.page a{font-weight:normal;display:inline-block;padding: 0 8px;height:26px;line-height:26px;border:1px solid #e6e6e6;background-color:#FFF;color:#333;overflow:hidden;text-decoration:none;}
+.page a:hover{color:#43b7e9;border-color:#eaf9ff;text-decoration:none;}
+.dp-highlighter{margin: 18px 0 -20px 0 !important;}
+.headline a,.headline span{font-size:13px;font-weight:bold;color:#fff;}
+.connector{border-color: transparent #fff;border-style: solid;border-width: 6px 0px 6px 8px;height: 0px;width: 0px;display: inline-block;position:relative;top:1px;margin:0 8px;
+*border:none;*width:4px;*height:8px;*background:url('{site}/Public/images/ie6_guide.gif') no-repeat;*top:-4px;_top:4px;}
+#ta::-webkit-input-placeholder{font-size:13px;position:relative;left:6px;}
+#ta::-moz-placeholder{font-size:13px;position:relative;left:6px;}
+.no-user-select {
+  -moz-user-select: none; 
+  -webkit-user-select: none; 
+  -ms-user-select: none;
+}
+::selection{color:#fff; background-color:#1c7bc5;}
+::-moz-selection{color:#fff; background-color:#1c7bc5;}
+::-webkit-selection{color:#fff; background-color:#1c7bc5;}
+.notification-box {width:1140px;margin:0 auto;border: 1px solid #ffe599;background: #ffffbf url({site}/Public/images/ico-exc.png) 10px 15px no-repeat;
+overflow: hidden;padding: 12px 0px 12px 0px;font-size: 16px;line-height: 18px;color: #949494;text-shadow: 1px 1px 0 #fff;text-align: center;
+}.notification-box2 {margin:0 auto;border: 1px solid #ffe599;background: #ffffbf url({site}/Public/images/ico-exc.png) 10px 15px no-repeat;
+overflow: hidden;padding: 12px 0px 12px 30px;font-size: 16px;line-height: 18px;color: #949494;text-shadow: 1px 1px 0 #fff;
+}.markdiv:after {position: absolute;width: 0;height: 0;border-style: solid;border-color: transparent;pointer-events: none;
+content: "";top: 13px;left: 0px;border-width: 9px 9px 9px 0;border-right-color: #fff;margin-left: 70px;margin-top: 10px;
+}.img_div:after {position: absolute;width: 0;height: 0;border-style: solid;border-color: transparent;pointer-events: none;
+content: "";top: 20px;right: 0;border-width: 9px 9px 9px 0;border-right-color: #fafafa;
+}.vote-up-off{background:url({site}/Public/images/laud.png) -28px 0px no-repeat;cursor:pointer;display: inline-block;margin: 0 auto;width: 25px;height: 40px;float:left;}
+.vote-down-off{background:url({site}/Public/images/laud.png) -75px 0px no-repeat;cursor:pointer;display: inline-block;margin: 0 auto;width: 25px;height: 40px;float:left;}
+.vote-count-post{color: #555;display: inline-block;font-size: 24px;height:40px;float:left;line-height:40px;margin:0 10px;}
+.vote_message{color: #ffffff;background-color: #c04848;text-align: left;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);width:150px;height:40px;float:left;line-height:40px;text-align:center;visibility:hidden;}
+input[type="submit"],input[type="reset"]{padding:2px;}
+.button{-moz-border-radius: 4px;-webkit-border-radius: 4px;border-radius: 4px;
+	display: inline-block;
+	background: #1c7bc5 url('<?php echo $this->C('SITE'); ?>/Public/resources/images/bg-button-blue.gif') top left repeat-x !important;
+	border: 1px solid #1c7bc5 !important;
+	padding: 4px 7px 4px 7px !important;
+	color: #fff !important;
+	font-size: 11px !important;
+	text-align: center;
+	cursor: pointer;}
+.text-input{
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}.textarea{
+	padding: 6px;
+	font-size: 13px;
+	background:#fff url('{site}/Public/resources/images/bg-form-field.gif') top left repeat-x;
+	border: 1px solid #d5d5d5;
+	color: #333;
+}
+#smusic label,#ssurl label,#imgwrapper label,#sflash label,#scode label{margin-left:0;}
+#Dialog input[type='radio']{position:relative;top:2px;}
+.btn{display:inline-block;text-decoration:none;padding:6px 12px;margin-bottom:0;font-size:14px;font-weight:400;line-height:1.42857143;text-align:center;cursor:pointer;border:1px solid transparent;border-radius:4px}
+.btn-lg{padding:10px 16px;font-size:18px;line-height:1.3333333;border-radius:6px}
+.btn-light,.btn-light:active,.btn-light:focus{color:#fff;background-color:#00a1d7;border-color:#00a1d7}
+.btn-light:hover {color: #00a1d7;background-color: #fff;border-color: #00a1d7;}
+#groupdiv{padding:5px;height:450px;overflow:hidden;}
+#groupdiv ul{margin:0;padding:0;margin-top:10px;}
+#groupdiv ul li{list-style-type:none;}
+.gray{-webkit-filter: grayscale(100%);-moz-filter: grayscale(100%);-ms-filter: grayscale(100%);-o-filter: grayscale(100%);filter: grayscale(100%);filter: gray;}
+.share_btn{font-size:14px;color: black;background: transparent;border: 1px solid #AAA;padding: 4px 10px;display:block;margin-bottom:5px;border-radius:10px;cursor:pointer;}
+.share_btn:hover{background: #717366;color: white;}
+</style>
+<title>{data1_0}--{site_config->site_title}</title>
+</head>
+<body style="font-size:14px;background:#efefef;">
+	<include file="Tpl/Public/top_bar.html">
+		<center>
+			<include file="Tpl/Public/head.html">
+			<?php
+				$num = 0;
+				if($_COOKIE['record'] == 'yellow2') $num_tmp = 10;
+      	if($_COOKIE['record'] == 'blue') $num_tmp = 20;
+      	if(empty($_COOKIE['record']) || $_COOKIE['record']=='shallow') $num_tmp = 15;
+      	$numAll = sizeof($this->array_two['data1']);
+			?>
+			<div id="register" style="display:none;">
+				<div id="rt" align="right" style="width:100%;height:20px;background-color:#f5f5f5;cursor:move;"><b style="cursor:pointer;">关闭</b>&nbsp;</div>
+				<iframe id="iframe_rt" src="__APP__/Register{url}show{shtml}" width="100%" height="180" frameborder="0"></iframe>
+			</div>
+			<div style="width:1140px;position:relative;z-index:2;">
+				<div style="width:60px;position:absolute;right:-65px;top:30px;z-index:1;">
+					<a class="share_btn" title="收藏此帖"  onclick="favor({cid})">收藏此帖</a>
+					<a class="share_btn" title="显示10条记录" onclick="setcookie2('yellow2')">显示10条</a>
+					<a class="share_btn" title="显示15条记录(默认)" onclick="setcookie2('shallow')">显示15条</a>
+					<a class="share_btn" title="显示20条记录" onclick="setcookie2('blue')">显示20条</a>
+					<a class="share_btn" title="主帖无滚动条" onclick="setcookie('green')">无滚动条</a>
+					<a class="share_btn" title="主帖现滚动条" onclick="setcookie('yellow')">有滚动条</a>
+					<a class="share_btn" id="shareBtn" target="_blank" title="分享到新浪微博">新浪微博</a>
+					<script type="text/javascript" charset="utf-8">
+							var wb_shareBtn = document.getElementById("shareBtn")
+								wb_url			= location.href,
+								wb_appkey		= "",
+								wb_title			= "",
+								wb_ralateUid	= "1955839363",
+								wb_pic			= "",
+								wb_language	= "zh_cn";
+								wb_shareBtn.setAttribute("href","http://service.weibo.com/share/share.php?url="+wb_url+"&appkey="+wb_appkey+"&title="+wb_title+"&pic="+wb_pic+"&ralateUid="+wb_ralateUid+"&language="+wb_language+"");
+					</script>
+					<script type="text/javascript">document.write(['<a class="share_btn" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=',encodeURIComponent(location.href),'&title=',encodeURIComponent(document.title),'" target="_blank"  title="分享到QQ空间">QQ<br>空间<\/a>'].join(''));</script>
+				</div>
+				<?php	if(!empty($this->array['is_allow'])){
+			$grouparr = explode(",",$this->array['is_allow']);
+				?>
+			<div style="position:absolute;left:-84px;top:30px;z-index:1;" id="groupdiv">
+				<div id="scon_group" style="width:70px;float:left;position:relative;">
+				<h3 style="font-size:12px;">群组讨论<br>（<?php echo count($grouparr);?>人）</h3>
+				<ul>
+				<?php	foreach($grouparr as $v){	?>
+					<li><a href="javascript:void(0);" onclick="document.getElementById('quser').value='<?php echo $v; ?>';document.forms['query_username'].target='_blank';document.forms['query_username'].submit();">
+						<?php
+						$online_result = $this->find($this->C('db_prefix') . "online", "string", "user='" . $v . "'");
+        if ($online_result) {	?>
+						<img title="<?php echo $v;?>" src="<?php echo $this->getImg($v);?>" style="border:none;border-radius:50%;width:60px;">
+					<?php	}else{	?>
+						<img title="<?php echo $v;?>" src="<?php echo $this->getImg($v);?>" class="gray" style="border:none;border-radius:50%;width:60px;">
+				<?php	}	?>
+					</a></li>	
+				<?php	}	?>
+				</ul>
+				</div>
+				<div id="slider_group" style="width:4px;height:450px;float:left;position:relative;left:4px;background:#ddd5be;">
+				 <div id="slider_btn_group" title="滚动条拖拽" style="cursor:s-resize;position:absolute;top:0;left:0;width:4px;background:#999999;height:50px; -moz-border-radius: 4px; -khtml-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;"></div>
+			  </div>
+			</div>
+		<?php	}	?>
+				<table id="con_tab" border=0 cellspacing=0 cellpadding=0 width="100%">
+					<?php
+					if(!empty($this->array['showx'])){	?>
+					<tr>
+							<td class="tda" colspan=3  style="text-align:right;height:22px;overflow:hidden;margin:0px;padding:0px;">
+								<div class="page">{showx}</div>
+					 		</td>
+						</tr>
+					<?php	}	?>
+					<?php
+						foreach($this->array_two['data1'] as $vo){
+							if($num==0){
+						?>
+						<tr style="border:1px solid #ddd;border-bottom:none;">
+							<td height="38" class="headline" colspan=3 style="padding-left:10px;background:#1c7bc5;font-size:0;"><a href="{site}">主页</a><?php if(!empty($this->array_array['fq_parent'])){echo '<span class="connector"></span>'.'<a href="'.$this->youyax_url.'/List'.$this->C('default_url').$this->array_array['fq_parent']['id'].$this->C('static_url').'">'.$this->array_array['fq_parent']['szone'].'</a>';} ?><span class="connector"></span>
+								<?php if(strpos($_SERVER['HTTP_REFERER'],"type")){	?>
+									<a href="<?php echo $_SERVER['HTTP_REFERER'];?>">{fq->szone}</a>
+								<?php	}else{	?>
+									<a href="__APP__/List{url}{fqlink}{shtml}">{fq->szone}</a>
+								<?php	}	?>
+							<span class="connector"></span><span style="color:#fff;"><?php echo preg_replace("/\[[^]]*]/","",strip_tags(stripslashes($vo['title']))); ?></span></td>
+						</tr>
+						<?php
+						 $page_hide = intval($_GET['page']);
+						 if(empty($page_hide) || ($page_hide==1)){ ?>
+						<tr style="border:1px solid #ddd;border-bottom:none;">
+							<td width=160 height=20 style="background-color:#BFE6D7"><div style="margin-left:10px;width:140px;text-overflow:ellipsis;white-space:nowrap; overflow:hidden;"><?php echo $vo['zuozhe'];?></div></td>
+							<td  align="right" width=750 height=20 style="text-align:right;background:#BFE6D7"><span style="font-size:12px;font-weight:bold;margin-top:2px;float:left">发表于<?php echo $vo['time1'];?> &nbsp;&nbsp;
+								<?php if(empty($_GET['author'])){	?>
+									<a style="color:#f60;font-weight:normal" href="?author=<?php echo CommonAction::getUserInfo($vo['zuozhe'],'id'); ?>">只看楼主</a></span>
+								<?php }else{	?>
+									<a style="color:#f60;font-weight:normal" href="?">查看全部</a></span>
+							<?php	}	?>
+							<?php
+							if($vo['last_modify1']!='0000-00-00 00:00:00'){
+									echo '<div style="display:inline-block;background-color: #deedf0;color: #b5b6dd;font-size: 12px;width: 200px;text-align: center;border-radius: 4px;margin-right:4px;">最后更新于 '.$vo['last_modify1'].'</div>';
+								}
+							?>
+								</td><td width=50  style="text-align:right;background-color:#BFE6D7">楼主</td>
+						</tr>
+						<tr style="border:1px solid #ddd;border-top:none;">
+							<td  valign=top style="width:165px;min-height:270px;<?php 
+	if(CommonAction::getUserGroupByName($vo['zuozhe'])){
+		echo 'background-color:#BFE6D7;';
+	}else{
+		echo 'background-color:#f2dede;';
+	}
+	?>">
+								<div style="position:relative;">
+									<div class="img_div" style="width:100%;">
+										<a href="javascript:void(0);" onclick="document.getElementById('quser').value='<?php echo $vo['zuozhe']; ?>';document.forms['query_username'].target='_blank';document.forms['query_username'].submit();"><img style="margin:10px 0 0 10px;border:none;" src="{site}/Public/pic/<?php echo $vo['face'];?>"></a>
+									</div>
+								</div>
+								<div style="margin-left:10px;margin-top:10px;color:#333;">
+									<b style="font-size:12px;">头衔:&nbsp;
+										<?php
+										foreach($this->array_two['custom_title_config'] as $ct){
+											if($vo['fatieshu1'] >= $ct['min'] && $vo['fatieshu1'] < $ct['max']){
+												echo $ct['title'];
+											}
+										}
+										?>
+											</b>
+									<br><b style="font-size:12px;">注册时间:&nbsp;<?php echo substr($vo['timezc1'],0,10);?></b>
+									<br><b style="font-size:12px;">用户组:&nbsp;<?php echo CommonAction::getUserGroupByName($vo['zuozhe']); ?></b>
+									<br><b style="font-size:12px;">发帖数:&nbsp;&nbsp;<?php echo $vo['fatieshu1'];?></b>
+									<br><b style="font-size:12px;">金币数:&nbsp;&nbsp;<?php echo CommonAction::getUserInfo($vo['zuozhe'],'bid'); ?></b><br>
+									<span onclick="show('<?php echo $vo['zuozhe'] ?>')" style="cursor: pointer;font-size: 12px;padding: 4px 6px;float: left;background: #00965e;color: #fff;font-weight: bold;margin-top: 4px;border-radius: 5px;">短消息</span>
+									<?php echo CommonAction::getUserInfo($vo['zuozhe'],'title'); ?>
+								</div>
+							</td>
+			<td colspan=2 valign=top style="background-color:#fafafa">
+				<div style="width:975px;overflow-y:hidden;"><!--overflow样式自定义，不同效果-->
+								<table width=100% height=270 cellspacing=0 cellpadding=0 border=0>
+									<tr><td valign=top style="background:#fafafa;line-height:26px;padding-left:4px;font-size:15px;padding-bottom:10px;">
+				<?php
+						if($_COOKIE['scrollbar']=='yellow')
+						{
+				?>
+								<div id="swrap" style="width:100%;height:300px;overflow:hidden;">
+									
+									<div id="scon" style="width:98%;float:left;position:relative;">
+				<?php
+						}
+				?>
+				<?php
+						  if(!empty($this->array_two['vote_options'])){
+						?>
+						<form action="__APP__/Vote{url}dovote{shtml}" method="post" name="form">
+								<fieldset style="font-size: 12px;border: 1px solid #CCC;padding: 0 10px 10px;margin: 10px;overflow-x: hidden;word-wrap: break-word;">
+								<legend>(投票主题){data1_0}</legend>
+								<ul style="margin:10px 10px;padding:0px;list-style-type:none">
+						<?php
+							$vnum=-1;
+							foreach($this->array_two['vote_options'] as $v){
+								$vnum++;
+							?>
+								<li style="height:30px;">
+									<input type="radio" name="vradio" value="<?php echo $vnum;?>">
+									<span style="min-width:100px;display:inline-block;"><?php echo $v['options'];?></span>
+									<span style="display:inline-block;background:#feb150;width:<?php echo $v['nums']*10;?>px;height:10px;"></span>
+									<span style="width:20px;display:inline-block;"><?php echo $v['nums'];?></span>									
+								</li>
+						<?php
+							}
+						?>
+								<span style="color:#00923f;background:#fefcec;font-size:13px;">总共有 {vote_nums} 个投票记录</span><br>
+								<input type="submit" name="votesub" value="我要投票" style="display:block;cursor:pointer;border-radius:5px;background:#f4f4f4;outline:none;height:24px;width:100px;line-height:24px;font-size:12px;padding:0;border:1px solid #ccc">
+								</ul>
+								</fieldset>
+								<input type="hidden" name="cid" value="{cid}">
+								<input type="hidden" name="vid" value="{vid}">
+								</form>
+						<?php
+						  }
+						?>
+						<?php 
+						if(($vo['is_visible']==1 && in_array($_SESSION['youyax_user'],$this->array_array['data_visible'])) || $vo['is_visible']==0){
+							if($this->is_exist_widget("PicMagnifierWidget") && $this->is_active_widget("PicMagnifierWidget")){
+								echo  w("PicMagnifierWidget")->judge($vo['content']);
+							}else{
+								echo $vo['content'];
+							}
+						}else{ ?>
+							<div class="notification-box2">
+								帖子已被设置，回复可见内容。
+							</div>
+						<?php	}	?>
+						<?php
+						if($_COOKIE['scrollbar']=='yellow')
+						{
+				?>	
+								  </div>
+								  <div id="slider" style="width:10px;height:300px;float:left;position:relative;left:4px;background:#ddd5be;">
+									 <div id="slider_btn" title="滚动条拖拽" style="cursor:s-resize;position:absolute;top:0;left:0;width:10px;background:#999999;height:50px; -moz-border-radius: 4px; -khtml-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;"></div>
+								  </div>
+								  
+								</div>
+	<?php
+						}
+				?>
+									</td></tr>   			<!--文章内容-->
+							<?php if($vo['is_question']==1){	?>
+									<tr><td height="40" style="text-align:center;">
+										<div style="width:270px;height:40px;margin:0 auto;">
+										<a class="vote-up-off" onclick="vote_stack(event,<?php echo $vo['id'];?>,1)" title="提问是清晰、有用的"></a>
+										<span class="vote-count-post"><?php echo $vo['laud'];?></span>
+										<a class="vote-down-off" onclick="vote_stack(event,<?php echo $vo['id'];?>,2)" title="提问是不清晰、没用的"></a>
+										<div class="vote_message"></div>
+										</div>
+									</td></tr>
+							<?php	}	?>
+							<?php	if($vo['zuozhe']=="{user}" && ($vo['lock_status']==0)){if(("{user}"!='') && ($vo['is_question']==1)){	?>
+								<tr><td style="text-align:center;">
+										<div style="width:285px;margin:0 auto;text-align:left;">
+											<a class="btn btn-lg btn-light" href="__APP__/accept{url}0{url}<?php echo $vo['id'];?>{shtml}">无满意答案</a>
+										</div>
+								</td></tr>
+							<?php	}}	?>
+									<tr><td align=left valign=bottom>
+										<div style="width:100%;">
+											<?php
+											$res = $this->db->query("select count(*) as count_m1 from " . $this->C('db_prefix') . "mark1 where tid=".$_SESSION['youyax_talk_id']);
+											$count_mark1 = $res->fetch();
+							        $fenye_m1 = new Fenye_comments($count_mark1['count_m1'], 5);
+							        if(empty($_SERVER['QUERY_STRING'])){
+						        		$show_m1  = $fenye_m1->show($_SESSION['youyax_talk_id'],'','');
+						        	}else{
+						        		$tmp = explode("_",$_SERVER['QUERY_STRING']);
+						        		$show_m1  = $fenye_m1->show($_SESSION['youyax_talk_id'],'','',$tmp[2]);
+						        	}
+							        $show_m1  = implode("<span style='width:2px;display:inline-block;'></span>", $show_m1);
+							        $mark1 = $this->select("select * from " . $this->C('db_prefix') . "mark1 where tid=".$_SESSION['youyax_talk_id']. " order by id desc");
+							        if(empty($_SERVER['QUERY_STRING'])){
+						        		$mark1 = array_slice($mark1, 0, 5);
+							        }else{
+							         	$tmp = explode("_",$_SERVER['QUERY_STRING']);
+							         	if($tmp[1] == '' || $tmp[1] ==null){
+						         			$mark1 = array_slice($mark1, $tmp[2]*5-5, 5);
+							        	}else{
+							        		$mark1 = array_slice($mark1, 0, 5);
+							        	}
+							        }
+											 if(!empty($mark1)){
+											 foreach($mark1 as $m1){
+											 	if($m1['tid']==$vo['id']){
+											   ?>
+													<div style="width:100%;background:#e9e6e6;font-size:12px;position:relative;display:table">
+														<div style="float:left;margin-left:30px;margin-top:16px;width:39px">
+															<a style="color:#333;" href="javascript:void(0);" onclick="document.getElementById('quser').value='<?php echo $m1['marker']; ?>';document.forms['query_username'].target='_blank';document.forms['query_username'].submit();">
+																<img border="0" width="30" src="{site}/Public/pic/<?php echo $m1['pic'];?>" title="<?php echo $m1['marker'];?>">
+																<div style="margin-top:3px;width:39px;text-overflow:ellipsis;white-space:nowrap; overflow:hidden;" title="<?php echo $m1['marker'];?>"><?php echo $m1['marker'];?></div>
+															</a>
+														</div>
+														<div class="markdiv" style="float:left;margin-top:10px;margin-bottom:10px;margin-left:10px;width:820px;min-height:50px;*height:50px;background:#fff;font-size:14px;text-align:left;padding:0 20px;border-radius:10px;"><?php echo $m1['content'];?> <span title="<?php echo $m1['time'];?>" style="font-family: arial;-webkit-transform: scale(0.8);-moz-transform: scale(0.8);-o-transform: scale(0.8);display:inline-block;">(<?php echo $m1['time'];?>)</span></div>
+														<?php	if($m1['marker'] != $_SESSION['youyax_user']){	?>
+															<div style="position:absolute;width:30px;height:auto;right:45px;top:30px;font-size:12px;"><a style="color:#ddd;" href="javascript:void(0)" onclick="showmarkone(<?php echo $_SESSION['youyax_talk_id'];?>,<?php echo $m1['id'];?>,'<?php echo $m1['marker'];?>')">回复</a></div>
+														<?php	}	?>
+													</div>
+												<?php
+												}
+										   }
+									   }
+										?>
+										<?php if($count_mark1['count_m1'] > 5){	?>
+											<div class="page" align="right" style="padding-right:40px;padding-bottom:10px;background:#e9e6e6;font: 12px/1.5 Tahoma,'Microsoft Yahei','Simsun';"><?php echo $show_m1; ?></div>
+										<?php	}	?>
+										</div></td></tr>
+									<tr height="18" style="font-weight:bold;font-size:14px;">
+										<td height="18" valign="bottom" style="width:100%;">
+											<div style="width:100%;height:22px;text-align:right;border-top:2px dotted #d1d7dc;background-color:#BFE6D7;">
+										<div style="float:left">
+											<?php if(($vo['is_visible']==1 && in_array($_SESSION['youyax_user'],$this->array_array['data_visible'])) || $vo['is_visible']==0){	?>
+											<a href="__APP__/quote{url}<?php echo $vo['id'];?>{shtml}" style="color:#002d93;">引用回复</a>&nbsp;
+										<?php	}	?>
+											<?php
+											 if($vo['zuozhe']=="{user}"){
+											 	?>
+											 	<a href="__APP__/edit{url}<?php echo $vo['id'];?>{shtml}"  style="color:#002d93;margin-left:4px;">编辑</a>
+											 <?php
+											}
+											?>
+											<?php
+							    		if($this->is_exist_widget("SignatureWidget") && $this->is_active_widget("SignatureWidget")){
+							    			echo w("SignatureWidget")->showSign($vo['zuozhe']);
+							    		}
+							    		?>
+										</div>
+											<div style="float:right">
+											<?php if($vo['zuozhe'] != $this->array['user']){	?>
+												<a style="color:#002d93;" href="javascript:void(0)" onclick="set_dialog_display('<?php echo $vo['zuozhe']; ?>','{user}')">操作</a>&nbsp;
+											<?php	}	?>
+												<a style="color:#002d93;margin-right:5px;" href="javascript:void(0)" onclick="showmarkone(<?php echo $_SESSION['youyax_talk_id'];?>)">点评</a>
+											</div>
+										</div>
+										</td>
+									</tr>
+								</table>
+			  </div>
+		</td>
+			
+						</tr>
+					<?php if(!empty($vo['zuozhe1'])){	?>
+						<tr><td colspan=3>&nbsp;</td></tr>
+					<?php	}	?>
+						<?php
+						}
+					}
+							$num++;
+							if(!empty($vo['zuozhe1'])){
+							?>
+						<tr style="border:1px solid #ddd;border-bottom:none;">
+							<td width=160 height=20 style="background-color:#BFE6D7"><div style="margin-left:10px;width:140px;text-overflow:ellipsis;white-space:nowrap; overflow:hidden;"><?php echo $vo['zuozhe1'];?></div></td><td align=left style="background-color:#BFE6D7"><b style="font-size:12px;">发表于<?php echo $vo['time2'];?></b>
+								<?php
+									if($vo['last_modify2']!='0000-00-00 00:00:00'){
+										echo '<div style="display:inline-block;background-color: #deedf0;color: #b5b6dd;font-size: 12px;width: 200px;text-align: center;border-radius: 4px;margin-left:4px;">最后更新于 '.$vo['last_modify2'].'</div>';
+									}	?>
+								</td><td style="text-align:right;background-color:#BFE6D7"><a style="color:#000000" name="p<?php echo $vo['num2'];?>"><?php echo $vo['num2'];?>楼</a></td>
+						</tr>
+						<tr style="border:1px solid #ddd;border-top:none;">
+													<td  valign=top  style="width:165px;min-height:270px;<?php 
+	if(CommonAction::getUserGroupByName($vo['zuozhe1'])){
+		echo 'background-color:#BFE6D7;';
+	}else{
+		echo 'background-color:#f2dede;';
+	}
+	?>">
+								<div style="position:relative;">
+									<div class="img_div" style="width:100%;">
+										<a href="javascript:void(0);" onclick="document.getElementById('quser').value='<?php echo $vo['zuozhe1']; ?>';document.forms['query_username'].target='_blank';document.forms['query_username'].submit();"><img style="margin:10px 0 0 10px;border:none" src="{site}/Public/pic/<?php echo $vo['face1'];?>"></a>
+									</div>
+								</div>
+								<div style="margin-left:10px;margin-top:10px;color:#333;">
+										<b style="font-size:12px;">头衔:&nbsp;
+											<?php
+										foreach($this->array_two['custom_title_config'] as $ct){
+											if($vo['fatieshu2'] >= $ct['min'] && $vo['fatieshu2'] < $ct['max']){
+												echo $ct['title'];
+											}
+										}
+										?></b>
+									<br><b style="font-size:12px;">注册时间:&nbsp;<?php echo substr($vo['timezc2'],0,10);?></b>
+									<br><b style="font-size:12px;">用户组:&nbsp;<?php echo CommonAction::getUserGroupByName($vo['zuozhe1']); ?></b>
+									<br><b style="font-size:12px;">发帖数:&nbsp;&nbsp;<?php echo $vo['fatieshu2'];?></b>
+									<br><b style="font-size:12px;">金币数:&nbsp;&nbsp;<?php echo CommonAction::getUserInfo($vo['zuozhe1'],'bid'); ?></b><br>
+									<span onclick="show('<?php echo $vo['zuozhe1']; ?>')" style="cursor: pointer;font-size: 12px;padding: 4px 6px;float: left;background: #00965e;color: #fff;font-weight: bold;margin-top: 4px;border-radius: 5px;">短消息</span>
+									<?php echo CommonAction::getUserInfo($vo['zuozhe1'],'title'); ?>
+							 </div>
+							</td><td colspan=2 valign=top style="background-color:#fafafa">
+						<div style="width:975px;overflow-y:hidden;">
+								<table width=100% height=270 cellspacing=0 cellpadding=0 border=0>
+									<tr><td valign=top style="background:#fafafa;line-height:26px;padding-left:4px;font-size:15px;padding-bottom:10px;">									
+										<?php
+										if($this->is_exist_widget("PicMagnifierWidget") && $this->is_active_widget("PicMagnifierWidget")){
+												echo  w("PicMagnifierWidget")->judge($vo['content1']);
+											}else{
+												echo $vo['content1'];
+											}
+										?>									
+										</td></tr>
+							<?php if($vo['is_question']==1){	?>
+									<tr><td height="40" style="text-align:center;">
+										<div style="width:270px;height:40px;margin:0 auto;">
+										<a class="vote-up-off" onclick="vote_stack(event,<?php echo $vo['id'];?>,1,<?php echo $vo['id2'];?>,'reply')" title="回答是清晰、有用的"></a>
+										<span class="vote-count-post"><?php echo $vo['laud2'];?></span>
+										<a class="vote-down-off" onclick="vote_stack(event,<?php echo $vo['id'];?>,2,<?php echo $vo['id2'];?>,'reply')" title="回答是不清晰、没用的"></a>
+										<div class="vote_message"></div>
+										</div>
+									</td></tr>
+							<?php	}	?>
+									<tr><td align=left valign=bottom>
+										<div style="width:100%;">
+										<?php
+										$res = $this->db->query("select count(*) as count_m2 from " . $this->C('db_prefix') . "mark2 where tid=".$_SESSION['youyax_talk_id']." and rid=".$vo['id2']);
+										$count_mark2 = $res->fetch();
+						        $fenye_m2 = new Fenye_comments($count_mark2['count_m2'], 5);
+						        if(empty($_SERVER['QUERY_STRING'])){
+						        	$show_m2  = $fenye_m2->show($_SESSION['youyax_talk_id'],$vo['num2'],$vo['id2']);
+						        }else{
+						        	$tmp = explode("_",$_SERVER['QUERY_STRING']);
+						        	$show_m2  = $fenye_m2->show($_SESSION['youyax_talk_id'],$vo['num2'],$vo['id2'],$tmp[2]);
+						        }
+						        $show_m2  = implode("<span style='width:2px;display:inline-block;'></span>", $show_m2);
+						        $mark2 = $this->select("select * from " . $this->C('db_prefix') . "mark2 where tid=".$_SESSION['youyax_talk_id']." and rid=".$vo['id2']. " order by id desc");
+						        if(empty($_SERVER['QUERY_STRING'])){
+						        	$mark2 = array_slice($mark2, 0, 5);
+						        }else{
+						         	$tmp = explode("_",$_SERVER['QUERY_STRING']);
+						         	if($tmp[1] == $vo['id2']){
+						         		$mark2 = array_slice($mark2, $tmp[2]*5-5, 5);
+						        	}else{
+						        		$mark2 = array_slice($mark2, 0, 5);
+						        	}
+						        }
+											 if(!empty($mark2)){
+											 foreach($mark2 as $m2){
+											 	if($m2['rid']==$vo['id2']){
+											    ?>
+													<div style="width:100%;background:#e9e6e6;font-size:12px;position:relative;display:table">
+														<div style="float:left;margin-left:30px;margin-top:16px;width:39px">
+															<a style="color:#333;" href="javascript:void(0);" onclick="document.getElementById('quser').value='<?php echo $m2['marker']; ?>';document.forms['query_username'].target='_blank';document.forms['query_username'].submit();">
+																<img border="0" width="30" src="{site}/Public/pic/<?php echo $m2['pic'];?>" title="<?php echo $m2['marker'];?>">
+																<div style="margin-top:3px;width:39px;text-overflow:ellipsis;white-space:nowrap; overflow:hidden;" title="<?php echo $m2['marker'];?>"><?php echo $m2['marker'];?></div>
+															</a>
+														</div>
+														<div class="markdiv" style="float:left;margin-top:10px;margin-bottom:10px;margin-left:10px;width:820px;min-height:50px;*height:50px;background:#fff;font-size:14px;text-align:left;padding:0 20px;border-radius:10px;"><?php echo $m2['content'];?> <span title="<?php echo $m2['time'];?>" style="font-family: arial;-webkit-transform: scale(0.8);-moz-transform: scale(0.8);-o-transform: scale(0.8);display:inline-block;">(<?php echo $m2['time'];?>)</span></div>
+														<?php	if($m2['marker'] != $_SESSION['youyax_user']){	?>
+															<div style="position:absolute;width:30px;height:auto;right:45px;top:30px;font-size:12px;"><a style="color:#ddd;" href="javascript:void(0)" onclick="showmark(<?php echo $vo['id2'];?>,<?php echo $_SESSION['youyax_talk_id'];?>,<?php echo $m2['id'];?>,'<?php echo $m2['marker'];?>')">回复</a></div>
+														<?php	}	?>
+													</div>
+												<?php
+												}
+										  }
+									  }
+										?>
+										<?php if($count_mark2['count_m2'] > 5){	?>
+											<div class="page" align="right" style="padding-right:40px;padding-bottom:10px;background:#e9e6e6;font: 12px/1.5 Tahoma,'Microsoft Yahei','Simsun';"><?php echo $show_m2;?></div>
+										<?php	}	?>
+										</div></td></tr>
+									<tr height="18" style="font-weight:bold;font-size:14px;">
+										<td height="18" valign="bottom" style="width:100%;">
+											<div style="width:100%;height:22px;text-align:right;border-top:2px dotted #d1d7dc;background-color:#BFE6D7;">
+										<div style="float:left">
+											<a href="__APP__/quote{url}<?php echo $vo['id2'];?>{url}<?php echo $vo['id'];?>{shtml}"  style="color:#002d93;">引用回复</a>&nbsp;
+											<?php	if($vo['zuozhe1']=="{user}"){	?>
+											 	<a href="__APP__/edit{url}<?php echo $vo['id2'];?>{url}<?php echo $vo['id'];?>{shtml}"  style="color:#002d93;margin-left:4px;">编辑</a>
+											 <?php }if($vo['zuozhe']=="{user}" && ($vo['lock_status']==0)){if(("{user}"!='') && ($vo['zuozhe1']!="{user}") && ($vo['is_question']==1)){	?>
+												<a href="__APP__/accept{url}<?php echo $vo['id2'];?>{url}<?php echo $vo['id'];?>{shtml}"  style="color:#002d93;margin-left:4px;">采纳为最佳答案</a>
+										<?php	}}	?>
+											<?php
+							    		if($this->is_exist_widget("SignatureWidget") && $this->is_active_widget("SignatureWidget")){
+							    			echo w("SignatureWidget")->showSign($vo['zuozhe1']);
+							    		}
+							    		?>
+										</div>
+											<div style="float:right">
+												<a style="color:#002d93;" href="javascript:void(0)" onclick="set_dialog_display('<?php echo $vo['zuozhe1']; ?>','{user}',<?php echo $vo['id2'];?>,<?php echo $vo['num2'];?>)">操作</a>&nbsp;
+												<a style="color:#002d93;margin-right:5px;" href="javascript:void(0)" onclick="showmark(<?php echo $vo['id2'];?>,<?php echo $_SESSION['youyax_talk_id'];?>)">点评</a>
+											</div>
+										</div>
+										</td>
+									</tr>
+								</table>
+							</div>
+							</td>
+						</tr>
+				<?php
+				if(fmod(floatval($num),$num_tmp)!= 0 && ($num != $numAll)){	?>
+					<tr><td colspan=3>&nbsp;</td></tr>
+				<?php	}	?>
+				<div id="mark<?php echo $vo['id2'];?>" style="display:none;">
+					<div align=right style="width:100%;height:20px;line-height:20px;background-color:#ebe8e3;"><span onclick="turnmark('<?php echo $vo['id2'];?>')" style="cursor:pointer;font-weight:bold;font-size:12px;margin-right:10px;">关闭</span></div>
+					<iframe id="mark_iframe<?php echo $vo['id2'];?>" width=100% height=230 frameBorder=0></iframe>
+				</div>			
+				<?php
+			}
+		}
+			?>
+			<?php
+					if(!empty($this->array['showx'])){	?>
+			<tr>
+						<td class="tda" colspan=3  style="text-align:right;height:22px;overflow:hidden;margin:0px;padding:0px;">
+							<div class="page">{showx}</div>
+				 		</td>
+					</tr>
+				<?php	}	?>
+				</table>
+			</div>
+			<br>
+<?php if($this->array['lock_status']!=1){	?>
+			<form name="form1"  method=post action="__APP__/List{url}insert2{shtml}" onsubmit="return check();">
+			<table border=0 style="width:1140px;border:1px solid #ddd">
+				<tr style="display:none;">
+					<td>回复人</td><td><input type=text READONLY name=zuozhe1 value="{user}"></td>
+				</tr>
+				<tr>
+					<td align="center" style="width:70px;background:#BFE6D7;">回复内容</td><td>
+						<div id="edit" style="width:1070px;background:#f9f9f9;margin:0 auto;font-weight:normal"></div>
+						<script>web_editor_init("edit","1070","160","{site}/ORG/UBB")</script>
+					</td>
+				</tr>
+				<tr style="background:#BFE6D7;">
+					<td align="left"><input class="button" id="sub" type="submit" value="提交回复"></td><td align="left"><input class="button" type="reset" value="重置" ></td>
+				</tr>
+			</table>
+		</form>
+<?php	}else{	?>
+<div class="notification-box">
+	帖子已被锁定，已经无法回帖。
+</div>
+<?php	}	?>
+		<form name="query_username" method="post" action="__APP__/Content{url}userinfo{shtml}">
+			<input type="hidden" id="quser" name="quser">
+		</form>
+		<div id="markone" style="display:none;">
+			<div align=right style="width:100%;height:20px;line-height:20px;background-color:#ebe8e3;"><span onclick="turnmarkone()" style="cursor:pointer;font-weight:bold;font-size:12px;margin-right:10px;">关闭</span></div>
+			<iframe id="markone_iframe" width=100% height=230 frameBorder=0></iframe>
+		</div>
+		<div style="width:1140px">
+			<include file="Tpl/Public/footer.html">
+		</div>
+		</center>
+		<div style="display: none;cursor:pointer;position:fixed;bottom:100px;right:40px;*position:absolute;*bottom:expression(eval(document.documentElement.scrollLeft+100))px;*right:expression(eval(document.documentElement.scrollTop+40))px" id="goTopBtn"><img title="回到顶部" border=0 src="{site}/Public/images/gotop.png"></div>
+		<script type=text/javascript>goTopEx();xuanran()</script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shCore.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushAppleScript.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushAS3.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushBash.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushColdFusion.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushCpp.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushCSharp.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushCss.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushDelphi.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushDiff.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushErlang.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushGroovy.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushJava.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushJavaFX.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushJScript.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushPerl.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushPhp.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushPlain.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushPowerShell.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushPython.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushRuby.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushSass.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushScala.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushSql.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushVb.js"></script>
+		<script class="javascript" src="{site}/ext_public/SyntaxHighlighter/Scripts/shBrushXml.js"></script>
+		<script class="javascript">
+			SyntaxHighlighter.all();
+			if(document.getElementById("web_editor_con2")){
+				document.getElementById("web_editor_con2").className+=" text-input textarea";
+				document.getElementById("web_editor_con2").setAttribute("placeholder","最少{mix->talk_content}个字符");
+			}
+		</script>
+	<form name="dia_form" method="post">
+		<div id="Dialog" class="Dialog Dialog_ie6">
+			<h3 class="Dialog_Title">操作管理</h3>
+			<div class="Dialog_Body Dialog_Icon Dialog_Question">
+				<div id="dia_con_1" style="font-size:14px;">
+					<label id="select_action_1"><input type="radio" name="select_action" value="1" onchange="if(this.checked){document.getElementById('dia_hd').value='1';}">&nbsp;举报&nbsp;&nbsp;&nbsp;</label>
+					<label id="select_action_2"><input type="radio" name="select_action" value="2" onchange="if(this.checked){document.getElementById('dia_hd').value='2';}">&nbsp;删除</label>
+					<input type="hidden" id="dia_hd">
+				</div>
+				<div id="dia_con_2" style="display:none;font-size:14px;">
+					<label>举报用户：&nbsp;</label><span id="jbyh"></span><input type="hidden" id="jbyh_hd" name="jbyh_hd"><br>
+					<label>举报原因：&nbsp;</label>
+					<label><input type="radio" name="jbyy" value="广告" onchange="document.getElementById('hbyy_qt').style.display='none';">广告</label>
+					<label><input type="radio" name="jbyy" value="色情" onchange="document.getElementById('hbyy_qt').style.display='none';">色情</label>
+					<label><input type="radio" name="jbyy" value="谩骂" onchange="document.getElementById('hbyy_qt').style.display='none';">谩骂</label>
+					<label><input type="radio" name="jbyy" value="违规" onchange="document.getElementById('hbyy_qt').style.display='none';">违规</label>
+					<label><input type="radio" name="jbyy" value="其他" onchange="document.getElementById('hbyy_qt').style.display='block';">其他</label>
+					<br>
+					<textarea name="hbyy_qt" id="hbyy_qt" style="margin:0 auto;display:none;margin-top:4px;height:50px;width:92%"></textarea>
+					<input type="hidden" id="jburl" name="jburl">
+					<input type="hidden" id="dia_2">
+				</div>
+				<div id="dia_con_3" style="display:none;font-size:14px;">
+					确定要删除这条回复？<br>
+					<div style="margin-bottom:8px;"></div>
+					管理密码:<input type="text" name="rpass">
+					<input type="hidden" id="rid" name="rid">
+					<input type="hidden" id="dia_3">
+				</div>
+			</div>
+			<div class="Dialog_Buttons">
+			<a href="javascript:void(0)" class="Dialog_Button0" onclick="document.getElementById('Dialog').style.display='none';">取消</a>
+			<a href="javascript:void(0)" onclick="do_action()" class="Dialog_Button1">确定</a>
+			<input type="hidden" name="topicid" id="topicid">
+			<input type="hidden" name="action" id="action">
+			<div style="clear:both"></div>
+			</div>
+		</div>
+	</form>
+	</body>
+</html>

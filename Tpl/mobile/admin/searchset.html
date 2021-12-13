@@ -1,0 +1,25 @@
+<include file="Tpl/mobile/Public/admin_top.html">
+<form name="form" action="__APP__/admin{url}dosearchset{shtml}" method="post">
+<div class="panel panel-default table-responsive">
+ <div class="panel-heading">搜索设置</div>
+	<table class="table">
+		<tr>
+			<td>允许未登录用户搜索?</td>
+			<td><input type="checkbox"  name="search_allow" onchange="if(this.checked){this.value=1;}else{this.value=0;}" <?php if("{search->search_allow}"==true) echo "checked"; ?> <?php if("{search->search_allow}"==true){ ?> value="1" <?php }else{ ?> value="0" <?php } ?>></td>
+		</tr>
+		<tr>
+			<td>搜索时间限制</td>
+			<td><input type="text" name="search_time"  value="{search->search_time}"></td>
+		</tr>
+		<tr>
+			<td>最大搜索结果</td>
+			<td><input type="text" name="search_results"  value="{search->search_results}"></td>
+		</tr>
+   	<tr>
+   		<input type="hidden" name="token" value="{token}">
+		<td height="40" colspan="2" align="left"><input name="submit" type="submit" value="提交" class="button" /></td>
+	</tr>
+ </table>
+ </div>
+</form>
+<include file="Tpl/mobile/Public/admin_bottom.html">

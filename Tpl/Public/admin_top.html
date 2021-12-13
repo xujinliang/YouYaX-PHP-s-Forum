@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>网站管理</title>
+	<style type="text/css">
+		*{font-family: 'Microsoft YaHei','微软雅黑',Arial,Helvetica,sans-serif;}
+		a{text-decoration:none;}
+		.form-container{background-color: #f5f5f5;padding: 5px;-moz-border-radius:10px;-khtml-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;}
+		.page a{font-weight:normal;display:inline-block;padding: 0 8px;height:26px;line-height:26px;border:1px solid #e6e6e6;background-color:#FFF;color:#333;overflow:hidden;text-decoration:none;font-size:12px;}
+		.page a:hover{color:#21b8e4;}
+		table{ border-collapse:collapse;}
+		td{border-color:#e3e6eb;padding-left:10px;}
+		.tr0{background:#f3f3f3}
+		.tr1{background:#ffffff}
+		.hovertr{background:#fff9ee}
+		.button{
+	font-family: sans-serif;
+text-decoration: none;
+font-size: 14px!important;
+line-height: 16px;
+padding: 6px 12px;
+cursor: pointer;
+border: 1px solid #BBB;
+color: #464646;
+-webkit-border-radius: 8px;
+border-radius: 8px;
+-moz-box-sizing: content-box;
+-webkit-box-sizing: content-box;
+box-sizing: content-box;
+}textarea {
+-webkit-box-sizing: border-box;
+-moz-box-sizing : border-box;
+-ms-box-sizing : border-box;
+-o-box-sizing : border-box;
+box-sizing : border-box;
+padding: 1px 0px;
+}div>input[type="button"],div>input[type="submit"]{
+	margin:4px 10px;
+}
+	</style>
+	<script type="text/javascript">
+	function createBg(){
+	 	var h=window.screen.availHeight;
+		var w=document.documentElement.clientWidth;
+		var bg=document.createElement("div");
+		bg.id="mbg";
+		bg.style.cssText="position:fixed;left:0;top:0;width:"+w+"px;height:"+h+"px;z-index:10;filter:alpha(opacity=70);opacity:0.7;-moz-opacity:0.7;background:#333333;";
+		document.body.appendChild(bg);	
+	 }function closeBg(ID){
+	 	document.getElementById('mbg').parentNode.removeChild(document.getElementById('mbg'));
+	 	document.getElementById(ID).parentNode.removeChild(document.getElementById(ID));		
+	 }function addClass(_this){
+			if(_this.className){
+				_this.className+=" "+"hovertr";
+			}
+		}
+		function removeClass(_this){
+			 _this.className = _this.className.replace(new RegExp("hovertr", "g"), "");
+		}
+		 document.onreadystatechange = function()
+     {           
+     if (document.readyState == "complete")
+      {
+       	parent.parent.document.getElementById("bg").innerHTML="";	
+				parent.parent.document.getElementById("bg").style.display="none";	
+				if(document.getElementById("message"))
+				{
+					document.getElementById("message").style.display='block';
+			 	setTimeout(function(){
+			 	for(var n=1;n<=40;n++)
+			 	{
+			 		(function(){
+			 			var i=n;
+			 			setTimeout(function(){
+			 				if(i==40){
+			 					document.getElementById("message").style.display='none';
+			 				}
+							document.getElementById("message").style.height=(40-i)+"px";
+			 			},(i+1)*50);
+			 		})();
+			 	}
+			},2000);
+		}
+		var url=self.parent.frames["main"].location.href;
+				var url_array=url.split("=");
+				var page=parseInt(url_array[1]);
+				var uclass=document.getElementsByTagName("a");
+				for(var n in uclass)
+				{
+					if(uclass[n].className=='fy'+page&&uclass[n].id!=undefined)
+					{
+						uclass[n].style.background="#1c7bc5";
+						uclass[n].style.color = "#ffffff";
+					}
+				}
+      }
+     }
+    </script>
+</head>
+<body bgcolor="#fafafa">
+<?php
+if($_SESSION['youyax_error']==1)
+{
+?>
+<div id="message" style="width:98%;overflow:hidden;margin:auto;background:url('{site}/Public/images/message_green.gif');color:#6da827;height:40px;line-height:40px;font-size:16px;font-weight:bold;font-family:Tahoma;">
+	<span style="margin-left:10px;">操作成功！</span>
+</div>
+<?php
+}if($_SESSION['youyax_error']==2)
+{
+?>
+<div id="message" style="width:98%;overflow:hidden;margin:auto;background:url('{site}/Public/images/message_red.gif');color:#ce2700;height:40px;line-height:40px;font-size:16px;font-weight:bold;font-family:Tahoma;">
+	<span style="margin-left:10px;">操作失败！</span>
+</div>
+<?php
+}
+unset($_SESSION['youyax_error']);
+?>

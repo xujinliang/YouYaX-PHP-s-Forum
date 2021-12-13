@@ -1,0 +1,31 @@
+<include file="Tpl/mobile/Public/admin_top.html">
+<form action="__APP__/admin{url}blockDoTransform{shtml}" method=post>
+<div class="panel panel-default table-responsive">
+ <div class="panel-heading">版块内容转移</div>
+	<table class="table">
+		<tr>
+			<td>源版块</td>
+			<td>
+			<select name="org">
+					<list>
+						<option value="{data.id}">{data.szone}</option>
+					</list>
+			</select>	
+			</td>
+		</tr>
+		<tr>
+			<td>目标版块</td>
+			<td>
+			<select name="oto">
+					<list>
+						<option value="{data.id}">{data.szone}</option>	
+					</list>
+			</select>	
+			</td>
+		</tr>
+		<input type="hidden" name="token" value="{token}">
+		<tr><td colspan=2><input type="image" src="{site}/Public/images/edit.gif"></td></tr>
+	</table>
+ </div>
+</form>
+<include file="Tpl/mobile/Public/admin_bottom.html">

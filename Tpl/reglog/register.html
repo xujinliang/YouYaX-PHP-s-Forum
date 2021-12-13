@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<script type="text/javascript" src="<?php echo $this->C('SITE'); ?>/Public/JScript/public.js?<?php echo time();?>"></script>
+<script type="text/javascript" src="<?php echo $this->C('SITE'); ?>/Public/JScript/validate_ajax.js"></script>
+<style type="text/css">
+*{margin:0;padding:0;}
+.button {
+    display: inline-block;
+    padding: 0.5em 1em;
+    border: 1px solid #d4d4d4;
+    text-align: center;
+    text-shadow: 1px 1px 0 #fff;
+    font: 11px/normal sans-serif;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    background-color: #ececec;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4f4f4), to(#ececec));
+    background-image: -moz-linear-gradient(#f4f4f4, #ececec);
+    background-image: -ms-linear-gradient(#f4f4f4, #ececec);
+    background-image: -o-linear-gradient(#f4f4f4, #ececec);
+    background-image: linear-gradient(#f4f4f4, #ececec);
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+    border-radius: 0.2em;
+}
+.button:hover{
+    border-color: #3072b3;
+    border-bottom-color: #2a65a0;
+    text-decoration: none;
+    text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
+    color: #fff;
+    background-color: #3c8dde;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#599bdc), to(#3072b3));
+    background-image: -moz-linear-gradient(#599bdc, #3072b3);
+    background-image: -o-linear-gradient(#599bdc, #3072b3);
+    background-image: linear-gradient(#599bdc, #3072b3);
+}
+input[type="text"],input[type="password"]{
+	border:1px #dfdfdf solid;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	height:24px
+}
+input[type="text"]:focus,input[type="password"]:focus{
+	transition:border linear .2s,box-shadow linear .5s;
+	-moz-transition:border linear .2s,-moz-box-shadow linear .5s;
+	-webkit-transition:border linear .2s,-webkit-box-shadow linear .5s;
+	-o-transition:border linear .2s,-webkit-box-shadow linear .5s;
+	outline:none;
+	box-shadow:0 0 10px rgba(124,105,56,.7);
+	-moz-box-shadow:0 0 10px rgba(124,105,56,.7);
+	-webkit-box-shadow:0 0 10px rgba(124,105,56,.7);
+	-o-box-shadow:0 0 10px rgba(124,105,56,.7)
+}
+#msg{display: inline-block;position: relative;width: 210px;height: 19px;}
+#msg font{position:absolute;top:4px;}
+td{font-family: 'Microsoft YaHei','微软雅黑',Arial,Helvetica,sans-serif;font-size:14px;color:#666;}
+.minorbtn{border:1px solid #d4d4d4;background-image: none;background-color:#fff;text-decoration:none;}
+</style>
+<title>注册</title>
+</head>
+<body style="overflow:hidden;font-size:13px;background:#fafafa;">
+<form name="form" id="form" action="__APP__/Register<?php echo $this->C('default_url'); ?>doregister<?php echo $this->C('static_url'); ?>" method=post onsubmit="senddata('ok');return false;">
+<table width="96%" height="160" cellspacing="0" cellpadding="0" style="margin:0 auto">
+<tr><td width="85">用户名</td><td><input style="width:130px" id="username" type="text" name="user" onBlur="senddata();" >
+<?php if($this->array_array['mix']['is_prevent_reg']){	?>
+<img title="已开启IP地址防止恶意注册功能&#10;一个IP仅能注册 <?php echo $this->array_array['mix']['prevent_reg_num'];?> 次" src="<?php echo $this->C('SITE') . '/Public/images/warm.png';?>">
+<?php	}	?>
+</td></tr>
+<tr><td>密码</td><td><input style="width:130px" id="pass"  name="pass"  type=password onBlur="senddata();"></td></tr>
+<tr><td>邮箱</td><td><input style="width:130px" id="email" type="text" name="email" onBlur="senddata();"></td></tr>
+<?php	if($this->C('register_mode')==2){	?>
+<tr><td>验证码</td><td valign="top"><input style="width:130px;float:left;" id="valicode" type="text" name="valicode" onBlur="senddata();">
+<img style="float:left;margin-left:6px;margin-top:3px;" src="<?php echo $this->C('SITE'); ?>/ext/valicode.php" onclick="this.src='<?php echo $this->C('SITE'); ?>/ext/valicode.php?r='+Math.random();">
+</td></tr>
+<?php	}	?>
+<tr><td valign="bottom"><input type="hidden" name="sub" value="1">	
+<input type="submit"  class="button" value="注册"></td>
+<td valign="bottom"><a class="button minorbtn" href="__APP__/Register<?php echo $this->C('default_url'); ?>forgotPassword<?php echo $this->C('static_url'); ?>">找回密码</a>
+	&nbsp;&nbsp;<span id="msg"></span>
+</td></tr>
+</table>
+</form>
+</body>
+</html>

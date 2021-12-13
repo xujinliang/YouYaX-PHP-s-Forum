@@ -1,0 +1,37 @@
+<include file="Tpl/Public/admin_top.html">
+<form name="form" action="__APP__/admin{url}dosetting{shtml}" method="post">
+	<table width=98% height="auto" cellspacing=0 cellpadding=0 border=1 style="margin:auto;border:1px solid #ccc">
+		<tr onmouseover="addClass(this)" onmouseout="removeClass(this)">
+			<td height="40" colspan="2" style="line-height:40px;background:url('{site}/Public/images/topbg.jpg')"><span style="font-size:16px;text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);color:#333;font-weight:bold;">网站常规配置</span></td>
+		</tr>
+		<tr onmouseover="addClass(this)" onmouseout="removeClass(this)">
+			<td height="30" width="100" style="line-height:30px;font-size:15px;color:#222;">网站标题</td>
+			<td height="30"><input type="text" name="title" style="width:60%" value="{site_config->site_title}"></td>
+		</tr>
+		<tr onmouseover="addClass(this)" onmouseout="removeClass(this)">
+			<td height="30" width="100" style="line-height:30px;font-size:15px;color:#222;">手机网标题</td>
+			<td height="30"><input type="text" name="title_mobile" style="width:60%" value="{site_config->site_title_mobile}"></td>
+		</tr>
+		<tr onmouseover="addClass(this)" onmouseout="removeClass(this)">
+			<td height="30" width="100" style="line-height:30px;font-size:15px;color:#222;">网站关键字</td>
+			<td height="30"><input type="text" name="keywords" style="width:60%" value="{site_config->site_keywords}"></td>
+		</tr>
+		<tr onmouseover="addClass(this)" onmouseout="removeClass(this)">
+			<td height="30" width="100" style="line-height:30px;font-size:15px;color:#222;">网站描述</td>
+			<td height="30"><input type="text" name="description" style="width:60%" value="{site_config->site_description}"></td>
+		</tr>
+		<tr onmouseover="addClass(this)" onmouseout="removeClass(this)">
+			<td height="30" width="100" style="line-height:30px;font-size:15px;color:#222;">网站Logo</td>
+			<td height="30"><input type="text" name="logo" style="width:60%" value="{site_config->site_logo}"></td>
+		</tr>
+		<tr onmouseover="addClass(this)" onmouseout="removeClass(this)">
+			<td height="30" width="100" style="line-height:30px;font-size:15px;color:#222;">网站底部</td>
+			<td height="30"><input type="text" name="foot" style="width:60%" value="{site_config->site_foot}"></td>
+		</tr>
+   <tr>
+   	<input type="hidden" name="token" value="{token}">
+	<td height="40" colspan="2" align="left"><input name="submit" type="submit" value="提交" class="button" /></td>
+	</tr>
+ </table>
+</form>
+<include file="Tpl/Public/admin_bottom.html">

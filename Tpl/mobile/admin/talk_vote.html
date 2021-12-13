@@ -1,0 +1,32 @@
+<include file="Tpl/mobile/Public/admin_top.html">
+<div class="panel panel-default table-responsive">
+ <div class="panel-heading">主题--投票查询</div>
+	<table class="table">
+		<tr>
+			<th>ID</td>
+			<th>主题ID</td>
+			<th align="center">选项、票数</td>
+			<th align="center">操作</td>
+		</tr>
+		<tr><td colspan=4 align=right><div class="page">{page}</div></td></tr>
+<?php
+ if(!empty($this->array_two['data'])){
+ 	foreach($this->array_two['data'] as $vo){
+?>
+			<tr>	
+				<td><?php echo $vo['id']; ?></td>
+				<td><?php echo $vo['rid']; ?></td>
+				<td>
+					<div style="width:250px;"><?php echo $vo['comb']; ?></div>
+				</td>
+				<td align="center">	
+				<a style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold"  href="__APP__/admin{url}talkVoteDel{url}id{url}<?php echo $vo['id'];?>{shtml}?token={token}" onclick="return confirm('您确定要删除?');">删除</a>
+				</td>
+			</tr>
+<?php
+	}
+}
+?>
+	</table>
+</div>
+<include file="Tpl/mobile/Public/admin_bottom.html">

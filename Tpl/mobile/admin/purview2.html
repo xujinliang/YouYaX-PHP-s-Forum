@@ -1,0 +1,94 @@
+<include file="Tpl/mobile/Public/admin_top.html">
+<form action="__APP__/admin{url}purviewUpdate2{shtml}" method="post">
+<div class="panel panel-default table-responsive">
+ <div class="panel-heading">用户组 [ {arr->name} ] 的权限</div>
+	<table class="table">
+		<tr>
+			<th><input type="checkbox" onchange="selectAll()">版块名称</th>
+			<th>浏览</th>
+			<th>发帖</th>
+			<th>回帖</th>
+			<th>点评</th>
+		</tr>
+<?php
+ if(!empty($this->array_two['list'])){
+ 	foreach($this->array_two['list'] as $vo){
+?>
+			<tr>	
+				<td>&nbsp;<?php echo $vo['szone']; ?></td>
+				<td><input type="checkbox" name="access[<?php echo $vo['id']; ?>]" <?php if($this->array_array['purviews'][$vo['id']]['access']=='1'){echo 'value="1" checked';}else{echo 'value="0"';} ?> onclick="access_click(this)"></td>
+			<?php
+				if($this->array_array['arr']['id'] != $this->array['not_log_in_user_group']){
+			?>
+				<td><input type="checkbox" name="publish[<?php echo $vo['id']; ?>]" <?php if($this->array_array['purviews'][$vo['id']]['publish']=='1'){echo 'value="1" checked';}else{echo 'value="0"';} ?> onclick="if(this.checked){this.value='1';}else{this.value='0';}"></td>
+				<td><input type="checkbox" name="reply[<?php echo $vo['id']; ?>]" <?php if($this->array_array['purviews'][$vo['id']]['reply']=='1'){echo 'value="1" checked';}else{echo 'value="0"';} ?> onclick="if(this.checked){this.value='1';}else{this.value='0';}"></td>
+				<td><input type="checkbox" name="mark[<?php echo $vo['id']; ?>]" <?php if($this->array_array['purviews'][$vo['id']]['mark']=='1'){echo 'value="1" checked';}else{echo 'value="0"';} ?> onclick="if(this.checked){this.value='1';}else{this.value='0';}"></td>
+			<?php	}else{	?>
+				<td></td>
+				<td></td>
+				<td></td>
+			<?php	}	?>
+			</tr>
+<?php
+	}
+}
+?>
+<tr>
+	<td colspan="5">
+		<input type="hidden" name="token" value="{token}">
+		<input type="hidden" name="id" value="{arr->id}">
+		<input type="image" src="{site}/Public/images/edit.gif"></td>
+</tr>
+	</table>
+ </div>
+</form>
+	<script>
+		var zt=false;
+		function selectAll()
+		{
+		 if(zt==true)
+		  {zt=false;}
+		 else
+		 	{zt=true;}
+		   var a = document.getElementsByTagName("input");
+		   for (var i=0; i<a.length; i++) 
+			  {
+			    if (a[i].type == "checkbox"){
+			    	a[i].checked = zt;
+			    	if(zt){a[i].value = 1;}else{a[i].value = 0;}
+			    }
+			  }
+			  loadcheckbox();
+		}
+		function access_click(_this){
+			var obj = _this.parentNode.parentNode.getElementsByTagName('input');
+			if(_this.checked){
+				_this.value='1';
+				for(var i=0;i<obj.length;i++){
+					obj[i].disabled=false;
+				}
+			}else{
+				_this.value='0';
+				for(var i=0;i<obj.length;i++){
+					obj[i].checked=false;
+					if(i!=0){
+						obj[i].disabled=true;
+					}
+				}
+			}
+		}
+		function loadcheckbox(){
+			var access_arr = [];
+			var input = document.getElementsByTagName("input");
+			for(var i=0;i<input.length;i++){
+		        if(/^access/.test(input[i].name)){
+							access_arr.push(input[i]);
+		        }
+		    }
+			for(var i=0;i<access_arr.length;i++){
+				access_click(access_arr[i]);
+			}
+	  }
+	  loadcheckbox();
+	</script>
+<include file="Tpl/mobile/Public/admin_bottom.html">

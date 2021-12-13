@@ -1,0 +1,22 @@
+<include file="Tpl/mobile/Public/admin_top.html">
+<form name="form" action="__APP__/admin{url}dokey{shtml}" method="post">
+<div class="panel panel-default table-responsive">
+ <div class="panel-heading">注册密钥管理</div>
+	<table class="table">
+		<tr>
+			<td>可以更安全的保护注册用户的密码</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="text" name="keys" style="width:300px;" value="{key}">
+				<div style="margin-top:6px;">友情提示 : 更换密钥后所有的用户、管理密码均会重置新的加密字符串，但密码保持不变！</div>
+			</td>
+		</tr>
+   <tr>
+   		<input type="hidden" name="token" value="{token}">
+		<td height="40" align="left"><input name="submit" type="submit" value="提交" class="button" /></td>
+	</tr>
+</table>
+ </div>
+</form>
+<include file="Tpl/mobile/Public/admin_bottom.html">

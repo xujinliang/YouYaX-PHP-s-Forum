@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="icon" href="{site}/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="{site}/favicon.ico" type="image/x-icon">
+		<link rel="bookmark" href="{site}/favicon.ico" type="image/x-icon">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+		<meta name="format-detection" content="telephone=no"/>
+		<link rel="stylesheet" type="text/css" href="{site}/Public/Css/mobile/public.css">
+		<link rel="stylesheet" type="text/css" href="{site}/Public/Css/mobile/fatie.css">
+		<script src="{site}/Public/JScript/public.js?<?php echo time();?>" type="text/javascript"></script>
+		<script src="{site}/Public/JScript/fatie.js" type="text/javascript"></script>
+		<script src="{site}/Public/bootstrap/js/jquery.min.js" type="text/javascript"></script>
+		<link rel="stylesheet" href="{site}/Public/bootstrap/css/tagmanager.css" type="text/css">
+		<link rel="stylesheet" href="{site}/Public/bootstrap/css/typeahead.css" type="text/css">
+		<script src="{site}/Public/bootstrap/js/tagmanager.js" type="text/javascript"></script>
+		<script src="{site}/Public/bootstrap/js/typeahead.bundle.js" type="text/javascript"></script>
+		<script src="{site}/Public/bootstrap/js/exclude.js" type="text/javascript" defer="true"></script>
+		<title>{site_config->site_title_mobile}</title>
+		<script>
+		function inputFileOnChange(){
+		 	document.forms['form'].action="{site}/ORG/UBB/ORG/UBB/UploadForEditor.class.php";
+		 	document.forms['form'].target="file_frame";
+		 	document.forms['form'].submit();
+		}function add(){
+			var obj=document.getElementById("voteul");
+			var liobj=document.createElement("li");
+			liobj.style.cssText="text-align:left;height:24px;margin-top:6px;";
+			liobj.innerHTML='<input type="text" name="lival[]" style="width:200px;border: 1px #DFDFDF solid;-webkit-border-radius: 5px;border-radius: 5px;height:24px;line-height:24px;color:#aeaeae"><a style="margin-left:5px;font-size:12px;color:#F91B00" href="javascript:void(0)" onclick="del(this)">删除</a>';
+			obj.appendChild(liobj);
+		}
+		function del(_this){
+			var obj=_this.parentNode.parentNode;
+			obj.removeChild(_this.parentNode);
+		}
+		</script>
+	</head>
+	<body>
+	<!--头部开始-->
+		<header>
+			<div class="top_head white">
+	    <div class="box1">
+	        <a href="javascript:history.go(-1);" class="back"></a>
+	    </div>
+	    <div class="box2">
+	        <a href="{site}">{site_config->site_title_mobile}</a></div>
+	    <div class="box3">
+	        	<?php if(empty($_SESSION['youyax_user'])){	?>
+	            <a  href="__APP__/Login{url}loginMobile{shtml}"><span class="header_user">用户登录</span></a>
+	          <?php	}else{	?>
+	          <a href="__APP__/Index{url}self{shtml}"><span class="header_user">{user}</span></a>
+	        <?php	}	?>
+	    </div>
+			</div>
+		</header>
+	<!--头部结束-->
+	<section class="txtBox" style="margin-top:10px;">
+     <form name="form" action="__APP__/List{url}insert1{shtml}" method="post" id="postForm" enctype="multipart/form-data" style="padding:0 4px;">
+     	 <input name=zuozhe type="hidden" value="{user}">
+     	 <input type="hidden" name="f" value="{f}">
+     <select name="cat" style="float:left;height:24px;border:1px #DFDFDF solid;" onchange="if(this.value=='2'){document.getElementById('bid_span').style.display='block';document.getElementById('bid').focus();}else{document.getElementById('bid_span').style.display='none';}"><option value="1">普通帖子</option><option value="2">提问帖子</option></select>
+	 <span id="bid_span" style="font-size:12px;display:none;float:left;margin-left:10px;">金币: <input type="text" name="bid" id="bid" value="0" style="width:50px;height:22px;border:solid 1px #eaeaea;font-size:18px;"></span>	
+      <div style="clear:both;height:4px;"></div>
+       <input type="text" id="title" placeholder="标题：{mix->talk_title}字以内" name="title" class="hui tit" maxlength="{mix->talk_title}" style="height:24px;"><span id="titerror" style="background:#fffbd9;color:#7d7d7d;"></span><br>
+       <div style="margin:4px 0;">
+       	 <input type="text" autocomplete="off" name="tagsk" placeholder="自定义标签" style="width:9em;height:16px;padding:4px;border:1px #DFDFDF solid;-webkit-border-radius: 5px;border-radius: 5px;" class="tm-input tm-input-success text-input typeahead" data-original-title="" /><em style="position: relative; top:0px; left: 4px;color: #999;font-size: 12px;">不得超过10个字符</em>
+       </div>
+       <?php if("{mix->talk_visible}"==true){	?>
+			<span style="color:#999;font-size;18px;">附加选项: </span><br>
+			<span style="font-size:13px;color:gray;position:relative;margin-right:10px;">群组邀请</span><input type="text" autocomplete="off" name="taggroup" placeholder="输入邀请的用户名" style="width:9em;height:16px;padding:4px;border:1px #DFDFDF solid;-webkit-border-radius: 5px;border-radius: 5px;" class="tm-inputgroup tm-input-success text-input typeaheadgroup" data-original-title="" />
+			<div style="clear:both;height:2px;"></div>
+			<input type="checkbox" name="isvisible" value="0" onclick="if(this.checked){this.value='1';}else{this.value='0';}"><span style="font-size:13px;color:gray;position:relative;left:10px;top:-2px;">是否回复才可见发帖内容，勾选，则是，反之，不是</span>
+			<div style="clear:both;height:2px;"></div>
+			<input type="checkbox" name="islimit1" value="0" onclick="if(this.checked){this.value='1';}else{this.value='0';}"><span style="font-size:13px;color:gray;position:relative;left:10px;top:-2px;">是否只允许回复1次，勾选，则是，反之，不是</span>
+			<div style="clear:both;height:2px;"></div>
+		<?php	}	?>
+       <fieldset style="font-size:12px;border:none;padding:0 10px 10px;overflow-x:hidden;word-wrap:break-word;">
+			<legend>投票选项( 如果不填写，则当成普通帖子发布 )</legend>
+			<ul id="voteul" style="margin:0px;padding:0px;list-style-type:none;">
+				<li style="text-align:left;height:24px;margin-top:6px;"><input type="text" name="lival[]" style="width:200px;border: 1px #DFDFDF solid;-webkit-border-radius: 5px;border-radius: 5px;height:24px;line-height:24px;color:#aeaeae"><a style="margin-left:5px;font-size:12px;color:#F91B00" href="javascript:void(0)" onclick="del(this)">删除</a></li>
+				<li style="text-align:left;height:24px;margin-top:6px;"><input type="text" name="lival[]" style="width:200px;border: 1px #DFDFDF solid;-webkit-border-radius: 5px;border-radius: 5px;height:24px;line-height:24px;color:#aeaeae"><a style="margin-left:5px;font-size:12px;color:#F91B00" href="javascript:void(0)" onclick="del(this)">删除</a></li>
+			</ul>
+			<a style="font-size:13px;color:#F91B00" href="javascript:void(0)" onclick="add()">增加一项</a><span style="font-size:12px;">(最多15个选项,选项最长20个字符)</span>
+		</fieldset>
+       <div style="clear:both;height:4px;"></div>
+       <textarea id="web_editor_con2" name="content" class="hui con" placeholder="内容：最少{mix->talk_content}个字符"></textarea><span id="conerror"  style="background:#fffbd9;color:#7d7d7d"></span>
+       <input type="hidden" name="token" value="{token}">
+       <div style="clear:both;height:4px;"></div>
+       <a href="javascript:void(0)" class="photo">
+         <input type="file" accept="image/gif,image/jpg,image/png,image/jpeg" name="file" class="file" onchange="inputFileOnChange();">
+       </a>
+       <a href="javascript:void(0)" id="sub" class="but_1" onclick="if(check()){document.forms['form'].submit();}" style="width:100px;">发布帖子</a>
+     </form>
+     <iframe name="file_frame" style="display:none;"></iframe>
+    </section>
+		<script>
+var states = [<?php
+$tags_hot     = array();
+$tags_hot_arr = $this->find($this->C('db_prefix') . "count", "string", "id=1");
+if ($tags_hot_arr['tags_hot']) {
+    $tags_hot = unserialize($tags_hot_arr['tags_hot']);
+    $tags_hot = array_keys($tags_hot);
+    $tags_hot_num = count($tags_hot);
+	foreach($tags_hot as $k=>$v){
+		if($k == $tags_hot_num-1){
+			echo "'".$v."'";
+		}else{
+			echo "'".$v."',";
+		}
+	}
+}
+?>];
+		</script>
+	<!--版权开始-->
+	<footer>
+		<div class="copyright">
+   		<a>Powered BY YouYaX</a>
+  	</div>
+	</footer>
+	<!--版权结束-->
+	</body>
+</html>

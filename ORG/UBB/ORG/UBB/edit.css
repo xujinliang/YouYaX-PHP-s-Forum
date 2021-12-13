@@ -1,0 +1,46 @@
+﻿#web_editor_family{width:82px;height:30px;float:left;display:inline-block;border:1px solid #efefef;}
+#web_editor_family select{height:30px;}
+#web_editor_font{width:56px;height:30px;float:left;display:inline-block;border:1px solid #efefef;}
+#web_editor_font select{height:30px;}
+
+#web_editor_bold,#web_editor_tilt,#web_editor_under,
+#web_editor_color,#web_editor_url,#web_editor_face,
+#web_editor_left,#web_editor_center,#web_editor_right,
+#web_editor_img,#web_editor_music,#web_editor_flash,
+#web_preview,#web_editor_indent,
+#web_editor_code,#web_editor_about{float:left;width:30px;height:30px;margin-right:2px;display:inline-block;border:1px solid #efefef;}
+#web_editor_bold:hover,#web_editor_tilt:hover,#web_editor_under:hover,
+#web_editor_color:hover,#web_editor_url:hover,#web_editor_face:hover,
+#web_editor_left:hover,#web_editor_center:hover,#web_editor_right:hover,
+#web_editor_img:hover,#web_editor_music:hover,#web_editor_flash:hover,
+#web_preview:hover,#web_editor_indent:hover,
+#web_editor_code:hover,#web_editor_about:hover{background-color:#e0eaf1;}
+
+#web_editor_con1{clear:both;word-wrap:break-word; overflow-y:auto;border:1px solid #efefef;}
+#web_editor_con2{clear:both;width:100%;word-wrap:break-word; overflow-y:auto;display:none;border:1px solid #efefef;}
+textarea{outline:none}
+
+#scolor,#ssurl,#sface,#simg,#smusic,#sflash,#scode,#sabout{-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+-webkit-box-shadow: 0 3px 7px rgba(0,0,0,.3);
+-moz-box-shadow: 0 3px 7px rgba(0,0,0,.3);
+box-shadow: 0 3px 7px rgba(0,0,0,.3);
+filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+background: #fff;
+-webkit-transition: opacity 150ms ease-in;
+transition: opacity 150ms ease-in;
+overflow:hidden;
+color:#333;
+font-family: Arial;
+line-height:1;
+}
+
+.editortop{
+background-color: #f0f0f0;
+background-image: -moz-linear-gradient(top,#ddd,#fdfdfd);
+background-image: -webkit-gradient(linear,0 0,0 100%,from(#ddd),to(#fdfdfd));
+background-image: -webkit-linear-gradient(top,#ddd,#fdfdfd);
+background-image: -o-linear-gradient(top,#ddd,#fdfdfd);
+background-image: linear-gradient(to bottom,#ddd,#fdfdfd);
+}

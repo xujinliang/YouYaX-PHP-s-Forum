@@ -1,0 +1,44 @@
+<include file="Tpl/mobile/Public/admin_top.html">
+<form action="__APP__/admin{url}purviewUpdate{shtml}" method="post">
+<div class="panel panel-default table-responsive">
+ <div class="panel-heading">{arr->user} 的权限</div>
+	<table class="table">
+		<tr>
+			<th><input type="checkbox" onchange="selectAll()">版块名称</th>
+		</tr>
+<?php
+ if(!empty($this->array_two['list'])){
+ 	foreach($this->array_two['list'] as $vo){
+?>
+			<tr>	
+				<td><input type="checkbox" name="ck[]" value="<?php echo $vo['id']; ?>" <?php if(in_array($vo['id'],$this->array_array['purviews'])){echo 'checked';} ?>>&nbsp;<?php echo $vo['szone']; ?></td>
+			</tr>
+<?php
+	}
+}
+?>
+<tr>
+	<td>
+		<input type="hidden" name="token" value="{token}">
+		<input type="hidden" name="id" value="{arr->id}">
+		<input type="image" src="{site}/Public/images/edit.gif"></td>
+</tr>
+	</table>
+</div>
+</form>
+	<script>
+		var zt=false;
+		function selectAll()
+		{
+		 if(zt==true)
+		  {zt=false;}
+		 else
+		 	{zt=true;}
+		   var a = document.getElementsByTagName("input");
+		   for (var i=0; i<a.length; i++) 
+			  {
+			    if (a[i].type == "checkbox") a[i].checked = zt;
+			  }
+		}
+	</script>
+<include file="Tpl/mobile/Public/admin_bottom.html">

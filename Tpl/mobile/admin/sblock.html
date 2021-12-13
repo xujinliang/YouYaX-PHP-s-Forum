@@ -1,0 +1,115 @@
+<include file="Tpl/mobile/Public/admin_top.html">
+<script type="text/javascript" src="{site}/Public/JScript/public.js?<?php echo time();?>"></script>
+<script type="text/javascript">
+ 	var xmlhttp;
+	if (window.ActiveXObject){
+	    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}else{
+	    xmlhttp = new XMLHttpRequest();
+	}
+		function pop(id,val){
+		   xmlhttp.open("POST", rooturl + "/index.php/admin" + url + "scblockPurview" + shtml, true);
+		   xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		   xmlhttp.send("data="+id);
+		   xmlhttp.onreadystatechange = function(){
+		      if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+		      	var jsonObject = eval("(" + xmlhttp.responseText + ")");
+			var tdiv=document.createElement("div");
+			tdiv.id="popp";
+			tdiv.className="form-container";
+			createBg();
+			tdiv.style.cssText="width:300px;height:220px;position:fixed;left:50%;top:50%;margin-left:-150px;margin-top:-110px;border:1px solid #e9e9e9;z-index:999";
+			tdiv.innerHTML='<form action="__APP__/admin{url}editsblock{shtml}" method=post target="main">'+
+										 '<table width=100% cellspacing=0 cellpadding=2>'+
+										 	'<tr><td colspan="2" align="right" style="color:#333;font-size:12px"><span style="cursor:pointer" onclick="closeBg(\'popp\');">关闭</span></td></tr>'+
+											'<tr><td style="color:#777;font-size:15px">名称</td><td><input type="text" name="szone" style="width:180px" value="'+jsonObject.szone+'"></td></tr>'+
+											'<tr><td style="color:#777;font-size:15px">描述</td><td><textarea name="mark" style="width:184px;height:30px;resize:none;border:1px solid #adadad">'+jsonObject.mark+'</textarea></td></tr>'+
+											'<tr><td style="color:#777;font-size:15px">icon图标</td><td><input type="text" name="icon_url" style="width:180px" placeholder="请输入url地址" value="'+jsonObject.icon_url+'"></td></tr>'+
+											'<tr><td style="color:#777;font-size:15px">序号</td><td><input type="text" name="ssort" style="width:180px" value="'+jsonObject.ssort+'"></td></tr>'+
+											'<tr><td style="color:#777;font-size:15px">隶属</td><td><select name="bid"><option value="">--请选择--</option><list><option value="{data1.id}" '+("{data1.id}" == jsonObject.bid? ' selected':'')+'>{data1.bzone}</option></list></select></td></tr>'+
+											'<input type="hidden" name="id" value="'+id+'">'+
+											'<input type="hidden" name="token" value="{token}">'+
+											'<tr><td colspan=2><input type="hidden" name="bbid" value='+val+'><input type="image" src="{site}/Public/images/edit.gif"></td></tr>'+
+										' </table>'+
+										'</form>';
+					document.body.appendChild(tdiv);
+				}
+			}
+		}
+		function pop_pursue(id,name){
+		   xmlhttp.open("POST", rooturl + "/index.php/admin" + url + "blockSetPurview" + shtml, true);
+		   xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		   xmlhttp.send("data="+id);
+		   xmlhttp.onreadystatechange = function(){
+		      if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+			var tdiv=document.createElement("div");
+			tdiv.id="popp_pursue";
+			tdiv.className="form-container";
+			createBg();
+			tdiv.style.cssText="width:300px;height:200px;position:fixed;left:50%;top:50%;margin-left:-150px;margin-top:-100px;z-index:999";
+			tdiv.innerHTML='<form action="__APP__/admin{url}blockSetPurviewDo{shtml}" method=post target="main">'+
+										 '<table width=100%  cellspacing=0 cellpadding=0>'+
+											'<tr><td align="right" style="color:#333;font-size:12px"><span style="cursor:pointer" onclick="closeBg(\'popp_pursue\');">关闭</span></td></tr>'+
+											'<tr><td style="color:#777;font-size:15px">有权限访问 '+name+' 的用户组</td></tr>'+
+											'<tr><td>'+xmlhttp.responseText+'</td></tr>'+
+											'<input type="hidden" name="id" value="'+id+'">'+
+											'<input type="hidden" name="jumpurl" value="'+window.location.href+'">'+
+											'<input type="hidden" name="token" value="{token}">'+
+											'<tr><td><input type="image" src="{site}/Public/images/edit.gif"></td></tr>'+
+										' </table>'+
+										'</form>';
+			document.body.appendChild(tdiv);
+				}
+			}
+		}
+		function add(){
+			var tdiv=document.createElement("div");
+			tdiv.id="popadd";
+			tdiv.className="form-container";
+			createBg();
+			tdiv.style.cssText="width:300px;height:190px;position:fixed;left:50%;top:50%;margin-left:-150px;margin-top:-95px;border:1px solid #e9e9e9;z-index:999";
+			tdiv.innerHTML='<form action="__APP__/admin{url}addsblock{shtml}" method=post target="main">'+
+										 '<table width=100%  cellspacing=0 cellpadding=0>'+
+										 	'<tr><td colspan="2" align="right" style="color:#333;font-size:12px"><span style="cursor:pointer" onclick="closeBg(\'popadd\');">关闭</span></td></tr>'+
+											'<tr><td style="color:#777;font-size:15px">名称</td><td><input type="text" name="szone" style="width:210px"></td></tr>'+
+											'<tr><td style="color:#777;font-size:15px">描述</td><td><textarea name="mark" style="width:210px;height:30px;resize:none;border:1px solid #adadad"></textarea></td></tr>'+
+											'<tr><td style="color:#777;font-size:15px">icon图标</td><td><input type="text" name="icon_url" style="width:210px" placeholder="请输入url地址"></td></tr>'+
+											'<tr><td style="color:#777;font-size:15px">隶属</td><td><select name="bid"><option value="">--请选择--</option><list><option value="{data1.id}">{data1.bzone}</option></list></select></td></tr>'+
+											'<input type="hidden" name="token" value="{token}">'+
+											'<tr><td colspan=2><input type="image" src="{site}/Public/images/add.gif"></td></tr>'+
+										' </table>'+
+										'</form>';
+			document.body.appendChild(tdiv);
+		}
+	</script>
+<div class="panel panel-default table-responsive">
+	<div class="panel-heading"><a style="color:#333;" href="__APP__/admin{url}block{shtml}">版块设置</a>&nbsp;&gt;&nbsp;{data3->bzone}&nbsp;(小版块)</div>
+	<table class="table">
+		<tr>
+			<th>小版块ID</th>
+			<th>名称</th>
+			<th>描述</th>
+			<th>icon图标</th>
+			<th>排序</th>
+			<th><span style="cursor:pointer" onclick="add()">增加</span></th>
+		</tr>
+		<list>
+			<tr>
+				<td>{data.id}</td>
+				<td><a href="__APP__/admin{url}cblock{url}id{url}{data.id}{shtml}">{data.szone}</a></td>
+				<td>
+					<div style="text-overflow:ellipsis;white-space:nowrap; overflow:hidden;width:265px;">{data.mark}</div>
+				</td>
+				<td>{data.icon_url}</td>
+				<td>{data.ssort}</td>
+				<td>
+				<a style="color:#0066cc;font-size:12px;font-family:Tahoma;"  href="javascript:void(0)" onclick="pop_pursue({data.id},'{data.szone}')">用户组</a>&nbsp;
+				<a style="color:#0066cc;font-size:12px;font-family:Tahoma;"  href="javascript:void(0)" onclick="pop({data.id},{data3->id})">修改</a>&nbsp;
+				<a style="color:#0066cc;font-size:12px;font-family:Tahoma;"  href="__APP__/admin{url}delsblock{url}id{url}{data.id}{url}bid{url}{data3->id}{shtml}?token={token}" onclick="return confirm('您确定要删除?');">删除</a>
+				</td>
+			</tr>
+		</list>
+	</table>
+	</div>
+</div>
+<include file="Tpl/mobile/Public/admin_bottom.html">

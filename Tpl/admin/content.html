@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css">
+	body{margin:0px;padding:0px;background:#fafafa;font-family: 'Microsoft YaHei','微软雅黑',Arial,Helvetica,sans-serif;}
+	.aside {position: relative;z-index: 2;background: url('{site}/Public/images/bg-sidebar.png') repeat-y 100% 0;width: 188px;float: right;padding: 0 0 0 11px;display: inline;}
+	.content-box {padding: 10px 0px 0 40px;overflow: hidden;}
+	.content-box h2 {font-size:16px;color:#333;font-weight:bold;}
+	.info-box{padding-left:10px;}
+	.info-box dt{display: block;color: #546070;font-weight: bold;font-size:13px;}
+	.info-box dd{display: block;margin: 0 0 3px;font-size:12px;color: #333;}
+	#tip{width: 14px;height: 14px;background: url({site}/Public/images/sprite.png) no-repeat -203px 0;display:inline-block;position:relative;top:4px;}
+	</style>
+</head>
+<body>
+	<div class="content-box" id="content_box" style="float:left;">
+		<div style="width:100%;"><h2>图表信息</h2></div>
+		<div style="width:100%;height:300px;background:#fafafa;">
+			<iframe name="admincount" id="admincount" src="__APP__/adminCount{url}adminCountImg{shtml}" width="761" height="300" border="0" frameBorder="0" scrolling="no" style="margin:0;padding:0;"></iframe>
+		</div>
+		<div style="width:380px;float:left">	
+			<div style="width:100%"><h2>回复最多的帖子(Week)</h2></div>
+			<div style="width:100%;background:#e2e7ec;">
+			<ul style="margin:0;padding:10px;">
+			<list>
+				<li style="list-style-type:none;width:100%;height:20px;line-height:20px;padding-left:10px;text-overflow:ellipsis;white-space:nowrap; overflow:hidden;width:360px;">
+					<a style="font-size:14px;color:#666;" href="{url_connect}/Content{url}{reply_num_max.rid}{shtml}"><?php echo CommonAction::getTitle({reply_num_max.rid}); ?></a>
+				</li>
+			</list>
+			</ul>
+			</div>
+		</div>
+		<div style="width:380px;float:left;margin-left:4px;">	
+			<div style="width:100%"><h2>浏览最多的帖子(Week)</h2></div>
+			<div style="width:100%;background:#e2e7ec;">
+			<ul style="margin:0;padding:10px;">
+			<list>
+				<li style="list-style-type:none;width:100%;height:20px;line-height:20px;padding-left:10px;text-overflow:ellipsis;white-space:nowrap; overflow:hidden;width:360px;">
+					<a style="font-size:14px;color:#666;" href="{url_connect}/Content{url}{scan_num_max.id}{shtml}">{scan_num_max.title}</a>
+				</li>
+			</list>
+			</ul>
+			</div>
+		</div>
+	</div>
+	<div class="aside" id="aside">
+		<div class="info-box">
+			<dl>
+				<dt>一周新用户统计</dt>
+				<dd>{count_user_num}</dd>
+				<dt>一周新帖子统计 </dt>
+				<dd>{count_post_num}</dd>
+				<dt>操作系统</dt>
+				<dd><?php echo PHP_OS; ?></dd>
+				<dt>运行环境</dt>
+				<dd><?php echo $_SERVER["SERVER_SOFTWARE"]; ?></dd>
+				<dt>PHP版本信息</dt>
+				<dd><?php echo phpversion(); ?></dd>
+				<dt>数据库版本信息</dt>
+				<dd><?php echo $this->db->getAttribute(PDO::ATTR_SERVER_VERSION); ?></dd>
+				<dt>上传图片总容量</dt>
+				<dd><?php echo number_format(directory_size("./Public/upload") / (1024 * 1024),2) . 'M'; ?></dd>
+				<dt>缓存文件总容量</dt>
+				<dd><?php echo number_format(directory_size("./cache") / (1024 * 1024),2) . 'M&nbsp;&nbsp;'; 
+					if($this->is_exist_widget("CacheDelWidget") && $this->is_active_widget("CacheDelWidget")){
+									echo w("CacheDelWidget")->show();
+							} ?>
+				</dd>
+				<?php
+				if(strpos($_SERVER["HTTP_USER_AGENT"],"MSIE 8.0")||strpos($_SERVER["HTTP_USER_AGENT"],"MSIE 7.0")||strpos($_SERVER["HTTP_USER_AGENT"],"MSIE 6.0")){
+				?>
+				<dt>友情提示</dt>
+				<dd><span id="tip"></span><span style="position:relative;left:4px;top:2px;">您的浏览器版本较低</span></div></dd>
+				<?php
+				}
+				?>
+			</dl>
+		</div>
+	</div>
+	<script>
+		document.getElementById("aside").style.height=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight)+"px";
+	</script>
+</body>
+</html>

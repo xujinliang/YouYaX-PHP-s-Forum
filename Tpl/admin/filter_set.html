@@ -1,0 +1,21 @@
+<include file="Tpl/Public/admin_top.html">
+<form name="form" action="__APP__/admin{url}doFilter{shtml}" method="post">
+	<table width=98% height="auto" cellspacing=0 cellpadding=0 border=1 style="margin:auto;border:1px solid #ccc">
+		<tr onmouseover="addClass(this)" onmouseout="removeClass(this)">
+			<td height="40" style="line-height:40px;background:url('{site}/Public/images/topbg.jpg')"><span style="font-size:16px;text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);color:#333;font-weight:bold;">敏感词过滤配置</span></td>
+		</tr>
+		<tr onmouseover="addClass(this)" onmouseout="removeClass(this)">
+			<td height="30" width="100" style="line-height:30px;font-size:15px;color:#222;">敏感词配置规则，以单引号表示</td>
+		</tr>
+		<tr onmouseover="addClass(this)" onmouseout="removeClass(this)">
+			<td height="30">
+				<textarea name="filter_area" style="height:300px;width:99%;font-size:20px;">{config}</textarea>	
+			</td>
+		</tr>
+   <tr>
+   		<input type="hidden" name="token" value="{token}">
+		<td height="40" align="left"><input name="submit" type="submit" value="提交" class="button" /></td>
+	</tr>
+</table>
+</form>
+<include file="Tpl/Public/admin_bottom.html">

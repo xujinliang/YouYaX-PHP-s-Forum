@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<style>
+body{margin:8px;padding:0px;font-family: 'Microsoft YaHei','微软雅黑',Arial,Helvetica,sans-serif;color:#333;}
+.button{-moz-border-radius: 4px;-webkit-border-radius: 4px;border-radius: 4px;font-family: Verdana, Arial, sans-serif;
+display: inline-block;
+background: #1c7bc5 url('<?php echo $this->C('SITE'); ?>/Public/resources/images/bg-button-blue.gif') top left repeat-x !important;
+border: 1px solid #1c7bc5 !important;
+padding: 4px 7px 4px 7px !important;
+color: #fff !important;
+font-size: 11px !important;
+text-align: center;
+cursor: pointer;}
+</style>
+	</head>
+	<body bgcolor="#ebe8e3">
+	<?php
+		if($_SESSION['youyax_user']==""){
+			echo "<b>未登陆用户不能点评!</b>";
+		}else{
+	?>
+		<h3 style="color:#0099cc;margin:10px 0;">点评</h3>
+			<form name="form" onsubmit="document.getElementById('sub').disabled = true" target="_parent" action="__APP__/Content<?php echo $this->C('default_url'); ?>domark<?php echo $this->C('static_url'); ?>" method="post">
+		<b>操作说明</b>
+		<div style="clear:both;height:6px;"></div>
+		<textarea name=t style="width:96%;height:90px;" placeholder="在这里输入您的评论吧^_^"></textarea>
+		<div style="clear:both;height:10px;"></div>
+		<input type="hidden" name="id2" value="<?php echo empty($_GET['id2'])?'':intval($_GET['id2']);?>">
+		<input type="hidden" name="id" value="<?php echo intval($_GET['id']);?>">
+		<input type="hidden" name="mid" value="<?php echo intval($_GET['mid']);?>">
+		<input type="hidden" name="user" value="<?php echo $_SESSION['youyax_user'];?>">
+		<input type="hidden" name="reply_u" value="<?php echo addslashes($_GET['reply_u']);?>">
+		<input class="button" id="sub" type="submit" value="确定">
+	</form>
+	<?php }	?>
+</body>
+</html>
+		

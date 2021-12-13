@@ -1,0 +1,22 @@
+<include file="Tpl/mobile/Public/admin_top.html">
+<form name="form" action="__APP__/admin{url}dodelimite{shtml}" method="post" target="hidden_frame">
+<div class="panel panel-default table-responsive">
+ <div class="panel-heading">地址栏分隔符 & 后缀配置</div>
+	<table class="table">
+		<tr>
+			<td>当前分隔符</td>
+			<td><input type="text" name="newdefault_url" value="{config->default_url}"></td>
+		</tr>
+		<tr>
+			<td>当前后缀名</td>
+			<td><input type="text" name="newstatic_url"  value="{config->static_url}"></td>
+		</tr>
+   <tr>
+   		<input type="hidden" name="token" value="{token}">
+		<td height="40" colspan="2" align="left"><input name="submit" type="submit" value="提交" class="button" /></td>
+	</tr>
+</table>
+</div>
+</form>
+<iframe name="hidden_frame" id="hidden_frame" style="display:none"></iframe> 
+<include file="Tpl/mobile/Public/admin_bottom.html">

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="icon" href="<?php echo $this->C('SITE');?>/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="<?php echo $this->C('SITE');?>/favicon.ico" type="image/x-icon">
+		<link rel="bookmark" href="<?php echo $this->C('SITE');?>/favicon.ico" type="image/x-icon">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+		<meta name="format-detection" content="telephone=no"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo $this->C('SITE');?>/Public/Css/mobile/public.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo $this->C('SITE');?>/Public/Css/mobile/login.css">
+		<title><?php echo $this->array_array['site_config']['site_title_mobile'];?></title>
+		<script type="text/javascript" src="<?php echo $this->C('SITE'); ?>/Public/JScript/public.js?<?php echo time();?>"></script>
+		<script type="text/javascript" src="<?php echo $this->C('SITE'); ?>/Public/JScript/validate_ajax.js"></script>
+	</head>
+	<body>
+	<!--头部开始-->
+		<header>
+			<div class="top_head white">
+	    <div class="box1">
+	        <a href="javascript:history.go(-1);" class="back"></a>
+	    </div>
+	    <div class="box2">
+	        <a href="<?php echo $this->C('SITE');?>"><?php echo $this->array_array['site_config']['site_title_mobile'];?></a></div>
+	    <div class="box3"></div>
+			</div>
+		</header>
+	<!--头部结束-->	
+	
+	<section>
+        <div class="loginBox">
+        	<aside></aside>
+           <form name="form" action="__APP__/Register{url}doregister{shtml}" method="post" onsubmit="senddata('ok');return false;">
+            <div id="msg"></div>
+            <div class="login">
+                <p>
+                    <span class="s1">
+                        <label>
+                            用户名：</label>
+                    </span><span class="s2">
+                        <input name="user" id="username" type="text" value="" onBlur="senddata();"  onFocus="senddata();">
+                    </span>
+                </p>
+                <p>
+                    <span class="s1">
+                        <label>
+                            密&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
+                    </span><span class="s2">
+                        <input name="pass" id="pass" type="password" value="">
+                    </span>
+                </p>
+                <p>
+                    <span class="s1">
+                        <label>
+                            邮&nbsp;&nbsp;&nbsp;&nbsp;箱：</label>
+                    </span><span class="s2">
+                        <input name="email" id="email" type="text" value="">
+                    </span>
+                </p>
+               <?php	if($this->C('register_mode')==2){	?>
+               <p>
+                    <span class="s1">
+                        <label>
+                            验证码：</label>
+                    </span><span class="s2">
+                        <input name="valicode" type="text" value="">
+                    </span>
+                    </span><span class="s3">
+                        <img style="float:left;margin-left:6px;margin-top:3px;" src="<?php echo $this->C('SITE'); ?>/ext/valicode.php" onclick="this.src='<?php echo $this->C('SITE'); ?>/ext/valicode.php?r='+Math.random();">
+                    </span>
+                </p>
+                <?php	}	?>
+            </div>
+            <input type="hidden" name="sub" value="1">
+						<input type="submit" name="sub" class="but_1" value="注&nbsp;&nbsp;册">
+           </form>
+        </div>
+        <p class="tishi_zc red">
+            已有帐号？点击 <a href="__APP__/Login{url}loginMobile{shtml}">立即登录</a>
+        </p>
+    </section>
+	
+	<!--版权开始-->
+	<footer>
+		<div class="copyright">
+   		<a>Powered BY YouYaX</a>
+  	</div>
+	</footer>
+	<!--版权结束-->
+	</body>
+</html>

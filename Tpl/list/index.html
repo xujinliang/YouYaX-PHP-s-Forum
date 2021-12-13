@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>{f->szone} - {site_config->site_title}</title>
+<link rel="icon" href="{site}/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="{site}/favicon.ico" type="image/x-icon">
+<link rel="bookmark" href="{site}/favicon.ico" type="image/x-icon">
+<meta name="keywords" content="{site_config->site_keywords}">
+<meta name="description" content="{site_config->site_description}">
+<script type="text/javascript" src="{site}/Public/JScript/public.js?<?php echo time();?>"></script>
+<script type="text/javascript" src="{site}/Public/JScript/Tip.js"></script>
+<script type="text/javascript" src="{site}/Public/JScript/Tip2.js"></script>
+<script type="text/javascript" src="{site}/Public/JScript/Tip3.js"></script>
+<script type="text/javascript" src="{site}/Public/JScript/online.js"></script>
+<script type="text/javascript" src="{site}/Public/JScript/rightClick.js"></script>
+<script type="text/javascript" src="{site}/Public/JScript/location.js"></script>
+<script type="text/javascript" src="{site}/Public/JScript/tree.js" defer="true"></script>
+<script type="text/javascript" src="{site}/Public/JScript/reglog.js" defer="true"></script>
+<script type="text/javascript">var rooturl_list="<?php echo $this->youyax_url; ?>"</script>
+<script type="text/javascript" src="{site}/Public/JScript/trbg.js" defer="true"></script>
+<link rel="stylesheet" type="text/css" href="{site}/Public/Css/Dialog.css">
+<link rel="stylesheet" type="text/css" href="{site}/Public/Css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{site}/Public/Css/timeline.css">
+<style>
+*{margin:0px;padding:0px}
+#wrapper{width:1140px;margin:0 auto;background:#fafafa;position:relative;}
+html{-webkit-text-size-adjust: none;}
+body{font-family: 'Microsoft YaHei','微软雅黑',Arial,Helvetica,sans-serif;}
+a{color:#515151;text-decoration:none;}
+table a{font-size:14px;color:#333;font-weight:bold;}
+table a:hover{text-decoration:underline;}
+table{border-collapse:collapse;}
+.page a{font-weight:normal;display:inline-block;padding: 0 8px;height:26px;line-height:26px;border:1px solid #e6e6e6;background-color:#FFF;color:#03415d;overflow:hidden;text-decoration:none;}
+.page a:hover{color:#21b8e4;text-decoration:none;}
+.connector{border-color: transparent #333333;border-style: solid;border-width: 4px 0px 4px 4px;height: 0px;width: 0px;display: inline-block;position:relative;top:-1px;margin:0 4px;
+*border:none;*width:4px;*height:8px;*background:url('{site}/Public/images/ie6_guide.gif') no-repeat;*top:-2px;_top:4px;*left:4px;}
+input[type="text"]{border: 1px #DFDFDF solid;width:100px;height:20px;}
+input{width:expression((this.type=="text")?"100px":"");border: 1px #DFDFDF solid;height:20px;}
+.icon-abstract-front{border: 0;padding: 0;display: inline-block;height:16px;line-height:16px;font-size: 14px;color: #fff;padding: 2px 4px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;background: #ff4500;text-decoration: none;}
+.icon-abstract-front2{border: 0;padding: 0;display: inline-block;height:16px;line-height:16px;font-size: 14px;color: #fff;padding: 2px 4px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;background: #bc8f8f;text-decoration: none;}
+.icon-abstract-front3{border: 0;padding: 0;display: inline-block;height:16px;line-height:16px;font-size: 14px;color: #fff;padding: 2px 4px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;background: #bdb76b;text-decoration: none;}
+.btn-mark-green{border: 0;padding: 0;cursor: help;display: inline-block;height:16px;line-height:16px;font-size: 14px;color: #fff;padding: 2px 4px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;background: #66cc52;text-decoration: none;}
+.btn-mark-orange{border: 0;padding: 0;display: inline-block;height:16px;line-height:16px;font-size: 14px;color: #fff;padding: 2px 4px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;background: orange;text-decoration: none;}
+.btn-mark-groupchat{border: 0;padding: 0;display: inline-block;height:16px;line-height:16px;font-size: 14px;color: #fff;padding: 2px 4px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;background: #cc6633;text-decoration: none;}
+.top{border: 0;padding: 0;display: inline-block;height: 16px;line-height:16px;font-size: 14px;color: #fff;padding: 2px 4px;margin-right:2px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;background: #940100;text-decoration: none;}
+.btn-mark-tags{border: 0;padding: 0;display: inline-block;height: 16px;line-height:16px;font-size:14px;font-weight:normal;padding: 2px 4px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;text-decoration: none;color: black;background:rgba(0,150,94,.1);border: 1px solid #ccc;}
+.btn-mark-tags:hover{color:#fff;background:#717366;}
+#footer a{font-size:14px;font-weight:normal;color:#551a8b}
+.notification-box {width:956px;margin:0 auto;border: 2px solid #ffe599;background: #ffffbf url({site}/Public/images/ico-exc.png) 10px 9px no-repeat;
+overflow: hidden;padding: 6px 0px 6px 0px;font-size: 13px;line-height: 18px;color: #949494;text-shadow: 1px 1px 0 #fff;text-align: center;margin-bottom:6px;}
+.tree{padding:5px;}
+.tree dd,.tree dt, .tree dl{margin:0;padding:0;}
+.tree dd{margin-left:18px;}
+.tree dt{display:block;background:url('{site}/Public/images/tree-bg.png') no-repeat 0 0px;padding-left:35px;line-height :20px;height:20px;}
+.tree dt.node-close{background-position: 0 -24px;}
+.tree dt.node-open{background-position: 0 -58px;}
+.tree dt a{color:#000;text-decoration:none;font-size:14px;line-height:18px;float:left;}
+.tree dt a:hover{background:#fce8ba;text-decoration:underline;}
+#info_div a{color:#03415d;}
+#info_div a:hover{color:#21b8e4;}
+#ellipsis{list-style-type: none;width:200px;margin:0px;padding:0px;float:left;font-size:14px;}
+#ellipsis li{list-style-type: none;text-overflow:ellipsis;white-space:nowrap; overflow:hidden;width:200px;margin:0px;padding:0px;font-size:14px;}
+.nav a{color:#57a000;font-size:14px;}
+#pop a{margin-left:6px;}
+#pop a:hover{text-decoration:underline;}
+#fxt{float:left;font-size:14px;width:77px;height:33px;display:inline-block;background: #43b7e9;color:#fff;line-height:33px;text-align:center;text-decoration:none;}
+#fxt:hover{background: #1c7bc5;}
+</style>
+<!--[if IE 6]><style>.nav li{display:inline;line-height:38px;height:38px;}.nav a{width:80px;height:38px;display:inline-block;}</style><![endif]-->
+<!--[if IE 6]><style>.Dialog_ie6{position:absolute;left:expression(eval(document.documentElement.scrollLeft+400));top:expression(eval(document.documentElement.scrollTop+150))}</style><![endif]-->
+</head>
+<body style="font-size:14px;background:#efefef;">
+<include file="Tpl/Public/top_bar.html">
+<center><include file="Tpl/Public/head.html"></center>
+		<div id="register" style="display:none;">
+			<div id="rt" align="right" style="width:100%;height:20px;background-color:#f5f5f5;cursor:move;"><b style="cursor:pointer;">关闭</b>&nbsp;</div>
+			<iframe src="__APP__/Register{url}show{shtml}" width="100%" height="180" frameborder="0"></iframe>
+		</div>
+		<div id="info_div" style="margin: 0 auto;background:#fafafa;width:1140px;border-bottom: 1px solid #cdcdcd;border-top-left-radius:5px;border-top-right-radius:5px;display:table;text-align:right;">
+			<span style="float:left;font: 14px/1.5 Tahoma,'Microsoft Yahei','Simsun';margin-left:4px;margin-top:8px;font-weight: bold;"><a href="{site}" style="font: 14px/1.5 Tahoma,'Microsoft Yahei','Simsun';font-weight: bold;">主页</a><?php if(!empty($this->array_array['f_parent'])){echo '<span class="connector"></span>'.'<a href="'.$this->youyax_url.'/List'.$this->C('default_url').$this->array_array['f_parent']['id'].$this->C('static_url').'">'.$this->array_array['f_parent']['szone'].'</a>';} ?><span class="connector"></span>{f->szone}<span style="margin-left:10px;"> 今日: <span style="color:#ca4312;">{today} </span><span style="color:#b3b3b3;">|</span> 主题: <span style="color:#ca4312;">{tiezi} </span><span style="color:#b3b3b3;">|</span><span onclick="getonline()" style="cursor:pointer"> 在线: </span><span onclick="getonline()" style="cursor:pointer;color:#ca4312;">{count}</span></span></span>
+			<div style="clear:both"></div>
+	   </div>
+	<div style="clear:both;margin: 0 auto;background:#fafafa;width:1140px;height:34px;padding-top: 2px">
+		<div align="right" id="lists">
+			<a id="fxt" href="__APP__/List{url}fatie{shtml}">发布帖子</a>
+			<div class="page">{page}</div>
+		</div>
+	</div>
+	<div id="wrapper">
+		<div style="width:820px;float:left;">
+			<div style="width:810px;background:#fafafa;padding:0 5px;">
+			  <div id="timeline">
+					<div class="timeline">
+						<div class="spine"></div>
+						<div class="date_separator">
+							<span><strong>{f->szone}</strong></span>
+						</div>
+						<ul class="columns">
+			<?php
+		$curdate = date('Y-m-d');
+		foreach(array('zd_data','data') as $k){
+			if(!empty($this->array_two[$k])){
+						foreach($this->array_two[$k] as $v){
+						?>
+							<li>
+								<div oncontextmenu="self()" onmousedown="whichElement(event,<?php echo $v['id'];?>)" class="timeline_element <?php
+									if(substr($v['time1'],0,10)==$curdate){echo 'green';}
+									?>">
+									<div class="timeline_title" style="margin:10px 10px 5px">
+										<span class="timeline_label"><span style="cursor:pointer;" onclick="document.getElementById('quser').value='<?php echo $v['zuozhe']; ?>';document.forms['query_username'].target='_blank';document.forms['query_username'].submit();"><?php echo $v['zuozhe'];?></span><span style="margin-left:10px;"><?php echo date("Y/m/d H:i:s",strtotime($v['time1']));?></span></span>
+									</div>
+									<div class="content">
+										<p>
+											<a href="__APP__/Content{url}<?php echo $v['id'];?>{shtml}" ><?php echo stripslashes($v['title']);?></a>
+											<?php	if($v['lock_status']==1){	?>
+												<span class="btn-mark-orange">锁定</span>
+												<?php	}if($v['is_grap']==1){	?>
+												<span class="icon-abstract-front">精华</span>
+												<?php	}if(!empty($v['is_allow'])){	?>
+												<span class="btn-mark-groupchat">群组</span>
+												<?php	}if($v['is_visible']==1){	?>
+												<span class="icon-abstract-front2">隐藏</span>
+												<?php	}if($v['is_limit1']==1){	?>
+												<span class="icon-abstract-front3">限1</span>
+												<?php	}if($v['is_question']==1){	?>
+												<span class="btn-mark-green" title="提问帖子">金币: <?php echo $v['question_bid']; ?></span>
+												<?php	}if(!empty($v['tags'])){
+													$tag_sk_lists = explode(",", $v['tags']);
+											            foreach ($tag_sk_lists as $n) {	?>
+											            	<a href="__APP__/Search{url}query{shtml}?q=<?php echo urlencode($n); ?>&action=tags"><span class="btn-mark-tags" title="标签:<?php echo $n; ?>"><?php echo $n; ?></span></a>
+											     <?php  }}	?>
+										</p>
+									</div>
+									<div class="timeline_title">
+										<span class="timeline_label">
+											<span style="width:auto;background:#00bdcc;border-radius:5px;padding:2px 10px;display:inline-block;">
+												<span title="回复/浏览" style="text-align:center;color:#fff;">
+											<?php 
+				if(floor($v['num1']/1000)>=10 && floor($v['num1']/1000)<90){
+					$v['num1']=floor($v['num1']/10000) . "万+";
+				}if(floor($v['num1']/1000)>=90){
+					$v['num1']="9万+";
+				}
+							if($v['num2']!=0){
+								if(floor($v['num2']/1000)>=10 && floor($v['num2']/1000)<90){
+									$v['num2']=floor($v['num2']/10000) . "万+";
+								}if(floor($v['num2']/1000)>=90){
+									$v['num2']="9万+";
+								}
+									echo $v['num2'].' / '.$v['num1'];
+								}else{
+										echo '0 / '.$v['num1'];
+									}
+					?></span></span>
+										</span>
+										<span class="timeline_date"><?php 
+									if(!empty($v['zuozhe1'])){							
+										echo '<span style="cursor:pointer" title="最后回复" onclick="document.getElementById(\'quser\').value=\''.$v['zuozhe1'].'\';document.forms[\'query_username\'].target=\'_blank\';document.forms[\'query_username\'].submit();">'.$v['zuozhe1'].'</span><span style="margin-left:10px;">'.date("Y/m/d H:i:s",strtotime($v['time2'])).'</span>';
+									}
+								?> </span>
+									</div>
+								</div>
+							</li>
+				<?php
+					}
+				}
+		}
+			?>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<include file="Tpl/Public/footer.html">
+		</div>
+		<div style="float:left;width:300px;margin-left:10px;padding:0 5px;overflow-x:hidden;background:#fafafa;">
+			<!-- 子版块 start-->
+		<?php
+		if(!empty($this->array_two['data_block_child'])){
+		?>	
+			<div style="display:inline;float:left;width:300px;text-align:left;background:#1c7bc5;height:32px;line-height:32px;font-size:14px;color:#ffffff;font-weight:bold;"><span style="margin-left:15px;">子版块</span></div>
+			<ul style="text-align:left;width:290px;height:auto;float:left;padding:0 5px 0px 5px;margin-bottom:10px;">
+		<?php
+		 foreach($this->array_two['data_block_child'] as $v){
+		?>		
+				<li style="width:100%;list-style-type:none;border-bottom:1px solid #ddd;float:left;">
+					<div style="margin-top:5px;width:280px;height:80px;">
+						<div style="width:32px;float:left;height: 32px;word-break: break-all;word-wrap: break-word;margin-top: 4px;">
+						<?php	if(!empty($v['icon_url'])){echo '<img src="'.$v['icon_url'].'" style="border:none;">';} ?>	
+						</div>
+						<ul style="list-style-type:none;width:220px;height:80px;float:left;margin-left:10px;">
+							<li style="height:30px;line-height:30px;margin-bottom:3px;"><a style="font-size:15px;font-weight:bold" href="__APP__/List{url}<?php echo $v['id']; ?>{shtml}"><?php echo $v['szone'];?></a><?php if($this->array['today_child'.$v['id']]!=0) echo "<span style='color:#f60;font-size:14px;margin-left:10px;font-weight:bold;'>(".$this->array['today_child'.$v['id']].")</span>";?></li>
+							<li style="height:20px;line-height:20px;margin-bottom:3px;"><span style="color:#999;font-size:14px;">主题: </span><span style="font-size:14px;color:#333;"><?php echo $this->array['zhuti_child'.$v['id']];?></span><span style="color:#999;font-size:14px;margin-left:15px;">帖子: </span><span style="font-size:14px;color:#333;"><?php echo $this->array['tiezi_child'.$v['id']];?></span></li>
+							<li style="height:20px;line-height:20px;margin-bottom:3px;"><ul id="ellipsis"><li><a style="text-decoration:underline;font-size:14px;color:#999;" title="<?php echo strip_tags($this->array_array['arc_child'.$v['id']]['title']);?>" href="__APP__/Content{url}<?php echo $this->array_array['arc_child'.$v['id']]['id'];?>{shtml}"><?php echo $this->array_array['arc_child'.$v['id']]['title'];?></a></li></ul></li>
+						</ul>
+					</div>
+				</li>		
+		<?php	}	?></ul>
+			<?php	  }  ?>
+		<!-- 子版块 end-->
+		<?php 
+			if($this->is_exist_widget("MasterWidget") && $this->is_active_widget("MasterWidget")){	?>
+			<div style="display:inline;float:left;width:300px;text-align:left;background:#1c7bc5;height:32px;line-height:32px;font-size:14px;color:#ffffff;font-weight:bold;"><span style="margin-left:15px;">版主列表</span></div>
+			<div id="moderatordesc" style="text-align:left;width:290px;height:auto;float:left;padding:5px 5px 0px 5px;margin-bottom:10px;">
+				<?php echo w("MasterWidget")->show($_SESSION['youyax_f']);?>
+			</div>
+			<?php	}	?>
+			<div style="display:inline;float:left;width:300px;text-align:left;background:#1c7bc5;height:32px;line-height:32px;font-size:14px;color:#ffffff;font-weight:bold;"><span style="margin-left:15px;">用户组权限</span></div>
+			<div id="perviewdesc" style="display:inline;color:#666;text-align:left;width:290px;height:auto;float:left;padding:5px;margin-bottom:10px;background:#fafafa;">
+			<?php if (!CommonAction::userGroupVisit('publish')){echo "发帖 : <span style='color:red'>×</span>";}else{echo "发帖 : <span style='color:green'>√</span>";}?>
+			<?php if (!CommonAction::userGroupVisit('reply')){echo "回帖 : <span style='color:red'>×</span>";}else{echo "回帖 : <span style='color:green'>√</span>";}?>
+			<?php if (!CommonAction::userGroupVisit('mark')){echo "点评 : <span style='color:red'>×</span>";}else{echo "点评 : <span style='color:green'>√</span>";}?>
+			</div>
+			<?php 
+		if(!empty($this->array_array['f']['mark'])){	?>
+			<div style="display:inline;float:left;width:300px;text-align:left;background:#1c7bc5;height:32px;line-height:32px;font-size:14px;color:#ffffff;font-weight:bold;"><span style="margin-left:15px;">版块介绍</span></div>
+			<div id="blockdesc" style="display:inline;color:#666;text-align:left;width:290px;height:auto;float:left;padding:5px;margin-bottom:10px;background:#fafafa;">
+				{f->mark}
+			</div>
+			<?php	}	?>
+			<div style="display:inline;float:left;width:300px;text-align:left;background:#1c7bc5;height:32px;line-height:32px;font-size:14px;color:#ffffff;font-weight:bold;"><span style="margin-left:15px;">导航菜单</span></div>
+			<div style="overflow-x:hidden;display:none;" id="treediv" class="tree"></div>
+	<script type="text/javascript">
+var data=[
+<?php
+	$sql="select bid,max(ssort) as st,szone from " .$this->C('db_prefix'). "small_block where bid!=0 group by bid order by st desc,szone desc,bid asc";
+	$res = $this->db->query($sql);
+	$num=$this->db->query("select count(*) from (select bid,max(ssort) as st,szone from " .$this->C('db_prefix'). "small_block where bid!=0 group by bid order by st desc,szone desc,bid asc)tmp")->fetchColumn();
+	if($num>0){
+		$num1=0;
+		while($arr=$res->fetch()){
+			$num1++;
+			$ssql="select * from " .$this->C('db_prefix'). "big_block where id=".$arr['bid'];
+			$squery=$this->db->query($ssql);
+			$snum=$this->db->query("select count(*) from " .$this->C('db_prefix'). "big_block where id=".$arr['bid'])->fetchColumn();
+			if($snum>0){
+				while($sarr=$squery->fetch()){
+?>
+{t:'<?php echo $sarr['bzone']; ?>',s:[<?php		
+					$ssql2="select * from " .$this->C('db_prefix'). "small_block where bid=".$sarr['id']." order by ssort desc,szone desc";
+					$squery2=$this->db->query($ssql2);
+					$snum2=$this->db->query("select count(*) from " .$this->C('db_prefix'). "small_block where bid=".$sarr['id']." order by ssort desc,szone desc")->fetchColumn();
+					if($snum2>0){
+					$num2=0;
+					while($sarr2=$squery2->fetch()){
+						$num2++;
+						?>{t:'<?php echo $sarr2['szone'];?>',
+							<?php
+								$csql="select * from " .$this->C('db_prefix'). "small_block where sid=".$sarr2['id']." order by ssort desc,szone desc";
+								$cquery=$this->db->query($csql);
+								$cnum=$this->db->query("select count(*) from " .$this->C('db_prefix'). "small_block where sid=".$sarr2['id']." order by ssort desc,szone desc")->fetchColumn();
+								if($cnum>0){$num3=0;?>
+									s:[<?php
+									while($sarr3=$cquery->fetch()){$num3++;?>
+										{t:'<?php echo $sarr3['szone'];?>',url:'<?php echo $this->youyax_url; ?>/List{url}<?php echo $sarr3['id']; ?>{shtml}'}
+										<?php if($num3 < $cnum){echo ",";}?>
+										<?php	}	?>
+									],<?php }	?>
+							url:'<?php echo $this->youyax_url; ?>/List{url}<?php echo $sarr2['id']; ?>{shtml}'}<?php if($num2 < $snum2){echo ",";}?>
+						<?php
+					 }
+				 }
+			?>
+		]}<?php if($num1 < $num){echo ",";}?>
+			<?php
+				}
+			}
+		}
+	}
+	?>
+];
+	</script>
+		</div>
+	</div>
+	<include file="Tpl/Public/list_quick_action.html">
+  </body>
+</html>

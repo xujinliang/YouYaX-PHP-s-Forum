@@ -1,0 +1,45 @@
+<?php
+$site_config = include("./Conf/site.config.php");
+?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+		<meta http-equiv="refresh" content="5; URL={jumpurl}">
+		<meta name="format-detection" content="telephone=no"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo $this->C('SITE');?>/Public/Css/mobile/public.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo $this->C('SITE');?>/Public/Css/mobile/login.css">
+		<title><?php echo $site_config['site_title_mobile'];?></title>
+	</head>
+	<body>
+	<!--头部开始-->
+		<header>
+			<div class="top_head white">
+	    <div class="box1">
+	        <a href="javascript:history.go(-1);" class="back"></a>
+	    </div>
+	    <div class="box2">
+	        <a href="<?php echo $this->C('SITE');?>"><?php echo $site_config['site_title_mobile'];?></a></div>
+	    <div class="box3"></div>
+			</div>
+		</header>
+	<!--头部结束-->	
+	
+	<section>
+       <p class="tishi_zc red">
+            {msgtitle}<br>
+            {message}<br>
+            系统将在 5 秒内自动跳转,如不想等待，点<a href={jumpurl}>这里</a>跳转！
+        </p>
+    </section>
+	
+	<!--版权开始-->
+	<footer>
+		<div class="copyright">
+   		<a>Powered BY YouYaX</a>
+  	</div>
+	</footer>
+	<!--版权结束-->
+	</body>
+</html>

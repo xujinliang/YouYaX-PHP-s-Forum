@@ -1,0 +1,16 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+.loginBox{ margin:0 10px;}
+.loginBox aside{ padding:10px 0;}
+.loginBox .but_1{ margin:20px 0;width:100%;}
+.tishi_zc{ color:#666; text-align:center;}
+.login{ border:solid 1px #dfdfdf; border-radius:5px;}
+.login label{white-space:nowrap;display:inline-block;}
+.login p{ padding:5px 10px;display:-webkit-box;display:box; orient: horizontal;}
+.login span{ display:block;}
+.login .s1{width:4em;}
+.login .s2{-webkit-box-flex:5;box-flex:5; }
+.login input{ width:100%; height:25px; border:solid 1px #eee; border-radius:5px;}
+.login input:focus{ box-shadow:0 0 5px #ccc;}
+

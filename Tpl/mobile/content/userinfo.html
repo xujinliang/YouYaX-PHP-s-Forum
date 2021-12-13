@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="icon" href="{site}/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="{site}/favicon.ico" type="image/x-icon">
+<link rel="bookmark" href="{site}/favicon.ico" type="image/x-icon">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="format-detection" content="telephone=no"/>
+<title>用户资料显示--YouYaX论坛</title> 
+<style type="text/css">
+	body{font-family:Arial;font-size:14px;overflow-x:hidden}
+</style>
+</head>
+<body style="background:url('{site}{mix->home_back_bg}');margin:0;padding:0;">
+<table width="100%" border=0 bgcolor=#dddddd cellPadding=6 cellspacing=0> 
+	<tr> 
+		<td align=center > 
+		用 户 资 料
+		</td> 
+	</tr> 
+</table> 
+<table width="100%" border=0 bgcolor=#fafafa cellpadding='6' cellspacing='0'> 
+	<tr> 
+		<td width="100%" colspan=3 align=center>基本信息</td>
+	</tr>	
+	<tr> 
+		<td align=center width="30%"> 
+		登录名
+		</td>
+		<td width="70%" align=left colspan="2">
+			{uinfo->user}&nbsp;<?php if("{uinfo->status}"==1 || "{uinfo->status}"==3) echo '(<span style="color:green">正常</span>)'; ?>
+		<?php if("{uinfo->status}"==2) echo '(<span style="color:red">禁止发言</span>)'; ?>
+		</td>				
+	</tr> 
+	<tr> 
+                <td align=center width="30%"> 
+                注册日期
+                </td> 
+                <td width="70%" colspan=2 align=left> 
+	              {uinfo->time}
+                </td> 
+        </tr>	
+     <tr> 
+                <td align=center width="30%"> 
+                当前状态
+                </td>
+                <td width="70%" colspan=2 align=left> 
+	              {onlineinfo}
+                </td>
+        </tr>
+    <tr> 
+                <td align=center width="30%"> 
+                上次访问
+                </td> 
+                <td width="70%" colspan=2 align=left> 
+		             <?php if(!empty($this->array_array['uinfo']['lasttime'])){echo date('Y-m-d H:i:s',$this->array_array['uinfo']['lasttime']);}else{echo '————';} ?>
+                </td> 
+        </tr>	
+    <tr> 
+                <td align=center width="30%"> 
+                来路信息
+                </td> 
+                <td width="70%" colspan=2 align=left> 
+                	<div style="width:100%">
+		             <?php if(!empty($this->array_array['uinfo']['lastzone'])){echo $this->array_array['uinfo']['lastzone'];}else{echo '————';} ?>
+ 					</div>
+                </td> 
+        </tr>			
+    <tr> 
+                <td align=center width="30%"> 
+                用户组
+                </td> 
+                <td width="70%" colspan=2 align=left>
+	              <?php echo CommonAction::getUserGroup($this->array_array['uinfo']['user_group']); ?>
+                </td>
+        </tr>
+<?php
+ if(!empty($this->array_two['lists'])){
+?>
+  <tr> 
+		<td align=center width="30%"> 
+		版主权限
+		</td>
+		<td width="70%" align=left colspan=2>
+	<list>{lists.szone}&nbsp;,&nbsp;</list>
+		</td>	
+	</tr> 
+<?php	}	?>	
+	<tr> 
+		<td align=center width="30%"> 
+		主题数
+		</td> 
+		<td width="70%" align=left colspan=2>
+			{uinfo->fatieshu}
+		</td>	
+	</tr>
+	<tr>
+		<td align=center width="30%">
+		最近主题
+		</td>
+		<td width="70%" colspan=2 align=left>
+		<list>
+			<div style="margin-bottom:20px;overflow:hidden;width:100%;padding-right:10px;">
+				<a title="{tinfo.title|strip_tags}" style="color:#3268c3;" href="__APP__/Content{url}{tinfo.id}{shtml}">{tinfo.title}</a>
+			</div>
+		</list>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

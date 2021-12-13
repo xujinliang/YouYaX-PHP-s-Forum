@@ -1,0 +1,21 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+.h_d { text-align: right; margin: 5px 0; }
+.h_d a, .h_d span { margin-right: 20px; cursor: pointer; }
+.postCon h1 { text-align: center; padding: 10px 10px 5px; }
+.postCon img,.commentList img { max-width: 99%; margin: 10px auto 0;}
+embed,.audiojs{max-width: 99%;}
+.postCon aside { text-align: center; padding: 0 10px; font-size: 12px; color: #a0a0a0; }
+.postCon aside a { display: inline-block; color: #a0a0a0; padding-left: 15px; margin-left: 4px; }
+.commentList { border-bottom: solid 1px #f2f2f2; clear:both;}
+.commentList .c1 { overflow: hidden; padding: 10px 10px 0;font-size:14px; }
+.commentList .c2,.c2 { /*text-indent: 2em;*/ margin-top: 10px; padding: 0 10px; }
+.c2 a{color:#57a000;}
+.page {padding: 10px 0; }
+.commenTxt { background: #f9f9f9; border: solid 1px #f1f1f1; padding: 10px; margin-bottom: 20px; }
+.commenTxt textarea { border: solid 1px #f1f1f1; width: 99%; height: 95px; padding: 2px; font-size: 14px; }
+.commenTxt .photo { margin: 0 10px 0 0 }
+.commenTxt .but_3 {font-size: 14px; float: right; }
+::-webkit-input-placeholder{font-family:Arial;font-size:13px;position:relative;top:6px;}
+::-moz-placeholder{font-family:Arial;font-size:13px;position:relative;top:6px;}

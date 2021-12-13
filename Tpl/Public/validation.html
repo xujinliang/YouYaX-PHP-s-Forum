@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>页面提示</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<style type="text/css">
+			body{
+				background:#a6a6a6;
+			}
+		#validate{
+  font-family:'隶书';
+	text-align:center;
+	width:350px;
+	height:60px;
+	line-height:60px;
+	background:#f4e1d5;
+	position:fixed;
+	margin:auto;
+	left:0; right:0; top:0; bottom:0;
+	box-shadow: rgb(255, 255, 255) 0px 0px 100px;
+	-webkit-box-shadow: rgb(255, 255, 255) 0px 0px 100px;
+	-moz-border-radius: 20px;
+	-khtml-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	*position:absolute;
+  *left:expression(eval((document.documentElement.clientWidth-350)/2));
+  *top:expression(eval((document.documentElement.clientHeight-60)/2));
+}
+		</style>
+	</head>
+	<body>
+		<div id="validate">
+				<span style="font-family:Tahoma;font-size:14px;display:block;height:14px;margin-top:-10px;">验证错误</span>
+				<span style="color:red;font-family:Verdana;font-size:14px;font-weight:700;display:block;height:14px;margin-top:6px;">{Tip}</span>
+		</div>
+	</body>
+</html>

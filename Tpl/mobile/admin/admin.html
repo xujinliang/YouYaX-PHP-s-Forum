@@ -1,0 +1,57 @@
+<include file="Tpl/mobile/Public/admin_top.html">
+<div class="panel panel-default table-responsive">
+ <div class="panel-heading">管理员查询</div>
+	<table class="table">
+		<tr>
+			<th>ID</th>
+			<th>管理员</th>
+			<th>密码</th>
+			<th>操作</th>
+		</tr>
+		<tr><td colspan=4 align=right><div class="page">{page}</div></td></tr>
+<?php
+ if(!empty($this->array_two['data'])){
+ 	foreach($this->array_two['data'] as $vo){
+?>
+			<tr>
+				<td>
+				<?php
+					echo $vo['id'];
+				?>
+				</td>
+				<td>
+					<?php
+					echo $vo['user'];
+				?>
+				</td>
+				<td>
+					<?php
+					echo $vo['pass'];
+				?>
+				</td>
+				<td align="center">
+					<a style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold" href="__APP__/admin{url}purview{url}id{url}<?php echo $vo['id']?>{shtml}">权限</a>&nbsp;
+					<?php
+					if($vo['isAdmin']==0){	?>
+						<a onclick="return confirm('您确定要免职?');" style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold" href="__APP__/admin{url}adminDepose{url}id{url}<?php echo $vo['id']?>{shtml}?token={token}">免职</a>
+					<?php	}else{	?>	
+						<a onclick="return confirm('您确定要删除?');" style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold" href="__APP__/admin{url}adminDel{url}id{url}<?php echo $vo['id']?>{shtml}?token={token}">删除</a>
+					<?php	}	?>
+				</td>
+			</tr>
+<?php
+	}
+}
+?>
+	</table>
+ </div>
+<form action="__APP__/admin{url}adminAdd{shtml}" method=post>
+	 <table class="table">
+		<tr><td>管理员</td><td><input type="text" name="admin"></td></tr>
+		<tr><td>密码</td><td><input type="password" name="pass"></td></tr>
+		<tr><td><input type="radio" name="ac" value="add">&nbsp;增加</td>&nbsp;<td><input type="radio" name="ac" value="update">&nbsp;更新</td></tr>
+		<input type="hidden" name="token" value="{token}">
+		<tr><td colspan=2><input type="image" src="{site}/Public/images/add.gif"></td></tr>
+	 </table>
+	</form>
+<include file="Tpl/mobile/Public/admin_bottom.html">

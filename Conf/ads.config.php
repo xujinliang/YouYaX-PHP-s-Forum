@@ -1,0 +1,1 @@
+<?php return '欢迎使用YouYaX'; ?>

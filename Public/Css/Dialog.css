@@ -1,0 +1,74 @@
+﻿.Dialog {
+font-family: Tahoma,Arial,Helvetica,sans-serif;
+font-size: 12px;
+background: white;
+padding: 0px;
+width: 350px;
+color: #222;
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+-webkit-box-shadow: 0px 0px 4px 2px #222;
+-moz-box-shadow: 0px 0px 4px 2px #222;
+box-shadow: 0px 0px 4px 2px #222;
+border: 1px solid #666	9;
+position: fixed; left: calc(50% - 175px); top: calc(50% - 70px);; z-index: 101; display:none;
+}
+.Dialog .Dialog_Title {
+margin: 0;
+padding: 5px 10px;
+font-weight: bold;
+font-size: 14px;
+background: #222;
+color: white;
+text-align: left;
+-webkit-border-top-left-radius: 4px;
+-webkit-border-top-right-radius: 4px;
+-moz-border-radius-topleft: 4px;
+-moz-border-radius-topright: 4px;
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+padding: 7px 10px	9;
+}
+.Dialog .Dialog_Buttons {
+background: #E5E5E5;
+border-top: 1px solid #DADADA;
+padding: 5px 5px 5px 10px;
+-webkit-border-bottom-left-radius: 5px;
+-webkit-border-bottom-right-radius: 5px;
+-moz-border-radius-bottomleft: 5px;
+-moz-border-radius-bottomright: 5px;
+border-bottom-left-radius: 5px;
+border-bottom-right-radius: 5px;
+}
+.Dialog .Dialog_Icon {
+padding: 10px 10px 10px 68px;
+min-height: 48px;
+_height: 48px;
+}
+.Dialog .Dialog_Body {
+background-repeat: no-repeat;
+background-position: 10px 10px;
+padding: 10px;
+text-align: left;
+}
+.Dialog .Dialog_Buttons a {
+text-decoration: none;
+font-weight: bold;
+color: black;
+background: transparent;
+border: 1px solid #AAA;
+padding: 4px 10px;
+float: right;
+margin-right: 5px;
+min-width: 60px;
+_width: 60px;
+text-align: center;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+}
+.Dialog .Dialog_Buttons a:hover {
+background: #717366;
+color: white;
+}

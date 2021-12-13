@@ -1,0 +1,29 @@
+<include file="Tpl/mobile/Public/admin_top.html">
+<form name="form" action="__APP__/admin{url}dowaterset{shtml}" method="post">
+<div class="panel panel-default table-responsive">
+ <div class="panel-heading">水印设置</div>
+	<table class="table">
+		<tr>
+			<td>开启上传图片水印?</td>
+			<td><input type="checkbox"  name="water_allow" onchange="if(this.checked){this.value=1;}else{this.value=0;}" <?php if("{water->water_allow}"==true) echo "checked"; ?> <?php if("{water->water_allow}"==true){ ?> value="1" <?php }else{ ?> value="0" <?php } ?>><span style="color:#ff0000"> * ↓↓↓最小长度与高度需同时满足！</span></td>
+		</tr>
+		<tr>
+			<td>上传图片最小长度</td>
+			<td><input type="text" name="water_pic_width" style="width:20%" value="{water->water_pic_width}"><span style="color:#ff0000"> * 当上传图片尺寸不低于设置值时，水印才会生效！</span></td>
+		</tr>
+		<tr>
+			<td>上传图片最小高度</td>
+			<td><input type="text" name="water_pic_height" style="width:20%" value="{water->water_pic_height}"><span style="color:#ff0000"> * 当上传图片尺寸不低于设置值时，水印才会生效！</span></td>
+		</tr>
+		<tr>
+			<td>输入水印文字</td>
+			<td><input type="text" name="water_str" style="width:60%" value="{water->water_str}"></td>
+		</tr>
+   	<tr>
+   		<input type="hidden" name="token" value="{token}">
+		<td height="40" colspan="2" align="left"><input name="submit" type="submit" value="提交" class="button" /></td>
+	</tr>
+ </table>
+ </div>
+</form>
+<include file="Tpl/mobile/Public/admin_bottom.html">

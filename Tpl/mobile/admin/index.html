@@ -1,0 +1,67 @@
+<include file="Tpl/mobile/Public/admin_top.html">
+    <div class="container-fluid">
+      <div class="row">
+      	<div class="col-md-12  main">
+      		<div class="row placeholders">
+      			<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h3 class="panel-title">图表信息</h3>
+				  </div>
+      			  <div class="panel-body">
+      				<img src="__APP__/adminCount{url}show{shtml}" border="0" width="100%">
+      			 </div>
+      			</div>
+      		<?php if(!empty($this->array_two['reply_num_max'])){	?>
+      			<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h3 class="panel-title">回复最多的帖子(Week)</h3>
+				  </div>
+      			  <div class="panel-body">
+      				<ul class="list-group" style="margin-bottom:0;">
+						<list>
+							<li class="list-group-item">
+								<a href="{url_connect}/Content{url}{reply_num_max.rid}{shtml}"><?php echo CommonAction::getTitle({reply_num_max.rid}); ?></a>
+							</li>
+						</list>
+					</ul>
+				 </div>
+      			</div>
+      		<?php	} if(!empty($this->array_two['scan_num_max'])){	?>
+      			<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h3 class="panel-title">浏览最多的帖子(Week)</h3>
+				  </div>
+      			  <div class="panel-body">
+      				<ul class="list-group" style="margin-bottom:0;">
+						<list>
+							<li class="list-group-item">
+								<a href="{url_connect}/Content{url}{scan_num_max.id}{shtml}">{scan_num_max.title}</a>
+							</li>
+						</list>
+					</ul>
+				 </div>
+      			</div>
+      		<?php	}	?>
+      			<div class="panel panel-default">
+				  <div class="panel-heading">其他信息</div>
+				    <ul class="list-group">
+						<li class="list-group-item">一周新用户统计 : {count_user_num}</li>
+						<li class="list-group-item">一周新帖子统计 : {count_post_num}</li>
+						<li class="list-group-item">操作系统 : <?php echo PHP_OS; ?></li>
+						<li class="list-group-item">运行环境 : <?php echo $_SERVER["SERVER_SOFTWARE"]; ?></li>
+						<li class="list-group-item">PHP版本信息 : <?php echo phpversion(); ?></li>
+						<li class="list-group-item">数据库版本信息 : <?php echo $this->db->getAttribute(PDO::ATTR_SERVER_VERSION); ?></li>
+						<li class="list-group-item">上传图片总容量 : <?php echo number_format(directory_size("./Public/upload") / (1024 * 1024),2) . 'M'; ?></li>
+						<li class="list-group-item">缓存文件总容量 : <?php echo number_format(directory_size("./cache") / (1024 * 1024),2) . 'M&nbsp;&nbsp;'; 
+							if($this->is_exist_widget("CacheDelWidget") && $this->is_active_widget("CacheDelWidget")){
+											echo w("CacheDelWidget")->show();
+									} ?></li>
+					</ul>
+					</div>
+				  </div>
+				</div>
+      		</div>
+      	</div>
+      </div>
+    </div>
+<include file="Tpl/mobile/Public/admin_bottom.html">

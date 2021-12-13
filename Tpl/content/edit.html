@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>编辑帖子</title>
+<link rel="icon" href="{site}/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="{site}/favicon.ico" type="image/x-icon">
+<link rel="bookmark" href="{site}/favicon.ico" type="image/x-icon">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<script type="text/javascript" src="{site}/Public/JScript/public.js?<?php echo time();?>"></script>
+<script type="text/javascript" src="{site}/ORG/UBB/ORG/UBB/edit.js"></script>
+<link rel="stylesheet" href="{site}/ORG/UBB/ORG/UBB/edit.css" type="text/css">
+<script>
+function check() {
+	document.getElementById("sub").disabled = true;
+	if (document.getElementById('content').value == '') {
+		Tip('编辑内容不能为空', 1);
+		if (!document.getElementById('Tip')) {
+			alert('编辑内容不能为空!')
+		}
+		document.getElementById("sub").disabled = false;
+		return false
+	} else {
+		return true
+	}
+}
+</script>
+<link rel="stylesheet" href="{site}/Public/resources/css/style.css" type="text/css" media="screen" />
+<style>
+*{margin:0px;padding:0px;font-family: 'Microsoft YaHei','微软雅黑',Arial,Helvetica,sans-serif;color:#333;}
+a{text-decoration:none;}
+#editor{border-collapse:collapse;border:1px solid #f4f4f4;}
+#editor td{text-align: left;border:none;background:#fafafa;}
+#preview_div p{padding:0;line-height:26px;color:inherit;font-family:inherit;}
+#preview_div span{color:inherit;font-family:inherit;}
+input[type="submit"],input[type="reset"]{padding:2px;}
+.headline a{font-size:13px;font-weight:bold;}
+.connector{border-color: transparent #333333;border-style: solid;border-width: 4px 0px 4px 4px;height: 0px;width: 0px;display: inline-block;position:relative;top:-1px;margin:0 4px;
+*border:none;*width:4px;*height:8px;*background:url('{site}/Public/images/ie6_guide.gif') no-repeat;*top:-4px;_top:4px;*left:-2px;}
+#web_editor_title select{padding:0;}
+</style>
+</head>
+<body style="font-size:12px;background:#efefef;">
+	<include file="Tpl/Public/top_bar.html">
+	<script type="text/javascript" src="{site}/Public/JScript/Tip.js" ></script>
+		<center>
+			<div class="headline" style="width:1140px;text-align:left;font-size:0;padding:10px 0;">
+				<a href="{site}">主页</a>
+					<span class="connector"></span>
+				<?php	if("{bz}"=="1"){	?>
+					<a href="__APP__/Content{url}<?php echo $this->array_array['result']['id']; ?>{shtml}"><?php echo stripslashes($this->array_array['result']['title']); ?></a>
+				<?php	}if("{bz}"=="2"){ 	?>
+					<a href="__APP__/Content{url}<?php echo $this->array_array['result']['rid']; ?>{shtml}"><?php echo stripslashes(CommonAction::getTitle($this->array_array['result']['rid'])); ?></a>				
+				<?php	}	?>
+			</div>
+			<form name="form" id="form" method="post" action="__APP__/List{url}editupdate{shtml}" onsubmit="return check()">
+				<div class="content-box" style="background:none;">
+				<table id="editor" width=1140 border=1 cellspacing=0 cellpadding=0>
+					<tr style="display:none;"><td>发帖人</td><td><input name=zuozhe id=zuozhe READONLY value="{user}"></td></tr>
+					<tr><td style="padding:0 12px;vertical-align: middle;">编辑<br><br>内容</td><td width="890">
+				<?php if("{bz}"=="1"){ ?><input type=hidden name=id value="{result->id}">
+				<?php }if("{bz}"=="2"){ ?><input type=hidden name=id2 value="{result->id2}">
+				<?php } ?>
+					<div id="edit" style="width:890px;background:#f9f9f9;margin:0 auto;font-weight:normal"></div>
+							<script>web_editor_init("edit","1070","400","{site}/ORG/UBB")</script>
+							<input type="hidden" name="token" value="{token}">
+					<?php
+					if("{bz}"=="1"){
+						$con=trim(preg_replace('/\[quote](.*?)\[\/quote]/', '',$this->array_array['result']['ori_content']));
+					}if("{bz}"=="2"){
+						$con=trim(preg_replace('/\[quote](.*?)\[\/quote]/', '',$this->array_array['result']['ori_content1']));
+					}
+					$val=addslashes(htmlspecialchars_decode($con,ENT_QUOTES));
+					$val=str_replace(array("\r\n","\n"),"<br>",$val);
+					$sub = array("<script>" => "&lt;script&gt;", "</script>" => "&lt;/script&gt;");
+					$val=strtr($val,$sub);
+					 echo '<script>
+					    	document.getElementById("web_editor_con2").value="'.$val.'";
+					  </script>';
+					echo '<script>document.getElementById("web_editor_con2").value=document.getElementById("web_editor_con2").value.replace(/<br>/g,"\r\n");</script>';
+					if(strpos($val,"&lt;script&gt;")){
+				  	echo '<script>document.getElementById("web_editor_con2").value=document.getElementById("web_editor_con2").value.replace(/&lt;/g,"<");</script>';
+				  }
+				  if(strpos($val,"&lt;/script&gt;")){
+				  	echo '<script>document.getElementById("web_editor_con2").value=document.getElementById("web_editor_con2").value.replace(/&gt;/g,">");</script>';
+				  }
+					?>
+					</td></tr>
+					<tr><td><input class="button" id="sub" type="submit" value="编辑帖子"></td><td style="padding-left:10px;"><input class="button" type=reset value="重置"></td></tr>
+				</table>
+			  </div>
+			</form>
+			<div style="width:1140px;">
+				<include file="Tpl/Public/footer.html">
+			</div>
+		</center>
+	</body>
+</html>
+					

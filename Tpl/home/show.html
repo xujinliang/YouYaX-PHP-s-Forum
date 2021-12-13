@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="icon" href="{site}/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="{site}/favicon.ico" type="image/x-icon">
+<link rel="bookmark" href="{site}/favicon.ico" type="image/x-icon">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>个人中心</title>
+<link rel="stylesheet" href="{site}/Public/resources/css/style.css" type="text/css" media="screen" />
+<script type="text/javascript" src="{site}/Public/JScript/public.js?<?php echo time();?>"></script>
+<script type="text/javascript">
+	document.onreadystatechange = function() {
+		if (document.readyState == "complete") {
+			var aes = document.getElementById("pagination").getElementsByTagName("a");
+			for (var n in aes) {
+				aes[n].className += " number";
+			}
+			var url = window.location.href;
+			var url_array = url.split("=");
+			var page = parseInt(url_array[1]);
+			if (typeof(page) != "number") return;
+			var uclass = document.getElementById("pagination").getElementsByTagName("a");
+			for (var n in uclass) {
+				var str = eval("/fy" + page + "/");
+				if (str.test(uclass[n].className) && uclass[n].className != undefined && (("fy" + page).length == uclass[n].className.length - 7)) {
+					uclass[n].className += " current";
+				}
+			}
+		}
+	}
+	var xmlhttp;
+	if (window.ActiveXObject) {
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	} else {
+		xmlhttp = new XMLHttpRequest();
+	}
+	function show(val) {
+		if (document.getElementById("ms")) return;
+		var mess = document.createElement("div");
+		mess.id = "ms";
+		mess.style.cssText = "position:fixed;top:50%;left:50%;margin-top:-35px;margin-left:-150px;z-index:99;width:300px;height:70px;border:10px solid rgba(0,0,0,0.3);border-radius:4px;background-clip:padding-box;background-color:#f5f5f5;";
+		mess.innerHTML = '<div align="right" style="height:14px;font-size:14px">' + '<span style="cursor:pointer;" onclick="document.getElementById(\'ms\').parentNode.removeChild(document.getElementById(\'ms\'));"><img style="margin-top:2px;margin-right:4px;" border="0" src="' + rooturl + '/Public/images/close.gif"></span>' + '</div>' + '<div style="width:280px;height:40px;margin-left:10px;margin-top:2px;overflow:hidden">' + '<textarea id="ta" placeholder="向 ' + val + ' 发送短消息" style="float:left;width:230px;width:200px\9;_width:200px;height:36px;border:none;resize:none;background:#e9e6e6;overflow:hidden"></textarea>' + '<div style="width:40px;height:40px;background:#1c7bc5;color:#fff;text-align:center;float:left;margin-left:4px;font-size:13px;">' + '<span onclick="send(\'' + val + '\',document.getElementById(\'ta\').value)" style="position:relative;top:14px;cursor:pointer">发送</span>' + '</div>' + '</div>';
+		document.body.appendChild(mess);
+	}
+	function send(val, tc) {
+		xmlhttp.open("POST", rooturl + "/index.php/Message" + url + "send" + shtml, true);
+		xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xmlhttp.send("mto=" + val + "&mcon=" + tc);
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+				alert(xmlhttp.responseText);
+			}
+		}
+	}
+	var zt = false;
+	function selectcheckall() {
+		if (zt == true) {
+			zt = false;
+		} else {
+			zt = true;
+		}
+		var a = document.getElementsByTagName("input");
+		for (var i = 0; i < a.length; i++) if (a[i].type == "checkbox") a[i].checked = zt;
+	}
+	function apply_sel() {
+		var sign = false;
+		var a = document.getElementsByTagName("tbody")[0].getElementsByTagName("input");
+		for (var i = 0; i < a.length; i++) {
+			if (a[i].type == "checkbox" && a[i].checked) {
+				sign = true;
+			}
+		}
+		if (!sign) {
+			alert("请选中至少一个复选框！");
+		} else {
+			document.forms['select_all_form'].submit();
+		}
+	}
+</script>
+</head>
+<body>
+<div id="body-wrapper">
+  <div id="sidebar">
+    <div id="sidebar-wrapper">
+      <h1 id="logo">用户个人中心</h1>
+      <div id="profile-links">你好，{user} | <a href="{site}">退出</a><br /><br /></div>
+      <ul id="main-nav">
+        <li>
+          <ul>
+            <li><a href="__APP__/Index{url}self{shtml}">设置个人头像</a></li>
+            <li><a href="__APP__/Index{url}chpsd{shtml}">更改登录密码</a></li>
+            <li><a class="current" href="__APP__/Message{url}show{shtml}">查看我的消息</a></li>
+            <li><a href="__APP__/Favor{url}show{shtml}">查看我的收藏</a></li>
+            <li><a href="__APP__/Index{url}mypub{shtml}">我发布的帖子</a></li>
+            <li><a href="__APP__/Index{url}myrep{shtml}">我回复的帖子</a></li>
+            <?php
+    		if($this->is_exist_widget("SignatureWidget") && $this->is_active_widget("SignatureWidget")){
+    			echo w("SignatureWidget")->slideName();
+    		}
+    		?>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="main-content">
+    <div class="content-box">
+      <div class="content-box-header">
+        <h3>查看消息</h3>
+        <div class="clear"></div>
+      </div>
+      <div class="content-box-content">
+        <div class="tab-content default-tab" id="tab1">
+<form name="select_all_form" method="post" action="__APP__/Message{url}delMesses{shtml}">       
+       <table>
+            <thead>
+              <tr>
+                <th>
+                  <input onclick="selectcheckall()" type="checkbox" />
+                </th>
+                <th colspan="2">消息列表</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <td colspan="3">
+                  <div class="bulk-actions align-left">
+                    <a class="button" href="javascript:apply_sel()">全部删除</a> </div>
+                  <div id="pagination" class="pagination page">{page}</div>
+                  <div class="clear"></div>
+                </td>
+              </tr>
+            </tfoot>
+            <tbody>
+             <list>
+              <tr>
+                <td>
+                  <input type="checkbox" name="cb[]" value="{data.id}"/>
+                </td>
+                <td><span style="color:#46b">{data.mfrom}</span>&nbsp;:&nbsp;{data.mcon}&nbsp;<span style="font-size:12px;color:#999;-webkit-transform: scale(0.95);-moz-transform: scale(0.95);-o-transform: scale(0.95);display: inline-block;"><?php echo date('Y-m-d H:i:s',"{data.time}") ?></span></td>
+                <td width="36">
+                  <a href="javascript:void(0)" onclick="show('{data.mfrom}')"><img src="{site}/Public/resources/images/icons/reply.png" title="回复"></a>
+                  <a href="__APP__/Message{url}delMess{url}mid{url}{data.id}{shtml}" onclick="return confirm('确定要删除这条消息?');"><img src="{site}/Public/resources/images/icons/cross.png" title="删除"></a>
+                </td>
+              </tr>
+             </list>
+            </tbody>
+          </table>
+</form>   
+        </div>
+      </div>
+    </div>
+    <include file="Tpl/Public/footer.html">
+  </div>
+</div>
+<script>
+		var tr=document.getElementsByTagName("tr");
+		for(var n=0;n<tr.length;n++)
+		{
+			if(n%2==1&&n!=0)
+			{
+				tr[n].className+=" alt-row";	
+			}
+		}
+	</script>
+</body>
+</html>

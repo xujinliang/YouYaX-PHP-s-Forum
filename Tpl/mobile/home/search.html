@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="icon" href="{site}/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="{site}/favicon.ico" type="image/x-icon">
+		<link rel="bookmark" href="{site}/favicon.ico" type="image/x-icon">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+		<meta name="format-detection" content="telephone=no"/>
+		<link rel="stylesheet" type="text/css" href="{site}/Public/Css/mobile/public.css">
+		<link rel="stylesheet" type="text/css" href="{site}/Public/Css/mobile/categorylist.css">
+		<link rel="stylesheet" type="text/css" href="{site}/Public/Css/mobile/custom.css">
+		<script type="text/javascript" src="{site}/Public/JScript/search.js" defer="true"></script>
+		<title>{site_config->site_title_mobile}</title>
+	</head>
+	<body>
+	<!--头部开始-->
+		<header>
+			<div class="top_head white" style="font: normal 18px/1.5 helvetica, verdana, san-serif;">
+	    <div class="box1">
+	        <a href="javascript:history.go(-1);" class="back"></a>
+	    </div>
+	    <div class="box2">
+	        <a href="{site}">{site_config->site_title_mobile}</a></div>
+	    <div class="box3">
+	        	<?php if(empty($_SESSION['youyax_user'])){	?>
+	            <a  href="__APP__/Login{url}loginMobile{shtml}"><span class="header_user">用户登录</span></a>
+	          <?php	}else{	?>
+	          <a href="__APP__/Index{url}self{shtml}"><span class="header_user">{user}</span></a>
+	        <?php	}	?>
+	    </div>
+			</div>
+		</header>
+	<!--头部结束-->	
+	<section class="mark" id="ResultStats">
+		找到约 {search_count} 条结果 （用时约 {timecost} 秒）
+	</section>
+ 	<section class="posts_list">
+<?php
+		if(!empty($this->array_two['search_results'])){
+?>
+    <ul class="listBg" id="results">
+<?php
+		 foreach($this->array_two['search_results'] as $v){
+?>
+		<li>
+	    	<div class="entity">
+				<h3><a href="__APP__/Content{url}<?php echo $v['id'];?>{shtml}" target="_blank"><?php echo $v['title'];?></a></h3>
+				<p class="url">__APP__/Content{url}<?php echo $v['id'];?>{shtml}</p>
+				<p class="outline"><?php echo mb_substr(strip_tags($v['content']),0,100,"utf-8"); ?></p>
+				<p class="createtime"><?php echo $v['zuozhe'];?>&nbsp;&nbsp;发表于&nbsp;&nbsp;<?php echo $v['time1'];?></p>
+			</div>
+    	</li>
+<?php
+		}
+?>
+	</ul>
+	<div class="page" align="center">{page}</div>
+<?php
+	}
+?>
+  </section>
+	<!--版块结束-->	
+	<!--版权开始-->
+	<footer>
+		<div class="copyright">
+   		<a>Powered BY YouYaX</a>
+  	</div>
+	</footer>
+	<!--版权结束-->
+	</body>
+</html>

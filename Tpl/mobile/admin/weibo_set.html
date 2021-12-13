@@ -1,0 +1,26 @@
+<include file="Tpl/mobile/Public/admin_top.html">
+<form name="form" action="__APP__/admin{url}doWeiboset{shtml}" method="post">
+<div class="panel panel-default table-responsive">
+ <div class="panel-heading">新浪微博一键登录配置</div>
+	<table class="table">
+		<tr>
+			<td>app_id</td>
+			<td><input type="text" name="app_id" style="width:60%" value="{weibo->app_id}"></td>
+		</tr>
+		<tr>
+			<td>app_secret</td>
+			<td><input type="text" name="app_secret"  value="{weibo->app_secret}"></td>
+		</tr>
+		<tr>
+			<td>callback回调地址</td>
+			<td><input type="text" name="callback"  value="{weibo->callback}"></td>
+		</tr>
+		<tr>
+   			<input type="hidden" name="token" value="{token}">
+			<td height="40" colspan="2" align="left"><input name="submit" type="submit" value="提交" class="button" /></td>
+		</tr>
+	</table>
+	</div>
+	</form>
+
+<include file="Tpl/mobile/Public/admin_bottom.html">

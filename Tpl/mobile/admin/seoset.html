@@ -1,0 +1,43 @@
+<include file="Tpl/mobile/Public/admin_top.html">
+<form name="form" action="__APP__/admin{url}doseoset{shtml}" method="post">
+<div class="panel panel-default table-responsive">
+ <div class="panel-heading">SEO配置</div>
+	<table class="table">
+		<tr>
+			<td>SEO状态</td>
+			<td>
+				<select name="seostatus">
+					<option value="off" <?php if("{config->seo_set}"=="off") echo "selected";?>>关闭</option>
+					<option value="on" <?php if("{config->seo_set}"=="on")  echo "selected";?>>开启</option>
+				</select></td>
+		</tr>
+		<tr>
+			<td>说明</td>
+			<td>
+				UrlRewrite有利于搜索引擎的收录，写在httpd.ini或.htaccess文件中<br>
+				如果文件位于"forum"目录中<br>
+				httpd.ini写法
+				<code style="font-family: Monaco, Verdana, Sans-serif;font-size: 14px;background-color: #F9F9F9;border: 1px solid #D0D0D0;color: #002166;display: block;padding: 12px 10px 12px 10px;">
+					[ISAPI_Rewrite]<br>
+					RewriteRule ^/forum/(<font color=red>(Index|List|Content|admin|Vote|Message|Favor)</font>.*)$ /forum/index\.php/$1 [L]					
+				</code>
+				.htaccess写法
+				<code style="font-family: Monaco, Verdana, Sans-serif;font-size: 14px;background-color: #F9F9F9;border: 1px solid #D0D0D0;color: #002166;display: block;padding: 12px 10px 12px 10px;">
+					RewriteEngine on<br>
+					RewriteRule ^/forum/(<font color=red>(Index|List|Content|admin|Vote|Message|Favor)</font>.*)$ /forum/index\.php/$1 [L]					
+				</code>
+				如果文件位于根目录中
+				<code style="font-family: Monaco, Verdana, Sans-serif;font-size: 14px;background-color: #F9F9F9;border: 1px solid #D0D0D0;color: #002166;display: block;padding: 12px 10px 12px 10px;">
+					RewriteRule ^/(<font color=red>(Index|List|Content|admin|Vote|Message|Favor)</font>.*)$ /index\.php/$1 [L]					
+				</code>
+				注意：括号里加入控制器名称,用"|"间隔,且论坛目录不能含有与控制器名称同名的文件夹,或者可以参考系统自带的.htaccess写法
+			</td>
+		</tr>
+   <tr>
+   		<input type="hidden" name="token" value="{token}">
+		<td height="40" colspan="2" align="left"><input name="submit" type="submit" value="提交" class="button" /></td>
+	</tr>
+</table>
+</div>
+</form>
+<include file="Tpl/mobile/Public/admin_bottom.html">

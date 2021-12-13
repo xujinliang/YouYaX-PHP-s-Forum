@@ -1,0 +1,87 @@
+<include file="Tpl/mobile/Public/admin_top.html">
+	<script type="text/javascript">
+		function add(){
+			var tdiv=document.createElement("div");
+			tdiv.id="popadd";
+			tdiv.style.cssText="width:300px;height:130px;position:fixed;left:50%;top:50%;margin-left:-150px;margin-top:-65px;border:1px solid #e9e9e9;z-index:999";
+			tdiv.innerHTML='<form action="__APP__/admin{url}doMenuCnSetAddone{shtml}" method=post target="main">'+
+										 '<table  style="background:#e7e7e7" width=100%  height="130" cellspacing=0 cellpadding=0>'+
+										 '<tr style="background:#ededed"><td  align="right" style="color:#333;font-size:12px"><span style="cursor:pointer" onclick="document.getElementById(\'popadd\').parentNode.removeChild(document.getElementById(\'popadd\'));">关闭</span></td></tr>'+
+											'<tr><td style="color:#333;font-size:16px">一级菜单名称</td></tr>'+
+											'<tr><td><input type="text" name="oname" style="width:150px"></td></tr>'+
+											'<tr><td style="color:#333;font-size:16px">一级菜单链接</td></tr>'+
+											'<tr><td><input type="text" name="ourl" style="width:150px"></td></tr>'+
+											'<input type="hidden" name="token" value="{token}">'+
+											'<tr><td colspan=2><input type="hidden" name="sp2" value="{sp}"><input type="image" src="{site}/Public/images/add.gif"></td></tr>'+
+										' </table>'+
+										'</form>';
+			document.body.appendChild(tdiv);
+		}function add_two(oid){
+			var tdiv=document.createElement("div");
+			tdiv.id="popadd";
+			tdiv.style.cssText="width:300px;height:130px;position:fixed;left:50%;top:50%;margin-left:-150px;margin-top:-65px;border:1px solid #e9e9e9;z-index:999";
+			tdiv.innerHTML='<form action="__APP__/admin{url}doMenuCnSetAddtwo{shtml}" method=post target="main">'+
+										 '<table  style="background:#e7e7e7" width=100%  height="130" cellspacing=0 cellpadding=0>'+
+										 '<tr style="background:#ededed"><td  align="right" style="color:#333;font-size:12px"><span style="cursor:pointer" onclick="document.getElementById(\'popadd\').parentNode.removeChild(document.getElementById(\'popadd\'));">关闭</span></td></tr>'+
+											'<tr><td style="color:#333;font-size:16px">二级菜单名称</td></tr>'+
+											'<tr><td><input type="text" name="tname" style="width:150px"></td></tr>'+
+											'<tr><td style="color:#333;font-size:16px">二级菜单链接</td></tr>'+
+											'<tr><td><input type="text" name="turl" style="width:150px"></td></tr>'+
+											'<input type="hidden" name="token" value="{token}">'+
+											'<tr><td colspan=2><input type="hidden" name="oid" value="'+oid+'"><input type="hidden" name="sp2" value="{sp}"><input type="image" src="{site}/Public/images/add.gif"></td></tr>'+
+										' </table>'+
+										'</form>';
+			document.body.appendChild(tdiv);
+		}
+	</script>	
+<form action="__APP__/admin{url}doMenuCnSet{shtml}" method=post>
+<div class="panel panel-default table-responsive">
+ <div class="panel-heading">菜单配置</div>
+	<table class="table">
+		<tr>
+			<th>一级菜单列表</th>
+			<th>二级菜单列表</th>
+			<th>排序</th>
+			<th>
+				<a style="color:#0066cc;font-size:12px;font-family:Tahoma;"  href="javascript:void(0)" onclick="add()">增加</a>
+			</th>
+		</tr>
+<?php
+if(!empty($this->array_two['mc'])){
+	foreach($this->array_two['mc'] as $k=>$v){
+?>
+		<tr>
+			<td>
+				<input type="text" value="<?php echo $v['title']; ?>" name="<?php echo $k; ?>-title">
+				<input type="text" value="<?php echo $v['url']; ?>" name="<?php echo $k; ?>-url" style="margin-left:10px;">
+				<a style="color:#0066cc;font-size:12px;font-family:Tahoma;"  href="__APP__/admin{url}doMenuCnSetDelone{url}sp{url}{sp}{url}oid{url}<?php echo $k; ?>{shtml}?token={token}" onclick="return confirm('您确定要删除?');">删除</a>
+			</td>
+			<td>
+				<?php
+				 foreach($v['seclists'] as $kk=>$vv){
+				 	?>
+				 	<div style="margin-bottom:8px;">
+				 		<input type="text" value="<?php echo $vv['title']; ?>" name="<?php echo $k; ?>-<?php echo $kk; ?>-title">
+				 		<input type="text" value="<?php echo $vv['url']; ?>" name="<?php echo $k; ?>-<?php echo $kk; ?>-url" style="margin-left:10px;">
+				 		<a style="color:#0066cc;font-size:12px;font-family:Tahoma;"  href="__APP__/admin{url}doMenuCnSetDeltwo{url}sp{url}{sp}{url}oid{url}<?php echo $k; ?>{url}tid{url}<?php echo $kk; ?>{shtml}?token={token}" onclick="return confirm('您确定要删除?');">删除</a>
+				 	</div>
+				<?php
+				}
+				?>
+			</td>
+			<td><input type="text" value="<?php echo $v['ord']; ?>" name="<?php echo $k; ?>-ord" style="width:100%"></td>
+			<td>
+				<a style="color:#0066cc;font-size:12px;font-family:Tahoma;"  href="javascript:void(0)" onclick="add_two(<?php echo $k; ?>)">增加</a>&nbsp;
+			</td>
+		</tr>
+<?php
+	}
+}
+?>
+<input type="hidden" name="sp" value="{sp}">
+<input type="hidden" name="token" value="{token}">
+		<tr><td colspan=3><input type="image" src="{site}/Public/images/edit.gif"></td></tr>
+	</table>
+  </div>
+</form>
+<include file="Tpl/mobile/Public/admin_bottom.html">

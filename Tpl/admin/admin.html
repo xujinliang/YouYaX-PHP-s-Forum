@@ -1,0 +1,71 @@
+<include file="Tpl/Public/admin_top.html">
+	<table width=98% height="auto" cellspacing=0 cellpadding=0 border=1 style="margin:auto;border:1px solid #ccc">
+		<tr>
+			<td height="40" colspan="4" style="line-height:40px;background:url('{site}/Public/images/topbg.jpg')"><span style="font-size:16px;text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);color:#333;font-weight:bold;">管理员查询</span></td>
+		</tr>
+		<tr>
+			<td height="30" style="line-height:30px;font-size:15px;color:#222;font-weight:bold;">ID</td>
+			<td style="line-height:30px;font-size:15px;color:#222;font-weight:bold;">管理员</td>
+			<td style="line-height:30px;font-size:15px;color:#222;font-weight:bold;">密码</td>
+			<td align="center" style="line-height:30px;font-size:15px;color:#222;font-weight:bold;">操作</td>
+		</tr>
+		<tr><td colspan=4 align=right><div class="page">{page}</div></td></tr>
+<?php
+ if(!empty($this->array_two['data'])){
+ 	foreach($this->array_two['data'] as $vo){
+?>
+			<tr onmouseover="addClass(this)" onmouseout="removeClass(this)">
+				<td height="30" style="line-height:30px;font-size:12px;color:#555;">
+				<?php
+					echo $vo['id'];
+				?>
+				</td>
+				<td height="30" style="line-height:30px;font-size:12px;color:#555;">
+					<?php
+					echo $vo['user'];
+				?>
+				</td>
+				<td height="30" style="line-height:30px;font-size:12px;color:#555;">
+					<?php
+					echo $vo['pass'];
+				?>
+				</td>
+				<td align="center" height="30" style="line-height:30px;font-size:12px;color:#555;" >
+					<a style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold" href="__APP__/admin{url}purview{url}id{url}<?php echo $vo['id']?>{shtml}">权限</a>&nbsp;
+					<?php
+					if($vo['isAdmin']==0){	?>
+						<a onclick="return confirm('您确定要免职?');" style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold" href="__APP__/admin{url}adminDepose{url}id{url}<?php echo $vo['id']?>{shtml}?token={token}">免职</a>
+					<?php	}else{	?>	
+						<a onclick="return confirm('您确定要删除?');" style="color:#222;font-size:12px;font-family:Tahoma;font-weight:bold" href="__APP__/admin{url}adminDel{url}id{url}<?php echo $vo['id']?>{shtml}?token={token}">删除</a>
+					<?php	}	?>
+				</td>
+			</tr>
+<?php
+	}
+}
+?>
+	</table>
+	<script>
+		var tr=document.getElementsByTagName("tr");
+		for(var n=0;n<tr.length;n++)
+		{
+			if(n==0||n==1) continue;
+			if(n%2==0&&n!=0)
+			{
+				tr[n].className="tr0";	
+			}else{
+				tr[n].className="tr1";	
+			}
+		}
+	</script>
+<form action="__APP__/admin{url}adminAdd{shtml}" method=post>
+	 <table  width=98%  height="120" cellspacing=0 cellpadding=5  border=0 style="margin:auto;border:1px solid #ccc">
+		<tr><td style="color:#333;font-weight:bold;font-size:12px">管理员</td><td><input type="text" name="admin" style="width:150px;border:1px solid #ccc"></td></tr>
+		<tr><td style="color:#333;font-weight:bold;font-size:12px">密码</td><td><input type="password" name="pass" style="width:150px;border:1px solid #ccc"></td></tr>
+		<tr><td><input type="radio" name="ac" value="add">增加</td>&nbsp;<td><input type="radio" name="ac" value="update">更新</td></tr>
+		<input type="hidden" name="token" value="{token}">
+		<tr><td colspan=2><input type="image" src="{site}/Public/images/add.gif"></td></tr>
+	 </table>
+	</form>
+</body>
+</html>

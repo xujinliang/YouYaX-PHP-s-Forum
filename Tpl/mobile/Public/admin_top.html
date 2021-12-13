@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="{site}/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="{site}/favicon.ico" type="image/x-icon">
+	<link rel="bookmark" href="{site}/favicon.ico" type="image/x-icon">
+	<link href="{site}/Public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<title>YouYaX论坛管理</title>
+	<style>.page a {font-weight: normal;display: inline-block;padding: 0 8px;height: 26px;line-height: 26px;border: 1px solid #e6e6e6;background-color: #FFF;color: #333;overflow: hidden;text-decoration: none;font-size: 14px;}.page a:hover {color: #4b9605;border-color: #b3c874;}td{padding:2px}
+	@media screen and (min-width:768px) and (max-width:1024px){.table-responsive,.panel:nth-child(1){margin-top:150px;}}
+	.form-container{background-color: #f5f5f5;padding: 5px;-moz-border-radius:10px;-khtml-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;}
+	select{height:20px;line-height:20px;}
+	input{border:1px solid #ddd;}
+	input[type="button"],input[type="submit"]{margin-top:4px;margin-bottom:4px;-webkit-border-radius: 8px;border-radius: 8px;border:none;padding: 6px 12px;}
+	</style>
+	<script>
+	 function createBg(){
+	 	var h=window.screen.availHeight;
+		var w=parent.document.documentElement.clientWidth;
+		var bg=document.createElement("div");
+		bg.id="mbg";
+		bg.style.cssText="position:fixed;left:0;top:0;width:"+w+"px;height:"+h+"px;z-index:10;filter:alpha(opacity=70);opacity:0.7;-moz-opacity:0.7;background:#333333;";
+		parent.parent.document.body.appendChild(bg);	
+	 }function closeBg(ID){
+	 	document.getElementById('mbg').parentNode.removeChild(document.getElementById('mbg'));
+	 	document.getElementById(ID).parentNode.removeChild(document.getElementById(ID));		
+	 }document.onreadystatechange = function(){
+    	if (document.readyState == "complete"){
+				if(document.getElementById("message"))
+				{
+					document.getElementById("message").style.display='block';
+			 	setTimeout(function(){
+			 	for(var n=1;n<=40;n++)
+			 	{
+			 		(function(){
+			 			var i=n;
+			 			setTimeout(function(){
+			 				if(i==40){
+			 					document.getElementById("message").style.display='none';
+			 				}
+							document.getElementById("message").style.height=(40-i)+"px";
+			 			},(i+1)*50);
+			 		})();
+			 	}
+			},2000);
+		}
+    		var url=window.location.href;
+				var url_array=url.split("=");
+				var page=parseInt(url_array[1]);
+				var uclass=document.getElementsByTagName("a");
+				for(var n in uclass)
+				{
+					if(uclass[n].className=='fy'+page&&uclass[n].id!=undefined)
+					{
+						uclass[n].style.background="#f8fee4";
+					}
+				}
+    	}
+    }
+	</script>
+</head>
+<body style="overflow-x:hidden;margin:0;padding:0;background:#fafafa;padding-top: 50px;">
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="__APP__/admin{url}index{shtml}">控制面板管理</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">版块管理 <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="__APP__/admin{url}block{shtml}">版块设置</a></li>
+                  <li><a href="__APP__/admin{url}blockTransform{shtml}">版块转移</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户管理 <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="__APP__/admin{url}admin{shtml}">管理员设置</a></li>
+                  <li><a href="__APP__/admin{url}user{shtml}">注册用户设置</a></li>
+                  <li><a href="__APP__/admin{url}userGroup{shtml}">用户组设置</a></li>
+                  <li><a href="__APP__/admin{url}jubao{shtml}">举报管理</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">插件管理 <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="__APP__/admin{url}pluginView{shtml}">查看插件</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">论坛主题管理 <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="__APP__/admin{url}talk{shtml}">发布帖子</a></li>
+                  <li><a href="__APP__/admin{url}reply{shtml}">回复帖子</a></li>
+                  <li><a href="__APP__/admin{url}talkVote{shtml}">主题/投票</a></li>
+                  <li><a href="__APP__/admin{url}voteIp{shtml}">投票/IP</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">点评管理 <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="__APP__/admin{url}mark1{shtml}">主题帖点评</a></li>
+                  <li><a href="__APP__/admin{url}mark2{shtml}">回复帖点评</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">注册激活管理 <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="__APP__/admin{url}mailset{shtml}">配置</a></li>
+                  <li><a href="__APP__/admin{url}keyset{shtml}">注册密钥管理</a></li>
+                  <li><a href="__APP__/admin{url}qqset{shtml}">QQ登录</a></li>
+                  <li><a href="__APP__/admin{url}weiboset{shtml}">新浪微博登录</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">网站配置管理 <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="__APP__/admin{url}setting{shtml}">站点信息</a></li>
+                  <li><a href="__APP__/admin{url}seoset{shtml}">SEO设置</a></li>
+                  <li><a href="__APP__/admin{url}customTitle{shtml}">自定义头衔</a></li>
+                  <li><a href="__APP__/admin{url}delimite{shtml}">分隔符 & 后缀</a></li>
+                  <li><a href="__APP__/admin{url}searchset{shtml}">搜索设置</a></li>
+                  <li><a href="__APP__/admin{url}waterset{shtml}">水印设置</a></li>
+                  <li><a href="__APP__/admin{url}mphotoset{shtml}">手机拍照设置</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">配置项管理 <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="__APP__/admin{url}menuCnSet{shtml}">中文菜单配置</a></li>
+                  <!--<li><a href="__APP__/admin{url}menuCnSet{url}sp{url}en{shtml}">英文菜单配置</a></li>-->
+                  <li><a href="__APP__/admin{url}filterSet{shtml}">敏感词配置</a></li>
+                  <li><a href="__APP__/admin{url}adsSet{shtml}">广告语配置</a></li>
+                  <li><a href="__APP__/admin{url}placardSet{shtml}">公告栏配置</a></li>
+                  <li><a href="__APP__/admin{url}verticalSet{shtml}">垂直滚动配置</a></li>
+                  <li><a href="__APP__/admin{url}friendUrlSet{shtml}">友情链接配置</a></li>
+                  <li><a href="__APP__/admin{url}mixSet{shtml}">杂项配置</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">备份管理 <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="__APP__/admin{url}backupSQL{shtml}">备份数据库</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">其他服务 <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="http://www.youyax.com" target="_blank"href="http://www.youyax.com" target="_blank">作者网站</a></li>
+                  <li><a href="mailto:xujinliang1227@163.com">联系作者</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="divider" style="height: 1px;margin: 9px 0;overflow: hidden;background-color: #e5e5e5;"></li>
+              <li><a href="__APP__/admin{url}logout{shtml}">管理员:<?php echo $_SESSION['youyax_admin'];?> , 注销</a></li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+<?php
+if($_SESSION['youyax_error']==1)
+{
+?>
+<div id="message" style="width:100%;overflow:hidden;margin:auto;background:url('{site}/Public/images/message_green.gif');color:#6da827;height:40px;line-height:40px;font-size:16px;font-weight:bold;font-family:Tahoma;">
+	<span style="margin-left:10px;">操作成功！</span>
+</div>
+<?php
+}if($_SESSION['youyax_error']==2)
+{
+?>
+<div id="message" style="width:100%;overflow:hidden;margin:auto;background:url('{site}/Public/images/message_red.gif');color:#ce2700;height:40px;line-height:40px;font-size:16px;font-weight:bold;font-family:Tahoma;">
+	<span style="margin-left:10px;">操作失败！</span>
+</div>
+<?php
+}
+unset($_SESSION['youyax_error']);
+?>

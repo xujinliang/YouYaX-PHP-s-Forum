@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="icon" href="{site}/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="{site}/favicon.ico" type="image/x-icon">
+		<link rel="bookmark" href="{site}/favicon.ico" type="image/x-icon">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+		<meta name="format-detection" content="telephone=no"/>
+		<link rel="stylesheet" type="text/css" href="{site}/Public/Css/mobile/public.css">
+		<link rel="stylesheet" type="text/css" href="{site}/Public/Css/mobile/categorylist.css">
+		<link rel="stylesheet" type="text/css" href="{site}/Public/Css/mobile/post.css">
+		<link rel="stylesheet" type="text/css" href="{site}/Public/Css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="{site}/Public/Css/mobile/custom.css">
+		<script type="text/javascript" src="{site}/Public/JScript/public.js?<?php echo time();?>"></script>
+		<title>{site_config->site_title_mobile}</title>
+	</head>
+	<body>
+	<!--头部开始-->
+		<header>
+			<div class="top_head white" style="font: normal 18px/1.5 helvetica, verdana, san-serif;">
+	    <div class="box1">
+	        <a href="javascript:history.go(-1);" class="back"></a>
+	    </div>
+	    <div class="box2">
+	        <a href="{site}">{site_config->site_title_mobile}</a></div>
+	    <div class="box3">
+	        	<?php if(empty($_SESSION['youyax_user'])){	?>
+	            <a  href="__APP__/Login{url}loginMobile{shtml}"><span class="header_user">用户登录</span></a>
+	          <?php	}else{	?>
+	            <a href="__APP__/Index{url}logout{shtml}"><span class="header_user">注销</span></a>
+	        <?php	}	?>
+	    </div>
+			</div>
+		</header>
+	<!--头部结束-->
+	 <div style="margin:0 auto;width:96%">
+	 	<div style="text-align:center;">
+	 		<?php
+	   		$sql="select * from ".$this->C('db_prefix') . "user where user='".$_SESSION['youyax_user']."'";
+	   		$res = $this->db->query($sql);
+    			$arr = $res->fetch();
+	   		echo '<img style="margin-top:10px;border-radius:50%" src="'.$this->C('SITE').'/Public/pic/'.$arr['face'].'" border="0">';
+	   		echo '<p>'.$arr['user'].'</p>';
+	   		?>
+	   	<form name="form1" method=post action="__APP__/Index{url}upload{shtml}" enctype="multipart/form-data">
+	 		<a href="javascript:void(0)">
+       				<img id="img" border="0" src="{site}/Public/images/set_face.png">
+       			</a><div style="font-size:14px;margin-top:10px;"></span>( 最大支持120 * 120 )</div>
+						<div id="imgUpload" style="position:absolute;width:67px;height:21px; top:0px;filter:alpha(opacity=0);-moz-opacity:0;opacity:0;overflow:hidden;">
+							<input type="file" name="file" onchange="change(this)"/>
+						</div>
+       			<script>
+       				window.onload=function(event){
+       					event=event||window.event;
+       					document.getElementById('imgUpload').style.top=(document.getElementById('img').offsetTop)+'px';
+       					document.getElementById('imgUpload').style.left=(document.getElementById('img').offsetLeft)+'px';
+       				}
+       				function change(obj){ 
+					  document.forms['form1'].submit();
+					//  var nf = obj.cloneNode(true);
+					//  obj.parentNode.replaceChild(nf, obj);
+					}
+       			</script>
+	 		<input type="hidden" name="sub">
+	 	</form>
+	 	<div style="height:10px;border-bottom:1px solid #dcdcdc"></div>
+	 		<ul id="blockzone">
+	 			<li><a class="btn" href="__APP__/Index{url}chpsd{shtml}">更改密码</a></li>
+			 	<li><a class="btn" href="__APP__/Message{url}show{shtml}">我的消息</a></li>
+			 	<li><a class="btn" href="__APP__/Favor{url}show{shtml}">我的收藏</a></li>
+			 	<li><a class="btn" href="__APP__/Index{url}mypub{shtml}">我的发帖</a></li>
+			 	<li><a class="btn" href="__APP__/Index{url}myrep{shtml}">我的回帖</a></li>
+			 	<?php
+		    		if($this->is_exist_widget("SignatureWidget") && $this->is_active_widget("SignatureWidget")){
+		    			echo w("SignatureWidget")->slideName();
+		    		}
+	    		?>
+			</ul>
+	   	</div>
+	 </div>
+	<!--版权开始-->
+	<footer>
+		<div class="copyright">
+   		<a>Powered BY YouYaX</a>
+  	</div>
+	</footer>
+	<!--版权结束-->
+	</body>
+</html>

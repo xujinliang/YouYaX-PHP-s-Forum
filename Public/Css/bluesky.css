@@ -1,0 +1,105 @@
+/**
+ * Greensky theme
+ * A light green colored theme with query match highlighting and dotted rules
+ * between each result. A slightly larger humanist sans, Trebuchet, is also used.
+ */
+/* Slight reset to make the preview have ample padding. */
+.cse .gsc-control-cse,
+.gsc-control-cse {
+  padding: 1em;
+  width: auto;
+}
+.cse .gsc-control-wrapper-cse,
+.gsc-control-wrapper-cse {
+  width: 100%;
+}
+.cse .gsc-branding,
+.gsc-branding {
+  display: none;
+}
+.cse .gsc-control-cse,
+.gsc-control-cse {
+  font-family: "Trebuchet MS", sans-serif;
+  background-color: #e1f3da;
+  border: 1px solid #e1f3da;
+}
+.gsc-control-cse .gsc-table-result {
+  font-family: "Trebuchet MS", sans-serif;
+}
+.cse .gsc-control-cse:after,
+.gsc-control-cse:after {
+  content:".";
+  display:block;
+  height:0;
+  clear:both;
+  visibility:hidden;
+}
+.cse .gsc-resultsHeader,
+.gsc-resultsHeader {
+  border: block;
+}
+/**
+ * Table cell containing the search input.
+ * 12 pixels added to account for the horizontal padding on the input.
+ */
+.cse table.gsc-search-box td.gsc-input,
+table.gsc-search-box td.gsc-input {
+  /*padding-right: 12px;*/
+  padding:0;
+}
+/* Search input field */
+.cse input.gsc-input,
+input.gsc-input {
+  font-family: inherit;
+  font-size: 13px;
+  border: 1px solid #1c7bc5;
+  height:26px;
+  line-height:26px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+/* Search button */
+.cse input.gsc-search-button,
+input.gsc-search-button {
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: bold;
+  color: #fff;
+  padding: 0 8px;
+  height: 28px;
+  min-width: 54px;
+  background-color: #1c7bc5;
+  border: 1px solid #1c7bc5;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  }
+input.gsc-input {
+  padding: 0px 6px;
+  width: 230px;
+}
+form.gsc-search-box {
+  font-size: 13px;
+  margin-top : 0;
+  margin-right : 0;
+  margin-bottom : 4px;
+  margin-left : 0;
+  width: 100%;
+}
+table.gsc-search-box {
+  border-style : none;
+  border-width : 0;
+  border-spacing : 0 0;
+  width : 100%;
+  margin-bottom : 2px;
+}
+table.gsc-search-box td {
+  vertical-align : middle;
+}
+td.gsc-search-button {
+width: 1%;
+}
+input.gsc-search-button {
+margin-left: 2px;
+}
