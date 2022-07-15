@@ -62,3 +62,4 @@ YOUYAX是一款采用PHP语言开发的论坛系统，性质是原创型，从0�
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/1213/084750_ca9e2cfc_3785.jpeg "33.jpg")
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/1213/084757_3e9ea2fa_3785.jpeg "44.jpg")
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/1213/084805_a883eef8_3785.jpeg "55.jpg")
+![输入图片说明](https://images.gitee.com/uploads/images/2022/0715/083841_bd5e80a0_3785.jpeg "ruanzhu.jpg")
